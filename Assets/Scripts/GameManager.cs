@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour
     public Action OnNightBegin;
     public Action OnNightEnd;
     public Action OnPlayerDie;
+    public Action OnSeedPlanted;
+    public Action OnEnemyDie;
     public Action<int> OnGainMoney;
     public Action<int> OnLoseMoney;
 
@@ -20,20 +22,31 @@ public class GameManager : MonoBehaviour
 
     public bool nightTime { get; private set; } = false;
 
+    public int remainingEnemies { get; private set; } = 0;
+
     public static GameManager Instance { get; private set; }
 
     private void OnEnable()
     {
         OnGameStart += StartGame;
         OnNightBegin += BeginNight;
+        OnNightEnd += EndNight;
+        OnDayBegin += () => nightTime = false;
         OnGainMoney += (int moneyGained) => GainMoney(moneyGained);
         OnLoseMoney += (int moneyLost) => LoseMoney(moneyLost);
+        OnSeedPlanted += () => remainingEnemies += 1;
+        OnEnemyDie += EnemyDied;
     }
     private void OnDisable()
     {
-        OnNightBegin -= EndNight;
+        OnGameStart -= StartGame;
+        OnNightBegin -= BeginNight;
+        OnNightEnd -= EndNight;
+        OnDayBegin -= () => nightTime = false;
         OnGainMoney -= (int moneyGained) => GainMoney(moneyGained);
         OnLoseMoney -= (int moneyLost) => LoseMoney(moneyLost);
+        OnSeedPlanted -= () => remainingEnemies += 1;
+        OnEnemyDie += EnemyDied;
     }
 
     private void Awake()
@@ -70,8 +83,17 @@ public class GameManager : MonoBehaviour
         nightTime = true;
         remainingDays -= 1;
     }
+    private void EnemyDied()
+    {
+        remainingEnemies -= 1;
+        if (remainingEnemies <= 0)
+        {
+            OnNightEnd?.Invoke();
+        }
+    }
     private void EndNight()
     {
+        remainingEnemies = 0;
         if (remainingDays <= 0)
         {
             if (currentMoney < quota)
@@ -86,6 +108,6 @@ public class GameManager : MonoBehaviour
                 quotaIncreaseIncrease += 0.2f;
             }
         }
-        nightTime = false;
+        OnDayBegin?.Invoke();
     }
 }
