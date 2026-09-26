@@ -16,6 +16,7 @@ public class PumpkinEnemy : MonoBehaviour
     [SerializeField] float jumpHeight = 5f;
     [SerializeField] float jumpDuration = 0.5f;
     [SerializeField] float jumpMoveSpeed = 5f;
+    Vector2 jumpDirection = Vector2.zero;
 
     [Header("Wind Up")]
     [SerializeField] float windUpDuration = 0.5f;
@@ -54,11 +55,12 @@ public class PumpkinEnemy : MonoBehaviour
                 rb.linearVelocity = Vector3.zero;
                 HandleStateTimer(enemyStates.JUMPING, jumpDuration, () =>
                 {
+                    jumpDirection = playerDir;
                     hitboxCollider.enabled = false;
                 });
                 break;
             case enemyStates.JUMPING:
-                rb.MovePosition(rb.position + (playerDir * jumpMoveSpeed * Time.deltaTime));
+                rb.MovePosition(rb.position + (jumpDirection * jumpMoveSpeed * Time.deltaTime));
 
                 Vector3 tempSpritePos = spriteTransform.localPosition;
                 float progress = 1f - (stateTimer / jumpDuration);
