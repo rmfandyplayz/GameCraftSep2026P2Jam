@@ -1,36 +1,40 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public class Player : MonoBehaviour
 {
     [Header("Movement")]
-    public float speed = 5f;
-    public InputActionAsset inputSystem;
-    private InputAction interact;
+    [SerializeField] float speed = 5f;
+    [SerializeField] InputActionReference moveInput;
+    [SerializeField] InputActionReference interactInput;
 
     [Header("UI")]
-    public GameObject interactPopup; //andy may replace this, this for now is the game object to indicate we can plant
+    [SerializeField] GameObject interactPopup; //andy may replace this, this for now is the game object to indicate we can plant
 
     //checks if we pressed E (to be used for soil)
     [HideInInspector]
-    public bool InteractPressed => interact.WasPressedThisFrame();
+    public bool InteractPressed => interactInput.action.WasPressedThisFrame();
+
+    Rigidbody2D rb;
 
     private void Start()
     {
-        interact = inputSystem.FindAction("Player/Interact");
-        interact.Enable();
+        rb = GetComponent<Rigidbody2D>();
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
-        //basic ass movement
-        Vector2 direction = Vector2.zero;
+        Vector2 direction = moveInput.action.ReadValue<Vector2>();
+        rb.MovePosition(rb.position + (direction.normalized * speed * Time.deltaTime));
+    }
 
-        if (Keyboard.current.wKey.isPressed) direction.y = 1;
-        if (Keyboard.current.sKey.isPressed) direction.y = -1;
-        if (Keyboard.current.aKey.isPressed) direction.x = -1;
-        if (Keyboard.current.dKey.isPressed) direction.x = 1;
-
-        transform.Translate(direction.normalized * speed * Time.deltaTime);
+    public void ToggleInteractPopup(bool show)
+    {
+        if (interactPopup != null)
+        {
+            interactPopup.SetActive(show);
+        }
     }
 }

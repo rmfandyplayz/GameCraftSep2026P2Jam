@@ -15,7 +15,7 @@ public class MasterCamera : MonoBehaviour
     public float minY = -10f;
     public float maxY = 10f;
 
-    private void LateUpdate()
+    private void FixedUpdate()
     {
         if (target == null)
             return;

@@ -17,13 +17,13 @@ public class Soil : MonoBehaviour
 
         bool canPlant = canInteract;
 
-        player.interactPopup.SetActive(canPlant); //if u can plant has UI pop up
+        player.ToggleInteractPopup(show: true); //if u can plant has UI pop up
 
         if (canPlant && player.InteractPressed)
         {
             Instantiate(seed, transform.position, Quaternion.identity);
             canInteract = false;
-            player.interactPopup.SetActive(false);
+            player.ToggleInteractPopup(show: false);
         }
     }
 
@@ -41,7 +41,7 @@ public class Soil : MonoBehaviour
 
         if (leavingPlayer == player)
         {
-            player.interactPopup.SetActive(false); //disables ui popup
+            player.ToggleInteractPopup(show: false); //disables ui popup
             player = null;
         }
     }
