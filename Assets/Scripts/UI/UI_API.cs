@@ -15,6 +15,69 @@ public class UI_API : MonoBehaviour
     [InspectorLabel("Daylight Cycle Manager"), SerializeField] DayLightCycleController daylightCycleController;
     [InspectorLabel("Points Manager"), SerializeField] PointsController pointsController;
 
+    int tempPoints; // running total of money gained/lost since the last CombinePoints
+    bool subscribed;
+
+    // ===============================================================================================================================
+    //                                             GAMEMANAGER HOOKS
+    // ===============================================================================================================================
+
+    private void OnEnable()
+    {
+        SubscribeToGameManager();
+    }
+
+    private void Start()
+    {
+        SubscribeToGameManager();
+    }
+
+    private void OnDisable()
+    {
+        if (!subscribed || GameManager.Instance == null)
+            return;
+
+        GameManager gm = GameManager.Instance;
+        gm.OnDayBegin -= AdvanceTime;
+        gm.OnNightBegin -= AdvanceTime;
+        gm.OnNightEnd -= HandleNightEnd;
+        gm.OnGainMoney -= HandleGainMoney;
+        gm.OnLoseMoney -= HandleLoseMoney;
+        subscribed = false;
+    }
+
+    private void SubscribeToGameManager()
+    {
+        if (subscribed || GameManager.Instance == null)
+            return;
+
+        GameManager gm = GameManager.Instance;
+        gm.OnDayBegin += AdvanceTime;
+        gm.OnNightBegin += AdvanceTime;
+        gm.OnNightEnd += HandleNightEnd;
+        gm.OnGainMoney += HandleGainMoney;
+        gm.OnLoseMoney += HandleLoseMoney;
+        subscribed = true;
+    }
+
+    private void HandleGainMoney(int amount)
+    {
+        tempPoints += amount;
+        SetTempPoints(tempPoints);
+    }
+
+    private void HandleLoseMoney(int amount)
+    {
+        tempPoints -= amount;
+        SetTempPoints(tempPoints);
+    }
+
+    private void HandleNightEnd()
+    {
+        CombinePoints(GameManager.Instance.currentMoney);
+        tempPoints = 0;
+    }
+
     // ===============================================================================================================================
     //                                             PUBLIC API
     // ===============================================================================================================================

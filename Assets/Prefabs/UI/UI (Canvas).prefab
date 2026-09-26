@@ -248,14 +248,14 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 981501376855774228}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3853064010295644456}
   - {fileID: 8887109406966045274}
-  m_Father: {fileID: 5360228956879818661}
+  m_Father: {fileID: 3891114765763716082}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -934,6 +934,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5360228956879818661}
+  - component: {fileID: 4650192542452693256}
   m_Layer: 5
   m_Name: GUI
   m_TagString: Untagged
@@ -953,8 +954,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 209074783995529014}
-  - {fileID: 2670000815952145096}
+  - {fileID: 3891114765763716082}
   m_Father: {fileID: 8368946330507062221}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -962,6 +962,22 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &4650192542452693256
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1889210574114712027}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26551b11de6e3934eb8dbefe87ec4d3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::rmf_claude.DOTweenUI.UIAnimationPlayer
+  UseUnscaledTime: 1
+  KillOnDisable: 1
+  Shared: {fileID: 0}
+  Animations: []
 --- !u!1 &2175618062009707574
 GameObject:
   m_ObjectHideFlags: 0
@@ -1232,6 +1248,56 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &3027315110363655208
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3891114765763716082}
+  - component: {fileID: 5322330944135513804}
+  m_Layer: 5
+  m_Name: Main
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &3891114765763716082
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3027315110363655208}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 209074783995529014}
+  - {fileID: 2670000815952145096}
+  m_Father: {fileID: 5360228956879818661}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!225 &5322330944135513804
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3027315110363655208}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &4177838288519163859
 GameObject:
   m_ObjectHideFlags: 0
@@ -2284,7 +2350,7 @@ RectTransform:
   - {fileID: 2510451396459439006}
   - {fileID: 1086258162519039923}
   - {fileID: 5252568519290207940}
-  m_Father: {fileID: 5360228956879818661}
+  m_Father: {fileID: 3891114765763716082}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -3219,6 +3285,154 @@ MonoBehaviour:
       PropertyComponent: UnityEngine.RectTransform
       PropertyMember: up
       PropertyKind: 3
+      NumberFormat: 0
+    Loops: 1
+    LoopType: 0
+    PlayAtCustomFPS: 0
+    FPS: 12
+    Snapping: 0
+    SnapPerStep: 0
+    ApplyFromValuesImmediately: 1
+    InterruptOthers: 1
+    OnComplete:
+      m_PersistentCalls:
+        m_Calls: []
+  - Name: CombineAnim
+    Notes: '- decrease points to 0
+
+      - fade text out'
+    Steps:
+    - Type: 20
+      Start: 0
+      RectTarget: {fileID: 5252568519290207940}
+      CanvasGroupTarget: {fileID: 0}
+      GraphicTarget: {fileID: 0}
+      MaterialTarget: {fileID: 0}
+      ActiveTarget: {fileID: 0}
+      AudioSourceTarget: {fileID: 0}
+      PropertyTarget: {fileID: 0}
+      TargetPath: 
+      Duration: 0.5
+      Delay: 0
+      EaseType: 1
+      UseCustomCurve: 0
+      Curve:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 0
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        - serializedVersion: 3
+          time: 1
+          value: 1
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      UseFrom: 1
+      FromMode: 0
+      ToMode: 0
+      FromVector: {x: 0, y: 0, z: 0}
+      ToVector: {x: 0, y: 0, z: 0}
+      FromFloat: 0
+      ToFloat: 1
+      FromColor: {r: 0, g: 0, b: 0, a: 0}
+      ToColor: {r: 0, g: 0, b: 0, a: 0}
+      FromText: 
+      ToText: 
+      ShaderProperty: _Progress
+      ActiveValue: 0
+      Clip: {fileID: 0}
+      Volume: 1
+      Pitch: 1
+      PitchVariation: 0
+      Vibrato: 10
+      Elasticity: 1
+      Randomness: 90
+      Snapping: 0
+      UseCustomPath: 0
+      PathShape: 0
+      Waypoints: []
+      PropertyComponent: CountingText
+      PropertyMember: Progress
+      PropertyKind: 0
+      NumberFormat: 0
+    - Type: 3
+      Start: 0
+      RectTarget: {fileID: 5252568519290207940}
+      CanvasGroupTarget: {fileID: 0}
+      GraphicTarget: {fileID: 0}
+      MaterialTarget: {fileID: 0}
+      ActiveTarget: {fileID: 0}
+      AudioSourceTarget: {fileID: 0}
+      PropertyTarget: {fileID: 0}
+      TargetPath: 
+      Duration: 0.2
+      Delay: 0
+      EaseType: 1
+      UseCustomCurve: 0
+      Curve:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 0
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        - serializedVersion: 3
+          time: 1
+          value: 1
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      UseFrom: 0
+      FromMode: 0
+      ToMode: 0
+      FromVector: {x: 0, y: 0, z: 0}
+      ToVector: {x: 0, y: 0, z: 0}
+      FromFloat: 0
+      ToFloat: 1
+      FromColor: {r: 1, g: 1, b: 1, a: 0}
+      ToColor: {r: 1, g: 1, b: 1, a: 0}
+      FromText: 
+      ToText: 
+      ShaderProperty: _Progress
+      ActiveValue: 0
+      Clip: {fileID: 0}
+      Volume: 1
+      Pitch: 1
+      PitchVariation: 0
+      Vibrato: 10
+      Elasticity: 1
+      Randomness: 90
+      Snapping: 0
+      UseCustomPath: 0
+      PathShape: 0
+      Waypoints: []
+      PropertyComponent: CountingText
+      PropertyMember: Progress
+      PropertyKind: 0
       NumberFormat: 0
     Loops: 1
     LoopType: 0
