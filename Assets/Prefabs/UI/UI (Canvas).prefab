@@ -3314,7 +3314,7 @@ MonoBehaviour:
       TargetPath: 
       Duration: 0.5
       Delay: 0
-      EaseType: 6
+      EaseType: 1
       UseCustomCurve: 0
       Curve:
         serializedVersion: 2
@@ -3369,7 +3369,7 @@ MonoBehaviour:
       PropertyKind: 0
       NumberFormat: 0
     - Type: 3
-      Start: 1
+      Start: 0
       RectTarget: {fileID: 5252568519290207940}
       CanvasGroupTarget: {fileID: 0}
       GraphicTarget: {fileID: 0}
@@ -3378,9 +3378,9 @@ MonoBehaviour:
       AudioSourceTarget: {fileID: 0}
       PropertyTarget: {fileID: 0}
       TargetPath: 
-      Duration: 0.5
+      Duration: 0.2
       Delay: 0
-      EaseType: 6
+      EaseType: 1
       UseCustomCurve: 0
       Curve:
         serializedVersion: 2
