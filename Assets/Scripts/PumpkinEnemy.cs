@@ -32,6 +32,9 @@ public class PumpkinEnemy : MonoBehaviour
     [SerializeField] float attackDuration = 0.2f;
     [SerializeField] float attackMoveSpeed = 15f;
 
+    [Header("Effects")]
+    public GameObject deathEffect;
+
     enum enemyStates
     {
         IDLE,
@@ -146,5 +149,14 @@ public class PumpkinEnemy : MonoBehaviour
         jumpAngle *= Mathf.Deg2Rad;
         jumpDirection = new Vector2(Mathf.Sin(jumpAngle), Mathf.Cos(jumpAngle));
         hitboxCollider.enabled = false;
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Attack"))
+        {
+            Instantiate(deathEffect, gameObject.transform.position, Quaternion.identity);
+            Destroy(gameObject);
+        }
     }
 }
