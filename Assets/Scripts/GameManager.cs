@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour
     public Action OnNightBegin;
     public Action OnNightEnd;
     public Action OnPlayerDie;
+    public Action<int> OnGainMoney;
+    public Action<int> OnLoseMoney;
 
     public int currentMoney { get; private set; } = 0;
     public int quota { get; private set; } = 300;
@@ -23,10 +25,14 @@ public class GameManager : MonoBehaviour
     private void OnEnable()
     {
         OnNightBegin += BeginNight;
+        OnGainMoney += (int moneyGained) => GainMoney(moneyGained);
+        OnLoseMoney += (int moneyLost) => LoseMoney(moneyLost);
     }
     private void OnDisable()
     {
         OnNightBegin -= EndNight;
+        OnGainMoney -= (int moneyGained) => GainMoney(moneyGained);
+        OnLoseMoney -= (int moneyLost) => LoseMoney(moneyLost);
     }
 
     private void Awake()
@@ -38,6 +44,15 @@ public class GameManager : MonoBehaviour
         }
         Instance = this;
         DontDestroyOnLoad(gameObject);
+    }
+
+    private void GainMoney(int amount)
+    {
+        currentMoney += amount;
+    }
+    private void LoseMoney(int amount)
+    {
+        currentMoney += amount;
     }
 
     private void BeginNight()
@@ -55,7 +70,7 @@ public class GameManager : MonoBehaviour
             }
             else
             {
-                currentMoney -= quota;
+                OnLoseMoney?.Invoke(quota);
                 quota = (int)((float)quota * quotaIncrease);
                 quotaIncrease += quotaIncreaseIncrease;
                 quotaIncreaseIncrease += 0.2f;
