@@ -86,6 +86,9 @@ public class GameManager : MonoBehaviour
     private void EnemyDied()
     {
         remainingEnemies -= 1;
+
+        OnGainMoney?.Invoke(78);
+
         if (remainingEnemies <= 0)
         {
             OnNightEnd?.Invoke();

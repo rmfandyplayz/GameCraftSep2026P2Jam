@@ -1,15 +1,34 @@
 using UnityEngine;
+using TMPro;
 
 public class Bell : MonoBehaviour
 {
     private bool canInteract;
     public GameObject interactUIPopup;
 
+    public int requiredSeeds;
+    private int seedsLeft;
+
+    public GameObject seedsLeftDisplay;
+    public TMP_Text requiredSeedsText;
+
     private Player player;
 
+    private bool hasSeeds;
+
     void Update(){
-    if (Input.GetKeyDown(KeyCode.E) && canInteract == true)
-        Interact();
+        seedsLeft = requiredSeeds - GameObject.FindGameObjectsWithTag("seeds").Length;
+
+        requiredSeedsText.text = seedsLeft.ToString();
+        
+
+        hasSeeds = GameObject.FindGameObjectsWithTag("seeds").Length >= requiredSeeds;
+        if (Input.GetKeyDown(KeyCode.E) && canInteract == true && hasSeeds == true) 
+            Interact();
+
+        if (hasSeeds == true){
+            seedsLeftDisplay.SetActive(false);
+        }
     }
     
     private void OnTriggerEnter2D(Collider2D other)
@@ -17,7 +36,10 @@ public class Bell : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             canInteract = true;
+            
+            if (hasSeeds == true){
             interactUIPopup.SetActive(true);
+            }
         }
     }
 
