@@ -105,6 +105,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ceafa4c0e9871b543ba23b203a2601f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  enemyPlant: {fileID: 9001036112998221217, guid: 889373fa34dd988499175b8f68bb1931, type: 3}
 --- !u!1001 &1458656378992142246
 PrefabInstance:
   m_ObjectHideFlags: 0

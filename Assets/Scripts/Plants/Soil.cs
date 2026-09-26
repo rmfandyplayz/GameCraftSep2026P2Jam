@@ -13,6 +13,22 @@ public class Soil : MonoBehaviour
 
     private Player player;
 
+    private void OnEnable()
+    {
+        GameManager.Instance.OnDayBegin += () =>
+        {
+            canInteract = true;
+        };
+    }
+
+    private void OnDisable()
+    {
+        GameManager.Instance.OnNightBegin -= () =>
+        {
+            canInteract = false;
+        };
+    }
+
     private void Update()
     {
         if (player == null)
