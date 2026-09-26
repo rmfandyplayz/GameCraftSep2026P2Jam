@@ -273,8 +273,9 @@ MonoBehaviour:
   jumpMoveSpeed: 5.5
   jumpDirectionRandomness: 20
   windUpDuration: 0.5
+  attackDistance: 5
   attackDuration: 0.15
-  attackMoveSpeed: 15
+  attackMoveSpeed: 30
 --- !u!61 &1694760193576271912
 BoxCollider2D:
   m_ObjectHideFlags: 0

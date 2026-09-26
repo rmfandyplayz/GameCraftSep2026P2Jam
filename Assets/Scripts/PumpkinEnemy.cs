@@ -23,6 +23,7 @@ public class PumpkinEnemy : MonoBehaviour
 
     [Header("Wind Up")]
     [SerializeField] float windUpDuration = 0.5f;
+    [SerializeField] float attackDistance = 5f;
 
     [Header("Attacking")]
     [SerializeField] float attackDuration = 0.2f;
@@ -59,12 +60,7 @@ public class PumpkinEnemy : MonoBehaviour
                 jumpDuration = UnityEngine.Random.Range(jumpDurationMin, jumpDurationMax);
                 HandleStateTimer(enemyStates.JUMPING, jumpDuration, () =>
                 {
-                    jumpDirection = playerDir;
-                    float jumpAngle = Mathf.Atan2(jumpDirection.x, jumpDirection.y) * Mathf.Rad2Deg;
-                    jumpAngle += UnityEngine.Random.Range(-jumpDirectionRandomness, jumpDirectionRandomness);
-                    jumpAngle *= Mathf.Deg2Rad;
-                    jumpDirection = new Vector2(Mathf.Sin(jumpAngle), Mathf.Cos(jumpAngle));
-                    hitboxCollider.enabled = false;
+                    HandleJump(playerDir);
                 });
                 break;
             case enemyStates.JUMPING:
@@ -83,7 +79,19 @@ public class PumpkinEnemy : MonoBehaviour
                 break;
             case enemyStates.WIND_UP:
                 rb.linearVelocity = Vector3.zero;
-                HandleStateTimer(enemyStates.ATTACKING, attackDuration);
+
+                bool canAttack = (target.position - transform.position).sqrMagnitude <= attackDistance * attackDistance;
+                if (canAttack)
+                {
+                    HandleStateTimer(enemyStates.ATTACKING, attackDuration);
+                }
+                else
+                {
+                    HandleStateTimer(enemyStates.JUMPING, jumpDuration, () =>
+                    {
+                        HandleJump(playerDir);
+                    });
+                }
                 break;
             case enemyStates.ATTACKING:
                 rb.MovePosition(rb.position + (playerDir * attackMoveSpeed * Time.deltaTime));
@@ -101,5 +109,15 @@ public class PumpkinEnemy : MonoBehaviour
             currentState = nextState;
             stateTimer = nextDuration;
         }
+    }
+
+    private void HandleJump(Vector2 dir)
+    {
+        jumpDirection = dir;
+        float jumpAngle = Mathf.Atan2(jumpDirection.x, jumpDirection.y) * Mathf.Rad2Deg;
+        jumpAngle += UnityEngine.Random.Range(-jumpDirectionRandomness, jumpDirectionRandomness);
+        jumpAngle *= Mathf.Deg2Rad;
+        jumpDirection = new Vector2(Mathf.Sin(jumpAngle), Mathf.Cos(jumpAngle));
+        hitboxCollider.enabled = false;
     }
 }
