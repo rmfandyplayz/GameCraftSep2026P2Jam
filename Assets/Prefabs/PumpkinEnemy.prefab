@@ -284,7 +284,7 @@ MonoBehaviour:
   attackDistance: 5
   attackDuration: 0.15
   attackMoveSpeed: 30
-  deathEffect: {fileID: 0}
+  deathEffect: {fileID: 4101250449678475071, guid: 34de63608512b45859fbf3c81f3626cc, type: 3}
 --- !u!61 &1694760193576271912
 BoxCollider2D:
   m_ObjectHideFlags: 0
