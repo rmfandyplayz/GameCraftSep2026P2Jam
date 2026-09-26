@@ -15,6 +15,13 @@ public class MasterCamera : MonoBehaviour
     public float minY = -10f;
     public float maxY = 10f;
 
+    private Camera cameraComponent;
+
+    private void Start()
+    {
+        cameraComponent = GetComponent<Camera>();
+    }
+
     private void FixedUpdate()
     {
         if (target == null)
@@ -34,14 +41,32 @@ public class MasterCamera : MonoBehaviour
         else if (distance.y < -halfDeadZone.y)
             newPosition.y = target.position.y + halfDeadZone.y;
 
-        newPosition.x = Mathf.Clamp(newPosition.x, minX, maxX);
-        newPosition.y = Mathf.Clamp(newPosition.y, minY, maxY);
+        float halfCameraHeight = cameraComponent.orthographicSize;
+        float halfCameraWidth = halfCameraHeight * cameraComponent.aspect;
 
-        transform.position = Vector3.Lerp(
+        float cameraMinX = minX + halfCameraWidth;
+        float cameraMaxX = maxX - halfCameraWidth;
+        float cameraMinY = minY + halfCameraHeight;
+        float cameraMaxY = maxY - halfCameraHeight;
+
+        if (cameraMinX > cameraMaxX)
+            cameraMinX = cameraMaxX = (minX + maxX) / 2f;
+
+        if (cameraMinY > cameraMaxY)
+            cameraMinY = cameraMaxY = (minY + maxY) / 2f;
+
+        newPosition.x = Mathf.Clamp(newPosition.x, cameraMinX, cameraMaxX);
+        newPosition.y = Mathf.Clamp(newPosition.y, cameraMinY, cameraMaxY);
+
+        Vector3 finalPosition = Vector3.Lerp(
             transform.position,
             newPosition,
             followSpeed * Time.deltaTime
         );
+
+        finalPosition.x = Mathf.Clamp(finalPosition.x, cameraMinX, cameraMaxX);
+        finalPosition.y = Mathf.Clamp(finalPosition.y, cameraMinY, cameraMaxY);
+        transform.position = finalPosition;
     }
 
     private void OnDrawGizmos()
