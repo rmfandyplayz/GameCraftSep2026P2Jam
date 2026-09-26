@@ -119,6 +119,23 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &729532192 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1889210574114712027, guid: 302c52b5aaafaa34f87efb785d011b3d, type: 3}
+  m_PrefabInstance: {fileID: 1502464514214400231}
+  m_PrefabAsset: {fileID: 0}
+--- !u!225 &729532194
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 729532192}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &745405718
 GameObject:
   m_ObjectHideFlags: 0
@@ -483,10 +500,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI (Canvas)
       objectReference: {fileID: 0}
-    - target: {fileID: 7725008315886388628, guid: 302c52b5aaafaa34f87efb785d011b3d, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: -8115737127639695905, guid: d04d65f7ba40f7c4796762359b0f1810, type: 3}
     - target: {fileID: 8368946330507062221, guid: 302c52b5aaafaa34f87efb785d011b3d, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -499,27 +512,14 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 9051510797191671183, guid: 302c52b5aaafaa34f87efb785d011b3d, type: 3}
-      propertyPath: rotatingCircAnimPlayer
-      value: 
-      objectReference: {fileID: 1502464514214400232}
     m_RemovedComponents: []
-    m_RemovedGameObjects:
-    - {fileID: 5163902574180451324, guid: 302c52b5aaafaa34f87efb785d011b3d, type: 3}
+    m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1889210574114712027, guid: 302c52b5aaafaa34f87efb785d011b3d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 729532194}
   m_SourcePrefab: {fileID: 100100000, guid: 302c52b5aaafaa34f87efb785d011b3d, type: 3}
---- !u!114 &1502464514214400232 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1708177013604707200, guid: 302c52b5aaafaa34f87efb785d011b3d, type: 3}
-  m_PrefabInstance: {fileID: 1502464514214400231}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26551b11de6e3934eb8dbefe87ec4d3b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::rmf_claude.DOTweenUI.UIAnimationPlayer
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

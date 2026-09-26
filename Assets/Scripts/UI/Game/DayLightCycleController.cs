@@ -19,14 +19,18 @@ public class DayLightCycleController : MonoBehaviour
         {
             day++;
             isDay = true;
+
+            dayTextAnimPlayer.Play("Disappear", () =>
+            {
+                dayText.text = $"Day {day}";
+                dayTextAnimPlayer.Play("Appear");
+            });
         }
         else
         {
             isDay = false;
-
         }
 
         rotatingCircAnimPlayer.PlayAnimation("RotateCircle");
-        dayText.text = $"Day {day}";
     }
 }
