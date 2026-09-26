@@ -267,9 +267,11 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  jumpHeight: 1
-  jumpDuration: 0.4
+  jumpHeight: 5
+  jumpDurationMin: 1
+  jumpDurationMax: 1.5
   jumpMoveSpeed: 5.5
+  jumpDirectionRandomness: 20
   windUpDuration: 0.5
   attackDuration: 0.15
   attackMoveSpeed: 15

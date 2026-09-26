@@ -14,8 +14,11 @@ public class PumpkinEnemy : MonoBehaviour
     [Header("Jumping")]
     [SerializeField] AnimationCurve jumpCurve;
     [SerializeField] float jumpHeight = 5f;
-    [SerializeField] float jumpDuration = 0.5f;
+    [SerializeField] float jumpDurationMin = 1f;
+    [SerializeField] float jumpDurationMax = 3f;
+    float jumpDuration;
     [SerializeField] float jumpMoveSpeed = 5f;
+    [SerializeField] float jumpDirectionRandomness = 5;
     Vector2 jumpDirection = Vector2.zero;
 
     [Header("Wind Up")]
@@ -53,9 +56,14 @@ public class PumpkinEnemy : MonoBehaviour
         {
             case enemyStates.IDLE:
                 rb.linearVelocity = Vector3.zero;
+                jumpDuration = UnityEngine.Random.Range(jumpDurationMin, jumpDurationMax);
                 HandleStateTimer(enemyStates.JUMPING, jumpDuration, () =>
                 {
                     jumpDirection = playerDir;
+                    float jumpAngle = Mathf.Atan2(jumpDirection.x, jumpDirection.y) * Mathf.Rad2Deg;
+                    jumpAngle += UnityEngine.Random.Range(-jumpDirectionRandomness, jumpDirectionRandomness);
+                    jumpAngle *= Mathf.Deg2Rad;
+                    jumpDirection = new Vector2(Mathf.Sin(jumpAngle), Mathf.Cos(jumpAngle));
                     hitboxCollider.enabled = false;
                 });
                 break;
