@@ -1,6 +1,8 @@
 using System;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(Animator))]
 public class PumpkinEnemy : MonoBehaviour
 {
     [Header("References")]
@@ -43,6 +45,8 @@ public class PumpkinEnemy : MonoBehaviour
     private float stateTimer = 0;
     Rigidbody2D rb;
 
+    Animator pumpkinAnimator;
+
     private void OnEnable()
     {
         if (GameManager.Instance != null)
@@ -66,6 +70,7 @@ public class PumpkinEnemy : MonoBehaviour
 
     void Start()
     {
+        pumpkinAnimator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         target = FindFirstObjectByType<Player>().transform;
         stateTimer = UnityEngine.Random.Range(idleDurationMin, idleDurationMax);
