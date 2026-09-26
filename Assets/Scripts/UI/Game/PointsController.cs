@@ -45,7 +45,6 @@ public class PointsController : MonoBehaviour
     /// </summary>
     public void CombinePoints(int newTotal)
     {
-        //TODO: CHANGE LATER (animations)
         incomingPtsCountingTxt.CountTo(0);
         incomingPtsAnim.Play("CombineAnim", () =>
         {
