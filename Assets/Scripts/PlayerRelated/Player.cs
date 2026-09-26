@@ -14,10 +14,8 @@ public class Player : MonoBehaviour
 
     [Header("Night Attack")]
     public GameObject attack;
-    public Transform upAttackDirection;
     public Transform rightAttackDirection;
     public Transform leftAttackDirection;
-    public Transform downAttackDirection;
     public float attackCooldown = 0.5f;
 
     [Header("Health")]
@@ -38,7 +36,7 @@ public class Player : MonoBehaviour
 
     Rigidbody2D rb;
     SpriteRenderer playerSprite;
-    Vector2 lastMoveDirection = Vector2.down;
+    bool facingRight = true;
     float nextAttackTime;
     bool isInvincible;
     bool isDead;
@@ -69,17 +67,18 @@ public class Player : MonoBehaviour
 
         Vector2 direction = moveInput.action.ReadValue<Vector2>();
 
-        if (direction.sqrMagnitude > 0.01f)
+        if (Mathf.Abs(direction.x) > 0.01f)
         {
             if (direction.x > 0)
             {
                 playerAnimator.gameObject.transform.localScale = new Vector3(1f, 1f, 1f);
+                facingRight = true;
             }
             else
             {
                 playerAnimator.gameObject.transform.localScale = new Vector3(-1f, 1f, 1f);
+                facingRight = false;
             }
-            lastMoveDirection = direction;
         }
 
         rb.MovePosition(rb.position + (direction.normalized * speed * Time.deltaTime));
@@ -90,28 +89,15 @@ public class Player : MonoBehaviour
         Transform spawnPoint;
         Quaternion rotation;
 
-        if (Mathf.Abs(lastMoveDirection.x) > Mathf.Abs(lastMoveDirection.y))
+        if (facingRight)
         {
-            if (lastMoveDirection.x > 0f)
-            {
-                spawnPoint = rightAttackDirection;
-                rotation = Quaternion.identity;
-            }
-            else
-            {
-                spawnPoint = leftAttackDirection;
-                rotation = Quaternion.Euler(0f, 180f, 0f);
-            }
-        }
-        else if (lastMoveDirection.y > 0f)
-        {
-            spawnPoint = upAttackDirection;
-            rotation = Quaternion.Euler(0f, 0f, 90f);
+            spawnPoint = rightAttackDirection;
+            rotation = Quaternion.identity;
         }
         else
         {
-            spawnPoint = downAttackDirection;
-            rotation = Quaternion.Euler(-180f, 0f, 90f);
+            spawnPoint = leftAttackDirection;
+            rotation = Quaternion.Euler(0f, 180f, 0f);
         }
 
         if (spawnPoint == null)
