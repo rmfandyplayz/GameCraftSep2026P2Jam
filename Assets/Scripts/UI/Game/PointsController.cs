@@ -2,39 +2,46 @@ using rmf_claude.DOTweenUI;
 using TMPro;
 using UnityEngine;
 
-
+// author: andy (@rmfandyplayz)
 public class PointsController : MonoBehaviour
 {
-    [SerializeField] UIAnimationPlayer animationPlayer;
-    [SerializeField] TextMeshProUGUI totalPointsText;
-    [SerializeField] TextMeshProUGUI incomingPointsText;
+    [SerializeField] TextMeshProUGUI totalPtsText;
+    [SerializeField] TextMeshProUGUI incomingPtsText;
+
+    [SerializeField] CountingText totalPtsCountingTxt;
+    [SerializeField] CountingText incomingPtsCountingTxt;
+    [SerializeField] UIAnimationPlayer incomingPtsAnim;
+    [SerializeField] UIAnimationPlayer totalPtsAnim;
 
     int oldPoints; // determine if increase or decrease
 
-    private void Start()
+
+    private void Awake()
     {
-        totalPointsText.text = $"P: 0";
-        incomingPointsText.text = "";
+        totalPtsCountingTxt.SetImmediate(0);
+        incomingPtsCountingTxt.SetImmediate(0);
+        incomingPtsText.text = string.Empty;
     }
+
 
     public void SetTempPoints(int newPts)
     {
-        if(newPts > oldPoints)
+        if(newPts > oldPoints) // count up
         {
-            //todo: animation
-            incomingPointsText.text = $"(+{newPts})";
+            incomingPtsCountingTxt.CountTo(newPts);
+            incomingPtsAnim.Play("CountNumberUp");
         }
-        else if (newPts < oldPoints)
+        else if (newPts < oldPoints) // count down
         {
-            //todo: animation
-            incomingPointsText.text = $"(+{newPts})";
+            incomingPtsCountingTxt.CountTo(newPts);
+            incomingPtsAnim.Play("CountNumberDown");
         }
     }
 
-    public void CombinePoints(int newPoints)
+    public void CombinePoints(int newTotal)
     {
-        //todo: animation
-        totalPointsText.text = $"P: {newPoints}";
+        totalPtsCountingTxt.CountTo(newTotal);
+        incomingPtsAnim.Play("TODO: MAKE ANIMATION");
         oldPoints = 0;
     }
 }
