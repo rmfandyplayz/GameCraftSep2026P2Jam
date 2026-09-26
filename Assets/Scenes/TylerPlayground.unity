@@ -6316,63 +6316,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6330181944153732087, guid: 726827c9d145b734e871c8cca4c1cfab, type: 3}
   m_PrefabInstance: {fileID: 2146767793}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &7796158265334325743
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 6758867442448704879, guid: 889373fa34dd988499175b8f68bb1931, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 6.97
-      objectReference: {fileID: 0}
-    - target: {fileID: 6758867442448704879, guid: 889373fa34dd988499175b8f68bb1931, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.44812
-      objectReference: {fileID: 0}
-    - target: {fileID: 6758867442448704879, guid: 889373fa34dd988499175b8f68bb1931, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6758867442448704879, guid: 889373fa34dd988499175b8f68bb1931, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6758867442448704879, guid: 889373fa34dd988499175b8f68bb1931, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6758867442448704879, guid: 889373fa34dd988499175b8f68bb1931, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6758867442448704879, guid: 889373fa34dd988499175b8f68bb1931, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6758867442448704879, guid: 889373fa34dd988499175b8f68bb1931, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6758867442448704879, guid: 889373fa34dd988499175b8f68bb1931, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6758867442448704879, guid: 889373fa34dd988499175b8f68bb1931, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9001036112998221217, guid: 889373fa34dd988499175b8f68bb1931, type: 3}
-      propertyPath: m_Name
-      value: PumpkinEnemy
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 889373fa34dd988499175b8f68bb1931, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -6385,5 +6328,4 @@ SceneRoots:
   - {fileID: 761441911}
   - {fileID: 2003550604}
   - {fileID: 89192155}
-  - {fileID: 7796158265334325743}
   - {fileID: 1356842876}

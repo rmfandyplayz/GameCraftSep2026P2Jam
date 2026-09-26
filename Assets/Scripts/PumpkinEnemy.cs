@@ -12,6 +12,7 @@ public class PumpkinEnemy : MonoBehaviour
     [SerializeField] float idleDurationMax = 2.5f;
 
     [Header("Jumping")]
+    [SerializeField] float targetRadius = 5;
     [SerializeField] AnimationCurve jumpCurve;
     [SerializeField] float jumpHeight = 5f;
     [SerializeField] float jumpDurationMin = 1f;
@@ -81,7 +82,8 @@ public class PumpkinEnemy : MonoBehaviour
                 jumpDuration = UnityEngine.Random.Range(jumpDurationMin, jumpDurationMax);
                 HandleStateTimer(enemyStates.JUMPING, jumpDuration, () =>
                 {
-                    HandleJump(playerDir);
+                    Vector2 targetOffset = new Vector2(UnityEngine.Random.Range(-targetRadius, targetRadius), UnityEngine.Random.Range(-targetRadius, targetRadius));
+                    HandleJump(playerDir+ targetOffset);
                 });
                 break;
             case enemyStates.JUMPING:
@@ -89,7 +91,6 @@ public class PumpkinEnemy : MonoBehaviour
 
                 Vector3 tempSpritePos = spriteTransform.localPosition;
                 float progress = 1f - (stateTimer / jumpDuration);
-                Debug.Log(progress);
                 tempSpritePos.y = jumpCurve.Evaluate(progress) * jumpHeight;
                 spriteTransform.localPosition = tempSpritePos;
 
