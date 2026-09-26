@@ -47,4 +47,5 @@ Update this section whenever you learn something non-obvious while working here:
 ### What worked / what didn't
 - Scene/prefab edits while the Editor is open: drive it live with `unity command eval_file --file x.cs` (Pipeline package is installed) instead of hand-editing YAML. `eval` rejects `--caller/--skill` flags.
 - Fit-to-text UI needs no script: layout group with Control Child Size (no force expand) + TMP margins; for a background behind a group, Content Size Fitter on the group (point anchors, not stretch) + stretched `Image` with Ignore Layout (see `PointsController`).
+- Audio: route new AudioSources to `MainMixer` (`Assets/Audio/Mixers/Resources/`) Music/SFX groups. `AudioVolumeSettings` owns the exposed `*Volume` params at runtime (PlayerPrefs, Master default 0.6) — balance the mix via AudioSource volume, not group faders. Settings sliders just need a `VolumeSlider` component.
 - UIAnimationPlayer steps can't take runtime endpoints. For code-determined values, tween a 0→1 `Progress` property on a proxy component whose From/To are set by code before `Play` (see `CountingText`).
