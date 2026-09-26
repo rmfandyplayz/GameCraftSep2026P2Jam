@@ -7,6 +7,7 @@ TagManager:
   - seeds
   - Enemy
   - Attack
+  - panel
   layers:
   - Default
   - TransparentFX
