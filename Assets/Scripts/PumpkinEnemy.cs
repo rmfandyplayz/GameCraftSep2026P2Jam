@@ -119,8 +119,10 @@ public class PumpkinEnemy : MonoBehaviour
                 bool canAttack = (target.position - transform.position).sqrMagnitude <= attackDistance * attackDistance;
                 if (canAttack)
                 {
-                    pumpkinAnimator.SetTrigger("Attack");
-                    HandleStateTimer(enemyStates.ATTACKING, attackDuration);
+                    HandleStateTimer(enemyStates.ATTACKING, attackDuration, () =>
+                    {
+                        pumpkinAnimator.SetTrigger("Attack");
+                    });
                 }
                 else
                 {
