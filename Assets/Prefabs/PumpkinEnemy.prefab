@@ -235,12 +235,6 @@ MonoBehaviour:
   hitboxCollider: {fileID: 1694760193576271912}
   idleDurationMin: 0.5
   idleDurationMax: 2
-  jumpSprites:
-  - {fileID: -863338768290039796, guid: a28e126a2bdc7004e9d9c5cd72c9d546, type: 3}
-  - {fileID: 8999330789058319765, guid: a28e126a2bdc7004e9d9c5cd72c9d546, type: 3}
-  - {fileID: -7302316916221907573, guid: a28e126a2bdc7004e9d9c5cd72c9d546, type: 3}
-  - {fileID: 5012834788760093052, guid: a28e126a2bdc7004e9d9c5cd72c9d546, type: 3}
-  - {fileID: 6736352306081046738, guid: a28e126a2bdc7004e9d9c5cd72c9d546, type: 3}
   targetRadius: 5
   jumpCurve:
     serializedVersion: 2
@@ -280,7 +274,7 @@ MonoBehaviour:
   jumpDurationMax: 1.5
   jumpMoveSpeed: 5.5
   jumpDirectionRandomness: 20
-  windUpDuration: 0.5
+  windUpDuration: 1
   attackDistance: 5
   attackDuration: 0.15
   attackMoveSpeed: 30
@@ -323,8 +317,8 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.43, y: 0.29}
-    newSize: {x: 0.43, y: 0.29}
+    oldSize: {x: 0.48, y: 0.3}
+    newSize: {x: 0.48, y: 0.3}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0

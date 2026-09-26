@@ -14,7 +14,6 @@ public class PumpkinEnemy : MonoBehaviour
     [SerializeField] float idleDurationMax = 2.5f;
 
     [Header("Jumping")]
-    [SerializeField] Sprite[] jumpSprites;
     [SerializeField] float targetRadius = 5;
     [SerializeField] AnimationCurve jumpCurve;
     [SerializeField] float jumpHeight = 5f;
@@ -75,7 +74,6 @@ public class PumpkinEnemy : MonoBehaviour
     void Start()
     {
         pumpkinAnimator = GetComponent<Animator>();
-        pumpkinAnimator.SetBool("Jumping", false);
         rb = GetComponent<Rigidbody2D>();
         target = FindFirstObjectByType<Player>().transform;
         stateTimer = UnityEngine.Random.Range(idleDurationMin, idleDurationMax);
@@ -103,15 +101,15 @@ public class PumpkinEnemy : MonoBehaviour
                 Vector3 tempSpritePos = pumpkinSprite.transform.localPosition;
 
                 float progress = Mathf.Clamp01(1f - (stateTimer / jumpDuration));
-                int index = Mathf.Clamp(Mathf.FloorToInt(progress * jumpSprites.Length), 0, jumpSprites.Length - 1);
-                pumpkinSprite.sprite = jumpSprites[index];
+                pumpkinSprite.sortingOrder = 10;
 
                 tempSpritePos.y = jumpCurve.Evaluate(progress) * jumpHeight;
                 pumpkinSprite.transform.localPosition = tempSpritePos;
 
                 HandleStateTimer(enemyStates.WIND_UP, windUpDuration, () =>
                 {
-                    pumpkinAnimator.SetBool("Jumping", false);
+                    pumpkinAnimator.SetTrigger("Landed");
+                    pumpkinSprite.sortingOrder = 0;
                     hitboxCollider.enabled = true;
                 });
                 break;
@@ -134,7 +132,7 @@ public class PumpkinEnemy : MonoBehaviour
                 break;
             case enemyStates.ATTACKING:
                 rb.MovePosition(rb.position + (playerDir * attackMoveSpeed * Time.deltaTime));
-                HandleStateTimer(enemyStates.IDLE, UnityEngine.Random.Range(idleDurationMin, idleDurationMax), () => pumpkinAnimator.SetBool("Jumping", false));
+                HandleStateTimer(enemyStates.IDLE, UnityEngine.Random.Range(idleDurationMin, idleDurationMax));
                 break;
         }
     }
@@ -152,7 +150,7 @@ public class PumpkinEnemy : MonoBehaviour
 
     private void HandleJump(Vector2 dir)
     {
-        pumpkinAnimator.SetBool("Jumping", true);
+        pumpkinAnimator.SetTrigger("Jumping");
         jumpDirection = dir;
         float jumpAngle = Mathf.Atan2(jumpDirection.x, jumpDirection.y) * Mathf.Rad2Deg;
         jumpAngle += UnityEngine.Random.Range(-jumpDirectionRandomness, jumpDirectionRandomness);
