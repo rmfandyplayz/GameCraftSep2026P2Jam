@@ -45,4 +45,6 @@ Update this section whenever you learn something non-obvious while working here:
 - `Player` loads scene `deathScene` on death, which doesn't exist / isn't in Build Settings.
 
 ### What worked / what didn't
+- Scene/prefab edits while the Editor is open: drive it live with `unity command eval_file --file x.cs` (Pipeline package is installed) instead of hand-editing YAML. `eval` rejects `--caller/--skill` flags.
+- Fit-to-text UI needs no script: layout group with Control Child Size (no force expand) + TMP margins; for a background behind a group, Content Size Fitter on the group (point anchors, not stretch) + stretched `Image` with Ignore Layout (see `PointsController`).
 - UIAnimationPlayer steps can't take runtime endpoints. For code-determined values, tween a 0→1 `Progress` property on a proxy component whose From/To are set by code before `Play` (see `CountingText`).
