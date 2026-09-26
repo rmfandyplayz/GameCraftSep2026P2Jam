@@ -31,12 +31,12 @@ public class PointsController : MonoBehaviour
         if(newPts > oldPoints) // count up
         {
             incomingPtsCountingTxt.CountTo(newPts);
-            incomingPtsAnim.PlayAnimation("CountNumberUp");
+            incomingPtsAnim.Play("CountNumberUp");
         }
         else if (newPts < oldPoints) // count down
         {
             incomingPtsCountingTxt.CountTo(newPts);
-            incomingPtsAnim.PlayAnimation("CountNumberDown");
+            incomingPtsAnim.Play("CountNumberDown");
         }
     }
 
@@ -47,7 +47,7 @@ public class PointsController : MonoBehaviour
     public void CombinePoints(int newTotal)
     {
         totalPtsCountingTxt.CountTo(newTotal);
-        totalPtsAnim.PlayAnimation("CountNumberUp");
+        totalPtsAnim.Play("CountNumberUp");
 
         //TODO: CHANGE LATER (animations)
         incomingPtsText.text = string.Empty;
