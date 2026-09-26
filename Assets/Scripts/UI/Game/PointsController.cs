@@ -48,6 +48,11 @@ public class PointsController : MonoBehaviour
     {
         totalPtsCountingTxt.CountTo(newTotal);
         totalPtsAnim.Play("CountNumberUp");
+
+        //TODO: CHANGE LATER
+        incomingPtsText.text = string.Empty;
+        incomingPtsCountingTxt.SetImmediate(0);
+
         oldPoints = 0;
     }
 }
