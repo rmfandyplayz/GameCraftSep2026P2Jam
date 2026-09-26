@@ -42,6 +42,18 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Soil
+    uniqueID: 2908849485
+    locked: 0
+  - name: Seed
+    uniqueID: 2832264283
+    locked: 0
+  - name: Shadow
+    uniqueID: 2228142771
+    locked: 0
+  - name: Entity
+    uniqueID: 590086289
+    locked: 0
   m_RenderingLayers:
   - Default
   - Light Layer 1
