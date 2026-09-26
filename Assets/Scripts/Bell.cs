@@ -7,8 +7,6 @@ public class Bell : MonoBehaviour
 
     private Player player;
 
-    public DayLightCycleController DayTimeUI;
-
     void Update(){
     if (Input.GetKeyDown(KeyCode.E) && canInteract == true)
         Interact();
@@ -35,7 +33,6 @@ public class Bell : MonoBehaviour
     public void Interact(){
         if (GameManager.Instance.nightTime == false){
             GameManager.Instance.OnDayEnd?.Invoke();
-            DayTimeUI.AdvanceTime();
             GameManager.Instance.OnNightBegin?.Invoke();        
         }
     }

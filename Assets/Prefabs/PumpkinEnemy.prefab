@@ -274,7 +274,7 @@ MonoBehaviour:
   jumpDurationMax: 1.5
   jumpMoveSpeed: 5.5
   jumpDirectionRandomness: 20
-  windUpDuration: 1
+  windUpDuration: 5
   attackDistance: 5
   attackDuration: 0.15
   attackMoveSpeed: 30
