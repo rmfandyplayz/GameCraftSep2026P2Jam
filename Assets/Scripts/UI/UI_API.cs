@@ -1,4 +1,5 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -10,7 +11,52 @@ public class UI_API : MonoBehaviour
     public static event Action RequestPause; // request the game to pause
     public static event Action RequestResume;
 
+    [Header("references")]
+    [InspectorLabel("Daylight Cycle Manager"), SerializeField] DayLightCycleController daylightCycleController;
+    [InspectorLabel("Points Manager"), SerializeField] PointsController pointsController;
 
+    // ===============================================================================================================================
+    //                                             PUBLIC API
+    // ===============================================================================================================================
+
+    /// <summary>
+    /// Advances the time. Defaults to daytime, day 1.
+    /// Advancing the time will set it to nightttime, day 1. Running this again
+    /// will set it back to daytime, day 2.
+    /// </summary>
+    public void AdvanceTime()
+    {
+        daylightCycleController.AdvanceTime();
+    }
+
+    /// <summary>
+    /// Sets the amount of temporary points. Animation will respond
+    /// correctly according to if it's added or subtracted. </br>
+    /// 
+    /// Call <see cref="CombinePoints"/> if you're looking to add
+    /// temp points to permanent point count.
+    /// </summary>
+    public void SetTempPoints(int pts)
+    {
+        pointsController.SetTempPoints(pts);
+    }
+
+    /// <summary>
+    /// Combines temp points with permanent points.
+    /// </summary>
+    public void CombinePoints(int newTotal)
+    {
+        pointsController.CombinePoints(newTotal);
+    }
+
+    // ===============================================================================================================================
+    //                                             PRIVATE API
+    // ===============================================================================================================================
+
+    public void StartGame()
+    {
+        RequestStart.Invoke();
+    }
 
     public void ResumeGame()
     {
