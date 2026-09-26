@@ -5,6 +5,9 @@ public class Soil : MonoBehaviour
     [Header("Seed Settings")]
     public GameObject seed;
 
+    [Header("UI")]
+    public GameObject interactPopup; //andy may replace this, this for now is the game object to indicate we can plant
+
     //not meant to be touched in inspector but i made this public for testing
     public bool canInteract = true;
 
@@ -17,13 +20,13 @@ public class Soil : MonoBehaviour
 
         bool canPlant = canInteract;
 
-        player.ToggleInteractPopup(show: true); //if u can plant has UI pop up
+        interactPopup.SetActive(canPlant); //if u can plant has UI pop up
 
         if (canPlant && player.InteractPressed)
         {
             Instantiate(seed, transform.position, Quaternion.identity);
             canInteract = false;
-            player.ToggleInteractPopup(show: false);
+            interactPopup.SetActive(false);
         }
     }
 
@@ -41,7 +44,7 @@ public class Soil : MonoBehaviour
 
         if (leavingPlayer == player)
         {
-            player.ToggleInteractPopup(show: false); //disables ui popup
+            interactPopup.SetActive(false); //disables ui popup
             player = null;
         }
     }

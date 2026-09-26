@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3291977669464816883}
   - component: {fileID: 2926542577355198554}
   - component: {fileID: 2416335145445096613}
-  - component: {fileID: 8322830857251696251}
+  - component: {fileID: 4367896057690087592}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -44,8 +44,8 @@ Camera:
   m_GameObject: {fileID: 2252673555529215165}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0.28653434, g: 0.4433962, b: 0.29972485, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -70,7 +70,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 6.5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -138,7 +138,7 @@ MonoBehaviour:
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
   m_Version: 2
---- !u!114 &8322830857251696251
+--- !u!114 &4367896057690087592
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -147,16 +147,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 2252673555529215165}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a26d201881f5886459af1bd9d46a6c16, type: 3}
+  m_Script: {fileID: 11500000, guid: 9fc3a0dcf3a369d408484752d645a0b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MasterCamera
   target: {fileID: 79735295869699235}
   followSpeed: 5
-  deadZoneSize: {x: 5, y: 4}
-  minX: -20
-  maxX: 20
-  minY: -10
-  maxY: 10
+  deadZoneSize: {x: 3, y: 2}
+  minX: -13.63
+  maxX: 14.17
+  minY: -12.67
+  maxY: 13.2
 --- !u!1 &7450283217924320729
 GameObject:
   m_ObjectHideFlags: 0

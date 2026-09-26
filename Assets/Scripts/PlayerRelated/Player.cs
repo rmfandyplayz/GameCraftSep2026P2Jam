@@ -10,9 +10,6 @@ public class Player : MonoBehaviour
     [SerializeField] InputActionReference moveInput;
     [SerializeField] InputActionReference interactInput;
 
-    [Header("UI")]
-    [SerializeField] GameObject interactPopup; //andy may replace this, this for now is the game object to indicate we can plant
-
     //checks if we pressed E (to be used for soil)
     [HideInInspector]
     public bool InteractPressed => interactInput.action.WasPressedThisFrame();
@@ -30,11 +27,4 @@ public class Player : MonoBehaviour
         rb.MovePosition(rb.position + (direction.normalized * speed * Time.deltaTime));
     }
 
-    public void ToggleInteractPopup(bool show)
-    {
-        if (interactPopup != null)
-        {
-            interactPopup.SetActive(show);
-        }
-    }
 }
