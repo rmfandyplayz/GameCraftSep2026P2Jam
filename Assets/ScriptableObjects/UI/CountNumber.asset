@@ -133,13 +133,13 @@ MonoBehaviour:
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
-      UseFrom: 0
+      UseFrom: 1
       FromMode: 0
-      ToMode: 2
+      ToMode: 0
       FromVector: {x: 0, y: 0, z: 0}
       ToVector: {x: 0, y: 0, z: 0}
       FromFloat: 0
-      ToFloat: 0
+      ToFloat: 1
       FromColor: {r: 0, g: 0, b: 0, a: 0}
       ToColor: {r: 0, g: 0, b: 0, a: 0}
       FromText: 
@@ -157,9 +157,9 @@ MonoBehaviour:
       UseCustomPath: 0
       PathShape: 0
       Waypoints: []
-      PropertyComponent: UnityEngine.RectTransform
-      PropertyMember: up
-      PropertyKind: 3
+      PropertyComponent: CountingText
+      PropertyMember: Progress
+      PropertyKind: 0
       NumberFormat: 0
     - Type: 3
       Start: 1

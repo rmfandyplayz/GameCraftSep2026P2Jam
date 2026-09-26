@@ -343,70 +343,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 973693576541218645, guid: 302c52b5aaafaa34f87efb785d011b3d, type: 3}
-      propertyPath: Animations.Array.data[1].Steps.Array.data[1].ToMode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 973693576541218645, guid: 302c52b5aaafaa34f87efb785d011b3d, type: 3}
-      propertyPath: Animations.Array.data[1].Steps.Array.data[1].ToFloat
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 973693576541218645, guid: 302c52b5aaafaa34f87efb785d011b3d, type: 3}
-      propertyPath: Animations.Array.data[1].Steps.Array.data[1].UseFrom
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 973693576541218645, guid: 302c52b5aaafaa34f87efb785d011b3d, type: 3}
-      propertyPath: Animations.Array.data[1].Steps.Array.data[1].Duration
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 973693576541218645, guid: 302c52b5aaafaa34f87efb785d011b3d, type: 3}
-      propertyPath: Animations.Array.data[1].Steps.Array.data[1].EaseType
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 973693576541218645, guid: 302c52b5aaafaa34f87efb785d011b3d, type: 3}
-      propertyPath: Animations.Array.data[1].Steps.Array.data[1].ToColor.a
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 973693576541218645, guid: 302c52b5aaafaa34f87efb785d011b3d, type: 3}
-      propertyPath: Animations.Array.data[1].Steps.Array.data[1].ToColor.b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 973693576541218645, guid: 302c52b5aaafaa34f87efb785d011b3d, type: 3}
-      propertyPath: Animations.Array.data[1].Steps.Array.data[1].ToColor.g
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 973693576541218645, guid: 302c52b5aaafaa34f87efb785d011b3d, type: 3}
-      propertyPath: Animations.Array.data[1].Steps.Array.data[1].ToColor.r
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 973693576541218645, guid: 302c52b5aaafaa34f87efb785d011b3d, type: 3}
-      propertyPath: Animations.Array.data[1].Steps.Array.data[1].ToVector.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 973693576541218645, guid: 302c52b5aaafaa34f87efb785d011b3d, type: 3}
-      propertyPath: Animations.Array.data[1].Steps.Array.data[1].ToVector.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 973693576541218645, guid: 302c52b5aaafaa34f87efb785d011b3d, type: 3}
-      propertyPath: Animations.Array.data[1].Steps.Array.data[1].ToVector.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 973693576541218645, guid: 302c52b5aaafaa34f87efb785d011b3d, type: 3}
-      propertyPath: Animations.Array.data[1].Steps.Array.data[1].PropertyKind
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 973693576541218645, guid: 302c52b5aaafaa34f87efb785d011b3d, type: 3}
-      propertyPath: Animations.Array.data[1].Steps.Array.data[1].GraphicTarget
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 973693576541218645, guid: 302c52b5aaafaa34f87efb785d011b3d, type: 3}
-      propertyPath: Animations.Array.data[1].Steps.Array.data[1].PropertyMember
-      value: Progress
-      objectReference: {fileID: 0}
-    - target: {fileID: 973693576541218645, guid: 302c52b5aaafaa34f87efb785d011b3d, type: 3}
-      propertyPath: Animations.Array.data[1].Steps.Array.data[1].PropertyComponent
-      value: CountingText
-      objectReference: {fileID: 0}
     - target: {fileID: 1086258162519039923, guid: 302c52b5aaafaa34f87efb785d011b3d, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -499,21 +435,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2670000815952145096, guid: 302c52b5aaafaa34f87efb785d011b3d, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: -1330
+    - target: {fileID: 2574846139704278337, guid: 302c52b5aaafaa34f87efb785d011b3d, type: 3}
+      propertyPath: m_text
+      value: (+ 0)
       objectReference: {fileID: 0}
-    - target: {fileID: 2670000815952145096, guid: 302c52b5aaafaa34f87efb785d011b3d, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 100
+    - target: {fileID: 2574846139704278337, guid: 302c52b5aaafaa34f87efb785d011b3d, type: 3}
+      propertyPath: m_fontColor.b
+      value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 2670000815952145096, guid: 302c52b5aaafaa34f87efb785d011b3d, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -235
+    - target: {fileID: 2574846139704278337, guid: 302c52b5aaafaa34f87efb785d011b3d, type: 3}
+      propertyPath: m_fontColor.r
+      value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 2670000815952145096, guid: 302c52b5aaafaa34f87efb785d011b3d, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 62
+    - target: {fileID: 2574846139704278337, guid: 302c52b5aaafaa34f87efb785d011b3d, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 5252568519290207940, guid: 302c52b5aaafaa34f87efb785d011b3d, type: 3}
       propertyPath: m_AnchorMax.y
@@ -522,6 +458,18 @@ PrefabInstance:
     - target: {fileID: 5252568519290207940, guid: 302c52b5aaafaa34f87efb785d011b3d, type: 3}
       propertyPath: m_AnchorMin.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5252568519290207940, guid: 302c52b5aaafaa34f87efb785d011b3d, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5252568519290207940, guid: 302c52b5aaafaa34f87efb785d011b3d, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5252568519290207940, guid: 302c52b5aaafaa34f87efb785d011b3d, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5252568519290207940, guid: 302c52b5aaafaa34f87efb785d011b3d, type: 3}
       propertyPath: m_AnchoredPosition.x

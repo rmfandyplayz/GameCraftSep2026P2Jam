@@ -23,7 +23,9 @@ public class PointsController : MonoBehaviour
         incomingPtsText.text = string.Empty;
     }
 
-
+    /// <summary>
+    /// public API. sets the temporary point text
+    /// </summary>
     public void SetTempPoints(int newPts)
     {
         if(newPts > oldPoints) // count up
@@ -38,10 +40,14 @@ public class PointsController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// public API. combines the total 
+    /// </summary>
+    /// <param name="newTotal"></param>
     public void CombinePoints(int newTotal)
     {
         totalPtsCountingTxt.CountTo(newTotal);
-        incomingPtsAnim.Play("TODO: MAKE ANIMATION");
+        totalPtsAnim.Play("CountNumberUp");
         oldPoints = 0;
     }
 }
