@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2947047462634245204}
   - component: {fileID: 7412335747357825164}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -82,7 +82,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.764151, g: 0.4334726, b: 0.21266466, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -101,7 +101,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4339960670080235791}
   - component: {fileID: 5860208438121713258}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Shadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -194,9 +194,9 @@ GameObject:
   - component: {fileID: 6019244559755048212}
   - component: {fileID: 1694760193576271912}
   - component: {fileID: 2535607390303274587}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PumpkinEnemy
-  m_TagString: Player
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -209,7 +209,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9001036112998221217}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 6.97, y: 1.44812, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -232,8 +232,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PumpkinEnemy
   spriteTransform: {fileID: 2947047462634245204}
   hitboxCollider: {fileID: 1694760193576271912}
-  idleDurationMin: 1
-  idleDurationMax: 2.5
+  idleDurationMin: 0.5
+  idleDurationMax: 2
   jumpCurve:
     serializedVersion: 2
     m_Curve:
@@ -268,10 +268,10 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   jumpHeight: 1
-  jumpDuration: 0.5
-  jumpMoveSpeed: 5
+  jumpDuration: 0.4
+  jumpMoveSpeed: 5.5
   windUpDuration: 0.5
-  attackDuration: 0.2
+  attackDuration: 0.15
   attackMoveSpeed: 15
 --- !u!61 &1694760193576271912
 BoxCollider2D:
