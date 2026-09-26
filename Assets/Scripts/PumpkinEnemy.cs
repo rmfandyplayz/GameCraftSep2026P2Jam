@@ -44,18 +44,23 @@ public class PumpkinEnemy : MonoBehaviour
 
     private void OnEnable()
     {
-        GameManager.Instance.OnPlayerDie += () =>
+        if (GameManager.Instance != null)
         {
-            Destroy(this.gameObject);
-        };
+            GameManager.Instance.OnPlayerDie += HandlePlayerDie;
+        }
     }
 
     private void OnDisable()
     {
-        GameManager.Instance.OnPlayerDie -= () =>
+        if (GameManager.Instance != null)
         {
-            Destroy(this.gameObject);
-        };
+            GameManager.Instance.OnPlayerDie -= HandlePlayerDie;
+        }
+    }
+
+    private void HandlePlayerDie()
+    {
+        Destroy(gameObject);
     }
 
     void Start()
