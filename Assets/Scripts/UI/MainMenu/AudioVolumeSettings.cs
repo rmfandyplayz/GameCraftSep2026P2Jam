@@ -3,8 +3,8 @@ using UnityEngine;
 using UnityEngine.Audio;
 
 // AI GENERATED. author: claude (anthropic) opus 5.5
-// Saved Master/Music/SFX volumes, applied to MainMixer. Values are linear 0-1 (what a slider shows),
-// stored in PlayerPrefs and converted to dB for the mixer. Applied automatically when the game starts,
+// Saved Master/Music/SFX volumes, applied to MainMixer. Values are 0-1 slider positions, stored in
+// PlayerPrefs and converted to dB on a perceptual (squared) curve for the mixer. Applied automatically when the game starts,
 // so no scene needs a bootstrap object. Put a VolumeSlider on each slider to drive it from UI.
 //
 // Mixer contract (Assets/Audio/Mixers/Resources/MainMixer.mixer): groups Master > Music, SFX, with
@@ -15,7 +15,7 @@ public enum VolumeChannel { Master, Music, SFX }
 public static class AudioVolumeSettings
 {
     const string MixerResource = "MainMixer";
-    const float DefaultMaster = 0.6f;
+    const float DefaultMaster = 0.8f; // ~ -3.9 dB on the squared curve
     const float MinDecibels = -80f;
 
     static AudioMixer mixer;
@@ -49,7 +49,9 @@ public static class AudioVolumeSettings
             Debug.LogWarning($"AudioVolumeSettings: no AudioMixer named '{MixerResource}' in a Resources folder.");
             return;
         }
-        float db = linear <= 0.0001f ? MinDecibels : Mathf.Log10(linear) * 20f;
+        // Squared curve (gain = v^2, so 40*log10 rather than 20*log10) to roughly follow perceived
+        // loudness: 50% -> -12 dB, near "half as loud". Plain 20*log10 feels loud across most of the range.
+        float db = linear <= 0.0001f ? MinDecibels : Mathf.Max(MinDecibels, Mathf.Log10(linear) * 40f);
         Mixer.SetFloat(Param(channel), db);
     }
 
