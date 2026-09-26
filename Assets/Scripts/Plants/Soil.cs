@@ -19,10 +19,18 @@ public class Soil : MonoBehaviour
         {
             canInteract = true;
         };
+        GameManager.Instance.OnNightBegin += () =>
+        {
+            canInteract = false;
+        };
     }
 
     private void OnDisable()
     {
+        GameManager.Instance.OnDayBegin -= () =>
+        {
+            canInteract = true;
+        };
         GameManager.Instance.OnNightBegin -= () =>
         {
             canInteract = false;

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 22b9d1332709b4f16a6f38678d8c2003
+guid: 0db00facbcfe4c242950aa5219a7005f
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -55,7 +55,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -114,6 +114,19 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -121,12 +134,12 @@ TextureImporter:
       name: spr_player_attack_0
       rect:
         serializedVersion: 2
-        x: 1
-        y: 18
-        width: 59
-        height: 43
+        x: 0
+        y: 0
+        width: 60
+        height: 81
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -143,12 +156,12 @@ TextureImporter:
       name: spr_player_attack_1
       rect:
         serializedVersion: 2
-        x: 59
-        y: 18
-        width: 42
-        height: 63
+        x: 60
+        y: 0
+        width: 60
+        height: 81
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -165,12 +178,12 @@ TextureImporter:
       name: spr_player_attack_2
       rect:
         serializedVersion: 2
-        x: 119
-        y: 18
-        width: 42
-        height: 63
+        x: 120
+        y: 0
+        width: 60
+        height: 81
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -187,12 +200,12 @@ TextureImporter:
       name: spr_player_attack_3
       rect:
         serializedVersion: 2
-        x: 183
+        x: 180
         y: 0
-        width: 58
-        height: 68
+        width: 60
+        height: 81
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -209,12 +222,12 @@ TextureImporter:
       name: spr_player_attack_4
       rect:
         serializedVersion: 2
-        x: 244
+        x: 240
         y: 0
-        width: 57
-        height: 54
+        width: 60
+        height: 81
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -231,12 +244,12 @@ TextureImporter:
       name: spr_player_attack_5
       rect:
         serializedVersion: 2
-        x: 304
+        x: 300
         y: 0
-        width: 57
-        height: 54
+        width: 60
+        height: 81
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -253,12 +266,12 @@ TextureImporter:
       name: spr_player_attack_6
       rect:
         serializedVersion: 2
-        x: 363
+        x: 360
         y: 0
-        width: 56
-        height: 57
+        width: 60
+        height: 81
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -275,7 +288,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 02e50fb7c1ff730489823b6c6ebe5d4f
     internalID: 0
     vertices: []
     indices: 
@@ -283,7 +296,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":7.0,"y":1.0},"gridSpriteSize":{"x":60.0,"y":81.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
       spr_player_attack_0: -1477788453110022601
       spr_player_attack_1: -6723469861869814467

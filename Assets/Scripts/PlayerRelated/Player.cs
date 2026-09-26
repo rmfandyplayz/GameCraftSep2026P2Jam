@@ -4,6 +4,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(Animator))]
 public class Player : MonoBehaviour
 {
     [Header("Movement")]
@@ -42,16 +43,23 @@ public class Player : MonoBehaviour
     bool isInvincible;
     bool isDead;
 
+    private Animator playerAnimator;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         playerSprite = GetComponentInChildren<SpriteRenderer>();
+        playerAnimator = GetComponent<Animator>();
     }
 
     private void Update()
     {
         if (!isDead && GameManager.Instance.nightTime && interactInput.action.WasPressedThisFrame())
-            TryAttack();
+        {
+            if (attack == null || Time.time < nextAttackTime) return;
+            nextAttackTime = Time.time + attackCooldown;
+            playerAnimator.SetTrigger("Attack");
+        }
     }
 
     private void FixedUpdate()
@@ -69,9 +77,6 @@ public class Player : MonoBehaviour
 
     private void TryAttack()
     {
-        if (attack == null || Time.time < nextAttackTime)
-            return;
-
         Transform spawnPoint;
         Quaternion rotation;
 
@@ -109,8 +114,6 @@ public class Player : MonoBehaviour
 
         if (attackBehaviour != null)
             attackBehaviour.Initialize(transform);
-
-        nextAttackTime = Time.time + attackCooldown;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
