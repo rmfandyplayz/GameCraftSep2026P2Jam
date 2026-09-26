@@ -6,7 +6,8 @@ using UnityEngine.UI;
 // author: andy (rmfandyplayz)
 public class DayLightCycleController : MonoBehaviour
 {
-    [SerializeField] UIAnimationPlayer animationPlayer;
+    [SerializeField] UIAnimationPlayer rotatingCircAnimPlayer;
+    [SerializeField] UIAnimationPlayer dayTextAnimPlayer;
     [SerializeField] TextMeshProUGUI dayText;
 
     int day = 1;
@@ -20,9 +21,12 @@ public class DayLightCycleController : MonoBehaviour
             isDay = true;
         }
         else
+        {
             isDay = false;
 
-        animationPlayer.PlayAnimation("TODO: CHANGE LATER");
+        }
+
+        rotatingCircAnimPlayer.PlayAnimation("RotateCircle");
         dayText.text = $"Day {day}";
     }
 }
