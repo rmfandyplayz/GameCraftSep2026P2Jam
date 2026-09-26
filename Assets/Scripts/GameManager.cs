@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour
 
     private void OnEnable()
     {
+        OnGameStart += StartGame;
         OnNightBegin += BeginNight;
         OnGainMoney += (int moneyGained) => GainMoney(moneyGained);
         OnLoseMoney += (int moneyLost) => LoseMoney(moneyLost);
@@ -45,7 +46,16 @@ public class GameManager : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(gameObject);
     }
-
+    private void StartGame()
+    {
+        remainingDays = 3;
+        currentMoney = 0;
+        quota = 300;
+        quotaIncrease = 1.1f;
+        quotaIncreaseIncrease = 0.2f;
+        nightTime = false;
+        OnDayBegin?.Invoke();
+    }
     private void GainMoney(int amount)
     {
         currentMoney += amount;
