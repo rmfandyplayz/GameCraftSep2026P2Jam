@@ -5,6 +5,7 @@ public class seed : MonoBehaviour
     [SerializeField] GameObject enemyPlant;
     private void OnEnable()
     {
+        GameManager.Instance.OnSeedPlanted?.Invoke();
         GameManager.Instance.OnNightBegin += spawnPlant;
     }
     private void OnDisable()
