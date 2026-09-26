@@ -70,7 +70,17 @@ public class Player : MonoBehaviour
         Vector2 direction = moveInput.action.ReadValue<Vector2>();
 
         if (direction.sqrMagnitude > 0.01f)
+        {
+            if (direction.x > 0)
+            {
+                playerAnimator.gameObject.transform.localScale = new Vector3(1f, 1f, 1f);
+            }
+            else
+            {
+                playerAnimator.gameObject.transform.localScale = new Vector3(-1f, 1f, 1f);
+            }
             lastMoveDirection = direction;
+        }
 
         rb.MovePosition(rb.position + (direction.normalized * speed * Time.deltaTime));
     }
