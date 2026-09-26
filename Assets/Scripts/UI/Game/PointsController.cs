@@ -43,15 +43,19 @@ public class PointsController : MonoBehaviour
     /// <summary>
     /// public API. combines the temp points with total points
     /// </summary>
-    /// <param name="newTotal"></param>
     public void CombinePoints(int newTotal)
     {
+        //TODO: CHANGE LATER (animations)
+        incomingPtsCountingTxt.CountTo(0);
+        incomingPtsAnim.Play("CombineAnim", () =>
+        {
+            incomingPtsText.text = string.Empty;
+            incomingPtsCountingTxt.SetImmediate(0);
+        });
+
         totalPtsCountingTxt.CountTo(newTotal);
         totalPtsAnim.Play("CountNumberUp");
 
-        //TODO: CHANGE LATER (animations)
-        incomingPtsText.text = string.Empty;
-        incomingPtsCountingTxt.SetImmediate(0);
 
         oldPoints = 0;
     }

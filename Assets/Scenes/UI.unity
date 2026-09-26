@@ -119,23 +119,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &729532192 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1889210574114712027, guid: 302c52b5aaafaa34f87efb785d011b3d, type: 3}
-  m_PrefabInstance: {fileID: 1502464514214400231}
-  m_PrefabAsset: {fileID: 0}
---- !u!225 &729532194
-CanvasGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 729532192}
-  m_Enabled: 1
-  m_Alpha: 1
-  m_Interactable: 1
-  m_BlocksRaycasts: 1
-  m_IgnoreParentGroups: 0
 --- !u!1 &745405718
 GameObject:
   m_ObjectHideFlags: 0
@@ -464,6 +447,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2574846139704278337, guid: 302c52b5aaafaa34f87efb785d011b3d, type: 3}
+      propertyPath: m_fontColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2574846139704278337, guid: 302c52b5aaafaa34f87efb785d011b3d, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 16777215
+      objectReference: {fileID: 0}
     - target: {fileID: 2670000815952145096, guid: 302c52b5aaafaa34f87efb785d011b3d, type: 3}
       propertyPath: m_SizeDelta.x
       value: 0
@@ -496,6 +487,22 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6211898690263607150, guid: 302c52b5aaafaa34f87efb785d011b3d, type: 3}
+      propertyPath: Animations.Array.data[2].Steps.Array.data[1].Start
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6211898690263607150, guid: 302c52b5aaafaa34f87efb785d011b3d, type: 3}
+      propertyPath: Animations.Array.data[2].Steps.Array.data[0].EaseType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6211898690263607150, guid: 302c52b5aaafaa34f87efb785d011b3d, type: 3}
+      propertyPath: Animations.Array.data[2].Steps.Array.data[1].Duration
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6211898690263607150, guid: 302c52b5aaafaa34f87efb785d011b3d, type: 3}
+      propertyPath: Animations.Array.data[2].Steps.Array.data[1].EaseType
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6689256450065274143, guid: 302c52b5aaafaa34f87efb785d011b3d, type: 3}
       propertyPath: m_Name
       value: UI (Canvas)
@@ -515,10 +522,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1889210574114712027, guid: 302c52b5aaafaa34f87efb785d011b3d, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 729532194}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 302c52b5aaafaa34f87efb785d011b3d, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
