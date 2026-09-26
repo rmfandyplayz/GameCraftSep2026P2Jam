@@ -81,12 +81,12 @@ SpriteRenderer:
   m_SortingLayer: 4
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -7196476239749879003, guid: 05b78a8b4d7aa98489c927be5d73084b, type: 3}
+  m_Sprite: {fileID: -7196476239749879003, guid: e46b703b3035c437e90c68ae9a92c330, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.4, y: 0.27}
+  m_Size: {x: 0.43, y: 0.29}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -231,10 +231,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c85a4ff333d579e42961f8ef97eba9e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PumpkinEnemy
-  spriteTransform: {fileID: 2947047462634245204}
+  pumpkinSprite: {fileID: 7412335747357825164}
   hitboxCollider: {fileID: 1694760193576271912}
   idleDurationMin: 0.5
   idleDurationMax: 2
+  jumpSprites:
+  - {fileID: -863338768290039796, guid: a28e126a2bdc7004e9d9c5cd72c9d546, type: 3}
+  - {fileID: 8999330789058319765, guid: a28e126a2bdc7004e9d9c5cd72c9d546, type: 3}
+  - {fileID: -7302316916221907573, guid: a28e126a2bdc7004e9d9c5cd72c9d546, type: 3}
+  - {fileID: 5012834788760093052, guid: a28e126a2bdc7004e9d9c5cd72c9d546, type: 3}
+  - {fileID: 6736352306081046738, guid: a28e126a2bdc7004e9d9c5cd72c9d546, type: 3}
   targetRadius: 5
   jumpCurve:
     serializedVersion: 2
@@ -278,6 +284,7 @@ MonoBehaviour:
   attackDistance: 5
   attackDuration: 0.15
   attackMoveSpeed: 30
+  deathEffect: {fileID: 0}
 --- !u!61 &1694760193576271912
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -6,7 +6,7 @@ using UnityEngine;
 public class PumpkinEnemy : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField] Transform spriteTransform;
+    [SerializeField] SpriteRenderer pumpkinSprite;
     [SerializeField] Collider2D hitboxCollider;
 
     [Header("Idle")]
@@ -14,6 +14,7 @@ public class PumpkinEnemy : MonoBehaviour
     [SerializeField] float idleDurationMax = 2.5f;
 
     [Header("Jumping")]
+    [SerializeField] Sprite[] jumpSprites;
     [SerializeField] float targetRadius = 5;
     [SerializeField] AnimationCurve jumpCurve;
     [SerializeField] float jumpHeight = 5f;
@@ -74,9 +75,11 @@ public class PumpkinEnemy : MonoBehaviour
     void Start()
     {
         pumpkinAnimator = GetComponent<Animator>();
+        pumpkinAnimator.SetBool("Jumping", false);
         rb = GetComponent<Rigidbody2D>();
         target = FindFirstObjectByType<Player>().transform;
         stateTimer = UnityEngine.Random.Range(idleDurationMin, idleDurationMax);
+
     }
 
     void FixedUpdate()
@@ -97,13 +100,18 @@ public class PumpkinEnemy : MonoBehaviour
             case enemyStates.JUMPING:
                 rb.MovePosition(rb.position + (jumpDirection * jumpMoveSpeed * Time.deltaTime));
 
-                Vector3 tempSpritePos = spriteTransform.localPosition;
-                float progress = 1f - (stateTimer / jumpDuration);
+                Vector3 tempSpritePos = pumpkinSprite.transform.localPosition;
+
+                float progress = Mathf.Clamp01(1f - (stateTimer / jumpDuration));
+                int index = Mathf.Clamp(Mathf.FloorToInt(progress * jumpSprites.Length), 0, jumpSprites.Length - 1);
+                pumpkinSprite.sprite = jumpSprites[index];
+
                 tempSpritePos.y = jumpCurve.Evaluate(progress) * jumpHeight;
-                spriteTransform.localPosition = tempSpritePos;
+                pumpkinSprite.transform.localPosition = tempSpritePos;
 
                 HandleStateTimer(enemyStates.WIND_UP, windUpDuration, () =>
                 {
+                    pumpkinAnimator.SetBool("Jumping", false);
                     hitboxCollider.enabled = true;
                 });
                 break;
@@ -113,6 +121,7 @@ public class PumpkinEnemy : MonoBehaviour
                 bool canAttack = (target.position - transform.position).sqrMagnitude <= attackDistance * attackDistance;
                 if (canAttack)
                 {
+                    pumpkinAnimator.SetTrigger("Attack");
                     HandleStateTimer(enemyStates.ATTACKING, attackDuration);
                 }
                 else
@@ -125,7 +134,7 @@ public class PumpkinEnemy : MonoBehaviour
                 break;
             case enemyStates.ATTACKING:
                 rb.MovePosition(rb.position + (playerDir * attackMoveSpeed * Time.deltaTime));
-                HandleStateTimer(enemyStates.IDLE, UnityEngine.Random.Range(idleDurationMin, idleDurationMax));
+                HandleStateTimer(enemyStates.IDLE, UnityEngine.Random.Range(idleDurationMin, idleDurationMax), () => pumpkinAnimator.SetBool("Jumping", false));
                 break;
         }
     }
@@ -143,6 +152,7 @@ public class PumpkinEnemy : MonoBehaviour
 
     private void HandleJump(Vector2 dir)
     {
+        pumpkinAnimator.SetBool("Jumping", true);
         jumpDirection = dir;
         float jumpAngle = Mathf.Atan2(jumpDirection.x, jumpDirection.y) * Mathf.Rad2Deg;
         jumpAngle += UnityEngine.Random.Range(-jumpDirectionRandomness, jumpDirectionRandomness);
