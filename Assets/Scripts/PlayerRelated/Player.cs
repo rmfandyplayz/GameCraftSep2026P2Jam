@@ -14,8 +14,7 @@ public class Player : MonoBehaviour
 
     [Header("Night Attack")]
     public GameObject attack;
-    public Transform rightAttackDirection;
-    public Transform leftAttackDirection;
+    public Transform attackDirection;
     public float attackCooldown = 0.5f;
 
     [Header("Health")]
@@ -36,7 +35,6 @@ public class Player : MonoBehaviour
 
     Rigidbody2D rb;
     SpriteRenderer playerSprite;
-    bool facingRight = true;
     float nextAttackTime;
     bool isInvincible;
     bool isDead;
@@ -52,9 +50,13 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        if (!isDead && GameManager.Instance.nightTime && interactInput.action.WasPressedThisFrame())
+        if (!isDead &&
+            GameManager.Instance.nightTime &&
+            interactInput.action.WasPressedThisFrame())
         {
-            if (attack == null || Time.time < nextAttackTime) return;
+            if (attack == null || Time.time < nextAttackTime)
+                return;
+
             nextAttackTime = Time.time + attackCooldown;
             playerAnimator.SetTrigger("Attack");
         }
@@ -67,45 +69,30 @@ public class Player : MonoBehaviour
 
         Vector2 direction = moveInput.action.ReadValue<Vector2>();
 
-        if (Mathf.Abs(direction.x) > 0.01f)
+        if (direction.x > 0.01f)
         {
-            if (direction.x > 0)
-            {
-                playerAnimator.gameObject.transform.localScale = new Vector3(1f, 1f, 1f);
-                facingRight = true;
-            }
-            else
-            {
-                playerAnimator.gameObject.transform.localScale = new Vector3(-1f, 1f, 1f);
-                facingRight = false;
-            }
+            playerAnimator.transform.localScale =
+                new Vector3(1f, 1f, 1f);
+        }
+        else if (direction.x < -0.01f)
+        {
+            playerAnimator.transform.localScale =
+                new Vector3(-1f, 1f, 1f);
         }
 
-        rb.MovePosition(rb.position + (direction.normalized * speed * Time.deltaTime));
+        rb.MovePosition(
+            rb.position + direction.normalized * speed * Time.deltaTime
+        );
     }
 
     private void TryAttack()
     {
-        Transform spawnPoint;
-        Quaternion rotation;
-
-        if (facingRight)
-        {
-            spawnPoint = rightAttackDirection;
-            rotation = Quaternion.identity;
-        }
-        else
-        {
-            spawnPoint = leftAttackDirection;
-            rotation = Quaternion.Euler(0f, 180f, 0f);
-        }
-
-        if (spawnPoint == null)
+        if (attack == null || attackDirection == null)
             return;
 
-        GameObject spawnedAttack = Instantiate(attack, spawnPoint.position, rotation);
-        
-        //makes sure the attack hitbox follows our player
+        GameObject spawnedAttack = Instantiate(attack, attackDirection.position,attackDirection.rotation);
+
+        // Makes sure the attack hitbox follows our player.
         Attack attackBehaviour = spawnedAttack.GetComponent<Attack>();
 
         if (attackBehaviour != null)
@@ -138,7 +125,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    //vibe coded this bc the i frame math is a pain
+    // Vibe coded this because the i-frame math is a pain.
     private IEnumerator DamageFlash()
     {
         isInvincible = true;
@@ -159,10 +146,17 @@ public class Player : MonoBehaviour
 
             while (elapsedTime < invincibilityTime)
             {
-                playerSprite.color = showTransparent ? transparentColor : originalColor;
+                playerSprite.color = showTransparent
+                    ? transparentColor
+                    : originalColor;
+
                 showTransparent = !showTransparent;
 
-                float waitTime = Mathf.Min(pulseTime, invincibilityTime - elapsedTime);
+                float waitTime = Mathf.Min(
+                    pulseTime,
+                    invincibilityTime - elapsedTime
+                );
+
                 yield return new WaitForSecondsRealtime(waitTime);
                 elapsedTime += waitTime;
             }
@@ -187,7 +181,7 @@ public class Player : MonoBehaviour
                 panelAnimator.SetTrigger("end");
         }
 
-        //so the scene transition plays fully before scene load
+        // Allows the scene transition to finish before loading.
         yield return new WaitForSecondsRealtime(deathSceneDelay);
 
         SceneManager.LoadScene(deathSceneName);
