@@ -42,6 +42,22 @@ public class PumpkinEnemy : MonoBehaviour
     private float stateTimer = 0;
     Rigidbody2D rb;
 
+    private void OnEnable()
+    {
+        GameManager.Instance.OnPlayerDie += () =>
+        {
+            Destroy(this.gameObject);
+        };
+    }
+
+    private void OnDisable()
+    {
+        GameManager.Instance.OnPlayerDie -= () =>
+        {
+            Destroy(this.gameObject);
+        };
+    }
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();

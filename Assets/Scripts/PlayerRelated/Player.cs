@@ -12,7 +12,6 @@ public class Player : MonoBehaviour
     [SerializeField] InputActionReference interactInput;
 
     [Header("Night Attack")]
-    public bool Nighttime;
     public GameObject attack;
     public Transform upAttackDirection;
     public Transform rightAttackDirection;
@@ -34,7 +33,7 @@ public class Player : MonoBehaviour
 
     // Soil can only consume the interact input during the day.
     [HideInInspector]
-    public bool InteractPressed => !Nighttime && interactInput.action.WasPressedThisFrame();
+    public bool InteractPressed => !GameManager.Instance.nightTime && interactInput.action.WasPressedThisFrame();
 
     Rigidbody2D rb;
     SpriteRenderer playerSprite;
@@ -51,7 +50,7 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        if (!isDead && Nighttime && interactInput.action.WasPressedThisFrame())
+        if (!isDead && GameManager.Instance.nightTime && interactInput.action.WasPressedThisFrame())
             TryAttack();
     }
 
@@ -135,6 +134,7 @@ public class Player : MonoBehaviour
         if (HP <= 0)
         {
             isDead = true;
+            GameManager.Instance.OnPlayerDie?.Invoke();
             StartCoroutine(DeathSequence());
         }
     }

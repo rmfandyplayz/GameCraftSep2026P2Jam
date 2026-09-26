@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviour
     public int remainingDays { get; private set; } = 3;
     public int dayNumber { get; private set; } = 0;
 
+    public bool nightTime { get; private set; } = false;
+
     public static GameManager Instance { get; private set; }
 
     private void Awake()
