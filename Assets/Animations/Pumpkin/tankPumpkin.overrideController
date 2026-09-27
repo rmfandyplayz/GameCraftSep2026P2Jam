@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: tankPumpkin
+  m_Controller: {fileID: 9100000, guid: 6cac11dba3d836c41b58256e6edbe51c, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: aef81530361f61545b9eb3dc7970f9ea, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: f9a09c6124ba748af97c1ad96193a7fc, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: ab8cf453d3662fc43904c1e8d5c82cce, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: ab9346d4559a744d283583a49eded22c, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: b12b43cb45b655b449defd56841712de, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 0bf13568cf5be4f9faaccc0087dc9f7e, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 130108f286d56034b9736295e2abe4a2, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 80870ee01d1b24a029c0511adb7b0709, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 4156b442f0ddefb4492b8eee4e68cad4, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 9a59ddf8a2b344466ab7447614180cfb, type: 2}
