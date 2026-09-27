@@ -33,6 +33,7 @@ public class PumpkinEnemy : MonoBehaviour
     [SerializeField] float attackMoveSpeed = 15f;
 
     [Header("Effects")]
+    [SerializeField] int value = 67;
     public GameObject deathEffect;
 
     enum enemyStates
@@ -169,7 +170,7 @@ public class PumpkinEnemy : MonoBehaviour
     {
         if (other.CompareTag("Attack"))
         {
-            GameManager.Instance.OnEnemyDie?.Invoke();
+            GameManager.Instance.OnEnemyDie?.Invoke(67);
             Instantiate(deathEffect, gameObject.transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
