@@ -8111,7 +8111,6 @@ GameObject:
   - component: {fileID: 2219746896619548751}
   - component: {fileID: 3488441230344916837}
   - component: {fileID: 7865731700319829612}
-  - component: {fileID: 7166164176154107253}
   - component: {fileID: 90612693035172185}
   m_Layer: 5
   m_Name: HealthContainer
@@ -8181,20 +8180,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3d60469ea5a6d94a8930e07a8bc9d4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RebuildLayoutOnChildScale
---- !u!114 &7166164176154107253
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8389812475871810828}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.ContentSizeFitter
-  m_HorizontalFit: 0
-  m_VerticalFit: 0
 --- !u!114 &90612693035172185
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9032,13 +9017,13 @@ MonoBehaviour:
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
-      UseFrom: 1
+      UseFrom: 0
       FromMode: 0
       ToMode: 0
       FromVector: {x: 0, y: 0, z: 0}
       ToVector: {x: 0, y: 0, z: 0}
-      FromFloat: 1
-      ToFloat: 0
+      FromFloat: 0
+      ToFloat: 1
       FromColor: {r: 0, g: 0, b: 0, a: 0}
       ToColor: {r: 0, g: 0, b: 0, a: 0}
       FromText: 
