@@ -251,6 +251,8 @@ MonoBehaviour:
   healthSprite: {fileID: -54143592, guid: b89bcbf01f4c38e4cb24f056df3d3eee, type: 3}
   damageSeed: {fileID: 3522946514628840797, guid: f72eaa6a4be4ddf4184c090100366c86, type: 3}
   damageSprite: {fileID: 1464129946, guid: b89bcbf01f4c38e4cb24f056df3d3eee, type: 3}
-  soilRenderer: {fileID: 0}
+  rainbowSeed: {fileID: 3270526709716154284, guid: 4d46cd5186594de49a4c1aa915b36453, type: 3}
+  rainbowSprite: {fileID: 589440521, guid: b89bcbf01f4c38e4cb24f056df3d3eee, type: 3}
+  soilRenderer: {fileID: 5222801647507218787}
   interactPopup: {fileID: 2651689048499511985}
   canInteract: 1

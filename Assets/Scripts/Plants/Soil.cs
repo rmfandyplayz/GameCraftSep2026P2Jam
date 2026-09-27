@@ -7,7 +7,8 @@ public class Soil : MonoBehaviour
         Regular,
         Speed,
         Health,
-        Damage
+        Damage,
+        Rainbow
     }
 
     [Header("Regular Soil")]
@@ -21,6 +22,8 @@ public class Soil : MonoBehaviour
     [SerializeField] Sprite healthSprite;
     [SerializeField] GameObject damageSeed;
     [SerializeField] Sprite damageSprite;
+    [SerializeField] GameObject rainbowSeed;
+    [SerializeField] Sprite rainbowSprite;
 
     [Header("References")]
     [SerializeField] SpriteRenderer soilRenderer;
@@ -90,6 +93,9 @@ public class Soil : MonoBehaviour
                 break;
             case SoilVariant.Damage:
                 ApplyRareVariant(damageSeed, damageSprite);
+                break;
+            case SoilVariant.Rainbow:
+                ApplyRareVariant(rainbowSeed, rainbowSprite);
                 break;
             default:
                 selectedSeed = seed;

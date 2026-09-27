@@ -13,6 +13,8 @@ public class FiveDayObjectActivator : MonoBehaviour
     [Tooltip("The columns that are already available before this activator unlocks any more.")]
     [SerializeField, Min(1)] int startingColumnCount = 1;
     [SerializeField, Min(0)] int rareSoilsPerColumn = 2;
+    [Tooltip("Relative to the other rare types, which each have a weight of 1.")]
+    [SerializeField, Range(0f, 1f)] float rainbowSoilWeight = 0.5f;
 
     int daysPassed;
     int nextObjectIndex;
@@ -110,22 +112,15 @@ public class FiveDayObjectActivator : MonoBehaviour
             availableColumnCount * rareSoilsPerColumn,
             activeSoils.Count);
 
-        Soil.SoilVariant[] rareVariants =
+        Soil.SoilVariant[] guaranteedCoreVariants =
         {
             Soil.SoilVariant.Speed,
             Soil.SoilVariant.Health,
             Soil.SoilVariant.Damage
         };
+        ShuffleVariants(guaranteedCoreVariants);
 
-        // Shuffle the three types once, then cycle through them. This guarantees
-        // that the first two differ and every group of three contains every type.
-        for (int i = rareVariants.Length - 1; i > 0; i--)
-        {
-            int randomIndex = Random.Range(0, i + 1);
-            Soil.SoilVariant chosenVariant = rareVariants[randomIndex];
-            rareVariants[randomIndex] = rareVariants[i];
-            rareVariants[i] = chosenVariant;
-        }
+        List<Soil.SoilVariant> availableVariants = CreateRareVariantPool();
 
         // Partial Fisher-Yates shuffle: the first rareSoilCount entries are unique.
         for (int i = 0; i < rareSoilCount; i++)
@@ -135,7 +130,73 @@ public class FiveDayObjectActivator : MonoBehaviour
             activeSoils[randomIndex] = activeSoils[i];
             activeSoils[i] = chosenSoil;
 
-            activeSoils[i].SetVariant(rareVariants[i % rareVariants.Length]);
+            Soil.SoilVariant chosenVariant;
+
+            if (rareSoilCount >= guaranteedCoreVariants.Length &&
+                i < guaranteedCoreVariants.Length)
+            {
+                // Preserve one Speed, Health, and Damage soil when at least three
+                // rare plots are available.
+                chosenVariant = guaranteedCoreVariants[i];
+            }
+            else
+            {
+                chosenVariant = ChooseRareVariant(availableVariants);
+
+                // With fewer than three spots, remove the chosen type so the
+                // day's rare soils cannot match each other.
+                if (rareSoilCount < guaranteedCoreVariants.Length)
+                    availableVariants.Remove(chosenVariant);
+            }
+
+            activeSoils[i].SetVariant(chosenVariant);
         }
+    }
+
+    private static void ShuffleVariants(Soil.SoilVariant[] variants)
+    {
+        for (int i = variants.Length - 1; i > 0; i--)
+        {
+            int randomIndex = Random.Range(0, i + 1);
+            Soil.SoilVariant chosenVariant = variants[randomIndex];
+            variants[randomIndex] = variants[i];
+            variants[i] = chosenVariant;
+        }
+    }
+
+    private static List<Soil.SoilVariant> CreateRareVariantPool()
+    {
+        return new List<Soil.SoilVariant>
+        {
+            Soil.SoilVariant.Speed,
+            Soil.SoilVariant.Health,
+            Soil.SoilVariant.Damage,
+            Soil.SoilVariant.Rainbow
+        };
+    }
+
+    private Soil.SoilVariant ChooseRareVariant(List<Soil.SoilVariant> variants)
+    {
+        float totalWeight = 0f;
+
+        foreach (Soil.SoilVariant variant in variants)
+            totalWeight += GetVariantWeight(variant);
+
+        float roll = Random.value * totalWeight;
+
+        foreach (Soil.SoilVariant variant in variants)
+        {
+            roll -= GetVariantWeight(variant);
+
+            if (roll <= 0f)
+                return variant;
+        }
+
+        return variants[variants.Count - 1];
+    }
+
+    private float GetVariantWeight(Soil.SoilVariant variant)
+    {
+        return variant == Soil.SoilVariant.Rainbow ? rainbowSoilWeight : 1f;
     }
 }
