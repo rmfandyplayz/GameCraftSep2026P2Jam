@@ -41,8 +41,8 @@ public class UI_API : MonoBehaviour
         gm.OnDayBegin -= AdvanceTime;
         gm.OnNightBegin -= AdvanceTime;
         gm.OnNightEnd -= HandleNightEnd;
-        gm.OnGainMoney -= HandleGainMoney;
-        gm.OnLoseMoney -= HandleLoseMoney;
+        //gm.OnPotentialProfit -= HandleGainMoney;
+        //gm.OnLoseMoney -= HandleLoseMoney;
         subscribed = false;
     }
 
@@ -55,8 +55,8 @@ public class UI_API : MonoBehaviour
         gm.OnDayBegin += AdvanceTime;
         gm.OnNightBegin += AdvanceTime;
         gm.OnNightEnd += HandleNightEnd;
-        gm.OnGainMoney += HandleGainMoney;
-        gm.OnLoseMoney += HandleLoseMoney;
+        //gm.OnPotentialProfit += HandleGainMoney;
+        //gm.OnLoseMoney += HandleLoseMoney;
         subscribed = true;
     }
 

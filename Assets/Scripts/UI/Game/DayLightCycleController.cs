@@ -31,6 +31,7 @@ public class DayLightCycleController : MonoBehaviour
             isDay = false;
         }
 
+        rotatingCircAnimPlayer.Stop("RotateCircle", true);
         rotatingCircAnimPlayer.PlayAnimation("RotateCircle");
     }
 }
