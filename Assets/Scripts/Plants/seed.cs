@@ -2,20 +2,33 @@ using UnityEngine;
 
 public class seed : MonoBehaviour
 {
-    [SerializeField] GameObject enemyPlant;
+    [SerializeField] private GameObject enemyPlant;
+
     private void OnEnable()
     {
         GameManager.Instance.OnSeedPlanted?.Invoke();
-        GameManager.Instance.OnNightBegin += spawnPlant;
-    }
-    private void OnDisable()
-    {
-        GameManager.Instance.OnNightBegin -= spawnPlant;
+        GameManager.Instance.OnNightBegin += HandleNightBegin;
     }
 
-    void spawnPlant()
+    private void OnDisable()
     {
-        Instantiate(enemyPlant, transform.position,Quaternion.Euler(Vector3.zero));
-        Destroy(this.gameObject);
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.OnNightBegin -= HandleNightBegin;
+        }
+
+        // Cancel pending Invocations if disabled before spawning
+        CancelInvoke(nameof(SpawnPlant));
+    }
+
+    private void HandleNightBegin()
+    {
+        Invoke(nameof(SpawnPlant), Random.Range(0f, 2f));
+    }
+
+    private void SpawnPlant()
+    {
+        Instantiate(enemyPlant, transform.position, Quaternion.identity);
+        Destroy(gameObject);
     }
 }

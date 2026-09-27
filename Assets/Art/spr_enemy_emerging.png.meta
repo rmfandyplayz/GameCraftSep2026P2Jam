@@ -43,7 +43,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -122,12 +122,12 @@ TextureImporter:
       name: spr_enemy_emerging_0
       rect:
         serializedVersion: 2
-        x: 14
-        y: 4
-        width: 13
-        height: 14
+        x: 0
+        y: 0
+        width: 52
+        height: 19
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -144,12 +144,12 @@ TextureImporter:
       name: spr_enemy_emerging_1
       rect:
         serializedVersion: 2
-        x: 31
-        y: 1
-        width: 13
-        height: 15
+        x: 52
+        y: 0
+        width: 52
+        height: 19
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -162,33 +162,11 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
-    - serializedVersion: 2
-      name: spr_enemy_emerging_2
-      rect:
-        serializedVersion: 2
-        x: 62
-        y: 0
-        width: 38
-        height: 20
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: c1b5fad12c51e5380800000000000000
-      internalID: -8980716683464320228
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 42216447836b5774b813ecfcd994e52e
     internalID: 0
     vertices: []
     indices: 
@@ -196,11 +174,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":2.0,"y":1.0},"gridSpriteSize":{"x":52.0,"y":31.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
       spr_enemy_emerging_0: 2383169370430998651
       spr_enemy_emerging_1: -2923498769662794297
-      spr_enemy_emerging_2: -8980716683464320228
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

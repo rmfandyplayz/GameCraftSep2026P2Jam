@@ -38,15 +38,16 @@ public class PumpkinEnemy : MonoBehaviour
 
     enum enemyStates
     {
+        SPAWNING,
         IDLE,
         JUMPING,
         WIND_UP,
         ATTACKING
     }
-    enemyStates currentState = enemyStates.IDLE;
+    enemyStates currentState = enemyStates.SPAWNING;
     private Transform target;
 
-    private float stateTimer = 0;
+    private float stateTimer = 0.5f;
     Rigidbody2D rb;
 
     Animator pumpkinAnimator;
@@ -81,7 +82,7 @@ public class PumpkinEnemy : MonoBehaviour
         pumpkinAnimator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         target = FindFirstObjectByType<Player>().transform;
-        stateTimer = UnityEngine.Random.Range(idleDurationMin, idleDurationMax);
+        stateTimer = 0.5f;
 
     }
 
@@ -91,6 +92,9 @@ public class PumpkinEnemy : MonoBehaviour
         Vector2 playerDir = (target.position - transform.position).normalized;
         switch (currentState)
         {
+            case enemyStates.SPAWNING:
+                HandleStateTimer(enemyStates.IDLE, UnityEngine.Random.Range(idleDurationMin, idleDurationMax));
+                break;
             case enemyStates.IDLE:
                 rb.linearVelocity = Vector3.zero;
                 jumpDuration = UnityEngine.Random.Range(jumpDurationMin, jumpDurationMax);
