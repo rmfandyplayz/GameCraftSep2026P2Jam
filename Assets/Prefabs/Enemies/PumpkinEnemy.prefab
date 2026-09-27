@@ -238,9 +238,9 @@ MonoBehaviour:
   enemyHealthPrefab: {fileID: 0}
   pumpkinSprite: {fileID: 7412335747357825164}
   hitboxCollider: {fileID: 1694760193576271912}
-  idleDurationMin: 0.5
+  idleDurationMin: 1.6
   idleDurationMax: 2
-  targetRadius: 5
+  targetRadius: 10
   jumpCurve:
     serializedVersion: 2
     m_Curve:
@@ -277,10 +277,10 @@ MonoBehaviour:
   jumpHeight: 5
   jumpDurationMin: 1
   jumpDurationMax: 1.5
-  jumpMoveSpeed: 5.5
-  jumpDirectionRandomness: 20
-  windUpDuration: 1.6
-  attackDistance: 4
+  jumpMoveSpeed: 5
+  jumpDirectionRandomness: 18
+  windUpDuration: 2.4
+  attackDistance: 3
   attackDuration: 0.15
   attackMoveSpeed: 25
   damage: 1

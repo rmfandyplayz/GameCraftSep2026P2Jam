@@ -10760,7 +10760,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   quotaStart: 800
-  initialQuotaIncrease: 2.2
+  initialQuotaIncrease: 1.9
   initialQuotaIncreaseInc: 0.2
 --- !u!4 &247549907
 Transform:
