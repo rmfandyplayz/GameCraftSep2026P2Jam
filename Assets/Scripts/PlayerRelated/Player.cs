@@ -500,6 +500,7 @@ public class Player : MonoBehaviour
 
     private IEnumerator DeathSequence()
     {
+        isInvincible = true;
         isDead = true;
         OnPlayerDie?.Invoke();
         GameObject panel = null;
@@ -532,6 +533,7 @@ public class Player : MonoBehaviour
         yield return new WaitForSecondsRealtime(deathSceneDelay);
         panelAnimator.SetTrigger("reset");
         isDead = false;
+        isInvincible = false;
         // Ending the night already raises OnDayBegin through GameManager.EndNight.
         // Raise it before changing scenes so current scene listeners receive it.
         //if (GameManager.Instance != null)
