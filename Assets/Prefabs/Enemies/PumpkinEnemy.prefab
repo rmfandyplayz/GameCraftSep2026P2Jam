@@ -234,6 +234,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PumpkinEnemy
   attackSound: {fileID: 8300000, guid: 92e32a8fe30722b42ba49790bf02c58b, type: 3}
   jumpSound: {fileID: 8300000, guid: efbc48bfb60ce2b4ea142c953391d8a3, type: 3}
+  spawnSound: {fileID: 8300000, guid: 843a98dc5cd02a74d909644082537fbf, type: 3}
   healthBox: {fileID: 0}
   enemyHealthPrefab: {fileID: 0}
   pumpkinSprite: {fileID: 7412335747357825164}
@@ -402,8 +403,8 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -1206689100843195580, guid: 6fc4f2b5884a87d4eb75e0474fcc66bd, type: 2}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: 843a98dc5cd02a74d909644082537fbf, type: 3}
-  m_PlayOnAwake: 1
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
