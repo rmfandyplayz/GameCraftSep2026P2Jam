@@ -15,26 +15,30 @@ public class Soil : MonoBehaviour
 
     private void OnEnable()
     {
-        GameManager.Instance.OnDayBegin += () =>
-        {
-            canInteract = true;
-        };
-        GameManager.Instance.OnNightBegin += () =>
-        {
-            canInteract = false;
-        };
+        if (GameManager.Instance == null)
+            return;
+
+        GameManager.Instance.OnDayBegin += HandleDayBegin;
+        GameManager.Instance.OnNightBegin += HandleNightBegin;
     }
 
     private void OnDisable()
     {
-        GameManager.Instance.OnDayBegin -= () =>
-        {
-            canInteract = true;
-        };
-        GameManager.Instance.OnNightBegin -= () =>
-        {
-            canInteract = false;
-        };
+        if (GameManager.Instance == null)
+            return;
+
+        GameManager.Instance.OnDayBegin -= HandleDayBegin;
+        GameManager.Instance.OnNightBegin -= HandleNightBegin;
+    }
+
+    private void HandleDayBegin()
+    {
+        canInteract = true;
+    }
+
+    private void HandleNightBegin()
+    {
+        canInteract = false;
     }
 
     private void Update()

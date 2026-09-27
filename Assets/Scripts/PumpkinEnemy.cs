@@ -49,21 +49,30 @@ public class PumpkinEnemy : MonoBehaviour
     Rigidbody2D rb;
 
     Animator pumpkinAnimator;
+    Player subscribedPlayer;
 
     private void OnEnable()
     {
-        if (GameManager.Instance != null)
-        {
-            GameManager.Instance.player.OnPlayerDie += () => Destroy(gameObject); ;
-        }
+        if (GameManager.Instance == null)
+            return;
+
+        subscribedPlayer = GameManager.Instance.player;
+
+        if (subscribedPlayer != null)
+            subscribedPlayer.OnPlayerDie += HandlePlayerDeath;
     }
 
     private void OnDisable()
     {
-        if (GameManager.Instance != null)
-        {
-            GameManager.Instance.player.OnPlayerDie -= ()=> Destroy(gameObject); ;
-        }
+        if (subscribedPlayer != null)
+            subscribedPlayer.OnPlayerDie -= HandlePlayerDeath;
+
+        subscribedPlayer = null;
+    }
+
+    private void HandlePlayerDeath()
+    {
+        Destroy(gameObject);
     }
 
     void Start()

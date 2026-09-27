@@ -49,15 +49,35 @@ public class Player : MonoBehaviour
 
     private void OnEnable()
     {
-        OnPlayerHealthChange += (int newHp) => hp = newHp;
-        OnPlayerMaxHealthChange += (int newMax) => maxHealth = newMax;
-        GameManager.Instance.OnNightEnd += () => OnPlayerHealthChange?.Invoke(maxHealth);
+        OnPlayerHealthChange += HandleHealthChange;
+        OnPlayerMaxHealthChange += HandleMaxHealthChange;
+
+        if (GameManager.Instance != null)
+            GameManager.Instance.OnNightEnd += RestoreHealth;
     }
+
     private void OnDisable()
     {
-        OnPlayerHealthChange -= (int newHp) => hp = newHp;
-        OnPlayerMaxHealthChange -= (int newMax) => maxHealth = newMax;
-        GameManager.Instance.OnNightEnd -= () => OnPlayerHealthChange?.Invoke(maxHealth);
+        OnPlayerHealthChange -= HandleHealthChange;
+        OnPlayerMaxHealthChange -= HandleMaxHealthChange;
+
+        if (GameManager.Instance != null)
+            GameManager.Instance.OnNightEnd -= RestoreHealth;
+    }
+
+    private void HandleHealthChange(int newHp)
+    {
+        hp = newHp;
+    }
+
+    private void HandleMaxHealthChange(int newMax)
+    {
+        maxHealth = newMax;
+    }
+
+    private void RestoreHealth()
+    {
+        OnPlayerHealthChange?.Invoke(maxHealth);
     }
 
     private void Start()
@@ -120,7 +140,10 @@ public class Player : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        TakeDamage(collision.collider);
+        if (collision != null)
+        {
+            TakeDamage(collision.collider);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -202,6 +225,11 @@ public class Player : MonoBehaviour
 
         // Allows the scene transition to finish before loading.
         yield return new WaitForSecondsRealtime(deathSceneDelay);
+
+        // Ending the night already raises OnDayBegin through GameManager.EndNight.
+        // Raise it before changing scenes so current scene listeners receive it.
+        if (GameManager.Instance != null)
+            GameManager.Instance.OnNightEnd?.Invoke();
 
         SceneManager.LoadScene(deathSceneName);
     }

@@ -9,8 +9,8 @@ public class TimeOfDayVisuals : MonoBehaviour
     void Update()
     {
         if (GameManager.Instance.nightTime == false){
-            DaytimeVisuals.SetActive(true);
             NightVisuals.SetActive(false);
+            DaytimeVisuals.SetActive(true);
         } else {
             DaytimeVisuals.SetActive(false);
             NightVisuals.SetActive(true);

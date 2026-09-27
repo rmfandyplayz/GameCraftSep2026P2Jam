@@ -18,12 +18,21 @@ public class Bell : MonoBehaviour
 
     private void OnEnable()
     {
-        GameManager.Instance.OnDayBegin += () =>
-        {
-            hasSeeds = false;
-            requiredSeeds += 1;
-            seedsLeftDisplay.SetActive(true);
-        };
+        if (GameManager.Instance != null)
+            GameManager.Instance.OnDayBegin += HandleDayBegin;
+    }
+
+    private void OnDisable()
+    {
+        if (GameManager.Instance != null)
+            GameManager.Instance.OnDayBegin -= HandleDayBegin;
+    }
+
+    private void HandleDayBegin()
+    {
+        hasSeeds = false;
+        requiredSeeds += 1;
+        seedsLeftDisplay.SetActive(true);
     }
     
     void Update(){
