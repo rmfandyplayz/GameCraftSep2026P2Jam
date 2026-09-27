@@ -10759,9 +10759,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef79c23ec83d7dd438042cccb7e4c60b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
-  quotaStart: 600
-  initialQuotaIncrease: 1.8
-  initialQuotaIncreaseInc: 0.35
+  quotaStart: 800
+  initialQuotaIncrease: 2.2
+  initialQuotaIncreaseInc: 0.2
 --- !u!4 &247549907
 Transform:
   m_ObjectHideFlags: 0
@@ -15277,6 +15277,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 6.88
       objectReference: {fileID: 0}
+    - target: {fileID: 2416335145445096613, guid: 68403cdd86c4c6a4d8399d3bf0dfb32c, type: 3}
+      propertyPath: m_RenderPostProcessing
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2655970877775723340, guid: 68403cdd86c4c6a4d8399d3bf0dfb32c, type: 3}
       propertyPath: Nighttime
       value: 1
@@ -15655,9 +15659,33 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 306317278673273024, guid: 4a08e2328d7f41b4784dd1f9ab0d3fc6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2344947589642317734, guid: 4a08e2328d7f41b4784dd1f9ab0d3fc6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3428171454787693786, guid: 4a08e2328d7f41b4784dd1f9ab0d3fc6, type: 3}
       propertyPath: daysPerActivation
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3825294576373786777, guid: 4a08e2328d7f41b4784dd1f9ab0d3fc6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5625484700892412801, guid: 4a08e2328d7f41b4784dd1f9ab0d3fc6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6713912128065556922, guid: 4a08e2328d7f41b4784dd1f9ab0d3fc6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7545740705241867052, guid: 4a08e2328d7f41b4784dd1f9ab0d3fc6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8223320109509279351, guid: 4a08e2328d7f41b4784dd1f9ab0d3fc6, type: 3}
       propertyPath: m_LocalPosition.x
@@ -15697,6 +15725,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8223320109509279351, guid: 4a08e2328d7f41b4784dd1f9ab0d3fc6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8379954248917747998, guid: 4a08e2328d7f41b4784dd1f9ab0d3fc6, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8734985169335162026, guid: 4a08e2328d7f41b4784dd1f9ab0d3fc6, type: 3}
