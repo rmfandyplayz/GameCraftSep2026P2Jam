@@ -353,7 +353,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 094740cdeb2e5384b8b092ff7e364223, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FiveDayObjectActivator
-  daysPerActivation: 1
+  daysPerActivation: 4
   objectsToActivate:
   - {fileID: 6713912128065556922}
   - {fileID: 306317278673273024}

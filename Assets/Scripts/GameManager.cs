@@ -22,13 +22,13 @@ public class GameManager : MonoBehaviour
     public int currentMoney { get; private set; } = 0;
     public int expectedProfit { get; private set; } = 0;
     public int quota { get; private set; } = 600;
-    public int remainingDays { get; private set; } = 5;
+    public int remainingDays { get; private set; } = 4;
     public int remainingEnemies { get; private set; } = 0;
     public bool nightTime { get; private set; } = false;
 
     public int quotaStart; // a public for me so i can change this and test, i didn't wanna mess with anything else lol - jackson
 
-    public float quotaIncrease = 1.8f; //made this public too
+    private float quotaIncrease = 1.8f;
     private float quotaIncreaseIncrease = 0.2f;
 
     private void Awake()
@@ -77,11 +77,11 @@ public class GameManager : MonoBehaviour
 
     private void StartGame()
     {
-        remainingDays = 5;
+        remainingDays = 4;
         currentMoney = 0;
         quota = quotaStart;
-        quotaIncrease = 1.1f;
-        quotaIncreaseIncrease = 0.2f;
+        quotaIncrease = 1.8f;
+        quotaIncreaseIncrease = 0.35f;
         nightTime = false;
 
         OnUpdateQuota?.Invoke(quota, remainingDays);

@@ -149,13 +149,19 @@ MonoBehaviour:
   attackDirection: {fileID: 6918034828458925892}
   attackCooldown: 0.5
   invincibilityTime: 0.45
+  damageFlashColor: {r: 1, g: 0, b: 0, a: 1}
   damageFlashAlpha: 0.4
   flashInterval: 0.05
+  shadowSprite: {fileID: 0}
+  nightFadeOutDuration: 0.35
+  nightInvisibleDuration: 1
+  nightFadeInDuration: 0.5
+  nightRiseDistance: 0.5
   deathSceneName: JacksonPlayground
   deathSceneDelay: 1
   fiveDayPopup: {fileID: 4971488132701156692}
   fiveDayPopupText: {fileID: 5941562995550138326}
-  daysPerPopup: 5
+  daysPerPopup: 4
   popupFadeInDuration: 0.25
   popupVisibleDuration: 3
   popupFadeOutDuration: 0.25
