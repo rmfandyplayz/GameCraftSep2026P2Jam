@@ -10,7 +10,7 @@ public class DayLightCycleController : MonoBehaviour
     [SerializeField] UIAnimationPlayer dayTextAnimPlayer;
     [SerializeField] TextMeshProUGUI dayText;
 
-    int day = 0;
+    int day = 1;
     bool isDay = true;
 
     public void AdvanceTime()
