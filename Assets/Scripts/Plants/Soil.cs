@@ -2,8 +2,28 @@ using UnityEngine;
 
 public class Soil : MonoBehaviour
 {
-    [Header("Seed Settings")]
+    public enum SoilVariant
+    {
+        Regular,
+        Speed,
+        Health,
+        Damage
+    }
+
+    [Header("Regular Soil")]
     public GameObject seed;
+    [SerializeField] Sprite regularSprite;
+
+    [Header("Rare Soils")]
+    [SerializeField] GameObject speedSeed;
+    [SerializeField] Sprite speedSprite;
+    [SerializeField] GameObject healthSeed;
+    [SerializeField] Sprite healthSprite;
+    [SerializeField] GameObject damageSeed;
+    [SerializeField] Sprite damageSprite;
+
+    [Header("References")]
+    [SerializeField] SpriteRenderer soilRenderer;
 
     [Header("UI")]
     public GameObject interactPopup; //andy may replace this, this for now is the game object to indicate we can plant
@@ -12,6 +32,21 @@ public class Soil : MonoBehaviour
     public bool canInteract = true;
 
     private Player player;
+    private GameObject selectedSeed;
+
+    public SoilVariant CurrentVariant { get; private set; }
+
+    private void Awake()
+    {
+        if (soilRenderer == null)
+            soilRenderer = GetComponent<SpriteRenderer>();
+
+        // Existing soil prefabs do not need the regular sprite assigned again.
+        if (regularSprite == null && soilRenderer != null)
+            regularSprite = soilRenderer.sprite;
+
+        SetVariant(SoilVariant.Regular);
+    }
 
     private void OnEnable()
     {
@@ -41,6 +76,49 @@ public class Soil : MonoBehaviour
         canInteract = false;
     }
 
+    public void SetVariant(SoilVariant variant)
+    {
+        CurrentVariant = variant;
+
+        switch (variant)
+        {
+            case SoilVariant.Speed:
+                ApplyRareVariant(speedSeed, speedSprite);
+                break;
+            case SoilVariant.Health:
+                ApplyRareVariant(healthSeed, healthSprite);
+                break;
+            case SoilVariant.Damage:
+                ApplyRareVariant(damageSeed, damageSprite);
+                break;
+            default:
+                selectedSeed = seed;
+                SetSprite(regularSprite);
+                break;
+        }
+    }
+
+    private void ApplyRareVariant(GameObject rareSeed, Sprite rareSprite)
+    {
+        // An incompletely configured rare soil stays usable as regular soil.
+        if (rareSeed == null || rareSprite == null)
+        {
+            CurrentVariant = SoilVariant.Regular;
+            selectedSeed = seed;
+            SetSprite(regularSprite);
+            return;
+        }
+
+        selectedSeed = rareSeed;
+        SetSprite(rareSprite);
+    }
+
+    private void SetSprite(Sprite sprite)
+    {
+        if (soilRenderer != null)
+            soilRenderer.sprite = sprite;
+    }
+
     private void Update()
     {
         if (player == null)
@@ -52,7 +130,7 @@ public class Soil : MonoBehaviour
 
         if (canPlant && player.InteractPressed)
         {
-            Instantiate(seed, transform.position, Quaternion.identity);
+            Instantiate(selectedSeed, transform.position, Quaternion.identity);
             canInteract = false;
             interactPopup.SetActive(false);
         }

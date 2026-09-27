@@ -108,7 +108,7 @@ public class GameManager : MonoBehaviour
                 return;
             }
 
-            remainingDays = 5;
+            remainingDays = 4;
             OnLoseMoney?.Invoke(quota);
 
             quota = Mathf.RoundToInt(quota * quotaIncrease);

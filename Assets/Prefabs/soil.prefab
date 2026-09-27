@@ -244,5 +244,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Soil
   seed: {fileID: 4229127972520863834, guid: 1afa0e686b640fc40a1591c64c3b2956, type: 3}
+  regularSprite: {fileID: -3672544170213122649, guid: cc188eedca674bf43b6ee6fd7a6f9710, type: 3}
+  speedSeed: {fileID: 93770250832384043, guid: a1ab1fe9626aa4e4daedfd01fb43749e, type: 3}
+  speedSprite: {fileID: -929009056844797741, guid: b89bcbf01f4c38e4cb24f056df3d3eee, type: 3}
+  healthSeed: {fileID: 93770250832384043, guid: a1ab1fe9626aa4e4daedfd01fb43749e, type: 3}
+  healthSprite: {fileID: -54143592, guid: b89bcbf01f4c38e4cb24f056df3d3eee, type: 3}
+  damageSeed: {fileID: 93770250832384043, guid: a1ab1fe9626aa4e4daedfd01fb43749e, type: 3}
+  damageSprite: {fileID: 1464129946, guid: b89bcbf01f4c38e4cb24f056df3d3eee, type: 3}
+  soilRenderer: {fileID: 0}
   interactPopup: {fileID: 2651689048499511985}
   canInteract: 1
