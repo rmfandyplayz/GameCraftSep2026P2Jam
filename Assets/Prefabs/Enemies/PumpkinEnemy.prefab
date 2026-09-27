@@ -233,6 +233,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PumpkinEnemy
   attackSound: {fileID: 8300000, guid: 92e32a8fe30722b42ba49790bf02c58b, type: 3}
+  jumpSound: {fileID: 8300000, guid: efbc48bfb60ce2b4ea142c953391d8a3, type: 3}
   healthBox: {fileID: 0}
   enemyHealthPrefab: {fileID: 0}
   pumpkinSprite: {fileID: 7412335747357825164}

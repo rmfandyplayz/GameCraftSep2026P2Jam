@@ -8,6 +8,7 @@ public class PumpkinEnemy : MonoBehaviour
 {
     [Header("Audio")]
     [SerializeField] AudioClip attackSound;
+    [SerializeField] AudioClip jumpSound;
 
     [Header("References")]
     [SerializeField] Transform healthBox;
@@ -144,6 +145,7 @@ public class PumpkinEnemy : MonoBehaviour
                 jumpDuration = UnityEngine.Random.Range(jumpDurationMin, jumpDurationMax);
                 HandleStateTimer(enemyStates.JUMPING, jumpDuration, () =>
                 {
+                    GetComponent<AudioSource>().PlayOneShot(jumpSound);
                     Vector2 targetOffset = new Vector2(UnityEngine.Random.Range(-targetRadius, targetRadius), UnityEngine.Random.Range(-targetRadius, targetRadius));
                     HandleJump(playerDir+ targetOffset);
                 });

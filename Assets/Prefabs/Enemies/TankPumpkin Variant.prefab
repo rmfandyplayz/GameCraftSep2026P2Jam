@@ -205,6 +205,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 9081546763023563211}
     - target: {fileID: 6019244559755048212, guid: 889373fa34dd988499175b8f68bb1931, type: 3}
+      propertyPath: jumpSound
+      value: 
+      objectReference: {fileID: 8300000, guid: efbc48bfb60ce2b4ea142c953391d8a3, type: 3}
+    - target: {fileID: 6019244559755048212, guid: 889373fa34dd988499175b8f68bb1931, type: 3}
       propertyPath: attackSound
       value: 
       objectReference: {fileID: 8300000, guid: 92e32a8fe30722b42ba49790bf02c58b, type: 3}
