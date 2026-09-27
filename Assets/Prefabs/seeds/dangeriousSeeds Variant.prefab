@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &744470850822022407
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -2752304302252312985, guid: 1afa0e686b640fc40a1591c64c3b2956, type: 3}
+      propertyPath: enemyPlant
+      value: 
+      objectReference: {fileID: 5297118275636992822, guid: affe38eb7a01f9749a334d16f652b2bc, type: 3}
+    - target: {fileID: 2802402906607137502, guid: 1afa0e686b640fc40a1591c64c3b2956, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3.413013
+      objectReference: {fileID: 0}
+    - target: {fileID: 2802402906607137502, guid: 1afa0e686b640fc40a1591c64c3b2956, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.025949478
+      objectReference: {fileID: 0}
+    - target: {fileID: 2802402906607137502, guid: 1afa0e686b640fc40a1591c64c3b2956, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2802402906607137502, guid: 1afa0e686b640fc40a1591c64c3b2956, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2802402906607137502, guid: 1afa0e686b640fc40a1591c64c3b2956, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2802402906607137502, guid: 1afa0e686b640fc40a1591c64c3b2956, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2802402906607137502, guid: 1afa0e686b640fc40a1591c64c3b2956, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2802402906607137502, guid: 1afa0e686b640fc40a1591c64c3b2956, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2802402906607137502, guid: 1afa0e686b640fc40a1591c64c3b2956, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2802402906607137502, guid: 1afa0e686b640fc40a1591c64c3b2956, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4229127972520863834, guid: 1afa0e686b640fc40a1591c64c3b2956, type: 3}
+      propertyPath: m_Name
+      value: dangeriousSeeds Variant
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1afa0e686b640fc40a1591c64c3b2956, type: 3}

@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
@@ -32,6 +33,12 @@ public class PumpkinEnemy : MonoBehaviour
     [SerializeField] float attackDuration = 0.2f;
     [SerializeField] float attackMoveSpeed = 15f;
 
+    [Header("Combat")]
+    [Min(0)] public int damage = 1;
+    [Min(1)] public int hp = 1;
+    [SerializeField, Min(0f)] float damageFlashDuration = 0.12f;
+    [SerializeField] Color damageFlashColor = Color.red;
+
     [Header("Effects")]
     [SerializeField] int value = 67;
     public GameObject deathEffect;
@@ -52,6 +59,8 @@ public class PumpkinEnemy : MonoBehaviour
 
     Animator pumpkinAnimator;
     Player subscribedPlayer;
+    Coroutine damageFlashRoutine;
+    Color pumpkinDefaultColor = Color.white;
 
     private void OnEnable()
     {
@@ -70,6 +79,9 @@ public class PumpkinEnemy : MonoBehaviour
             subscribedPlayer.OnPlayerDie -= HandlePlayerDeath;
 
         subscribedPlayer = null;
+
+        if (pumpkinSprite != null)
+            pumpkinSprite.color = pumpkinDefaultColor;
     }
 
     private void HandlePlayerDeath()
@@ -83,6 +95,9 @@ public class PumpkinEnemy : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         target = FindFirstObjectByType<Player>().transform;
         stateTimer = 0.5f;
+
+        if (pumpkinSprite != null)
+            pumpkinDefaultColor = pumpkinSprite.color;
 
     }
 
@@ -174,9 +189,31 @@ public class PumpkinEnemy : MonoBehaviour
     {
         if (other.CompareTag("Attack"))
         {
-            GameManager.Instance.OnEnemyDie?.Invoke(value);
-            Instantiate(deathEffect, gameObject.transform.position, Quaternion.identity);
-            Destroy(gameObject);
+            hp -= 1;
+
+            if (hp <= 0)
+            {
+                GameManager.Instance.OnEnemyDie?.Invoke(value);
+                Instantiate(deathEffect, gameObject.transform.position, Quaternion.identity);
+                Destroy(gameObject);
+                return;
+            }
+
+            if (damageFlashRoutine != null)
+                StopCoroutine(damageFlashRoutine);
+
+            damageFlashRoutine = StartCoroutine(DamageFlash());
         }
+    }
+
+    private IEnumerator DamageFlash()
+    {
+        if (pumpkinSprite == null)
+            yield break;
+
+        pumpkinSprite.color = damageFlashColor;
+        yield return new WaitForSeconds(damageFlashDuration);
+        pumpkinSprite.color = pumpkinDefaultColor;
+        damageFlashRoutine = null;
     }
 }

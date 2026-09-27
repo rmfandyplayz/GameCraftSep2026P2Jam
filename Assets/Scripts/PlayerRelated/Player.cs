@@ -307,7 +307,10 @@ public class Player : MonoBehaviour
         if (isDead || isInvincible || !other.CompareTag("Enemy"))
             return;
 
-        OnPlayerHealthChange?.Invoke(hp - 1);
+        PumpkinEnemy pumpkinEnemy = other.GetComponentInParent<PumpkinEnemy>();
+        int damageTaken = pumpkinEnemy == null ? 1 : pumpkinEnemy.damage;
+
+        OnPlayerHealthChange?.Invoke(hp - damageTaken);
         StartCoroutine(DamageFlash());
 
         if (hp <= 0)
