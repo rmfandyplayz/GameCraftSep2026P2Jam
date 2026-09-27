@@ -43,18 +43,6 @@ public class QuotaController : MonoBehaviour
         shown = true;
     }
 
-    /// <summary>
-    /// decrements quota by 1
-    /// </summary>
-    public void AdvanceQuota()
-    {
-        CountTo(daysCountingTxt, daysAnim, tempDays - 1, countDownAnimName);
-        tempDays--;
-
-        daysLabelText.text = tempDays == 1 ? "day" : "days";
-        shown = true;
-    }
-
     void CountTo(CountingText counter, UIAnimationPlayer anim, int value, string animationName)
     {
         if (shown && value == counter.To)

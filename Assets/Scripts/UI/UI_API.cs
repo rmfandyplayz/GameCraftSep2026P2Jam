@@ -43,7 +43,7 @@ public class UI_API : MonoBehaviour
         gm.OnNightBegin -= AdvanceTime;
         gm.OnNightEnd -= HandleNightEnd;
         gm.OnEnemyDie -= HandleGainMoney;
-        gm.OnNewQuota -= HandleNewQuota;
+        gm.OnUpdateQuota -= HandleNewQuota;
         subscribed = false;
     }
 
@@ -57,7 +57,7 @@ public class UI_API : MonoBehaviour
         gm.OnNightBegin += AdvanceTime;
         gm.OnNightEnd += HandleNightEnd;
         gm.OnEnemyDie += HandleGainMoney;
-        gm.OnNewQuota += HandleNewQuota;
+        gm.OnUpdateQuota += HandleNewQuota;
         subscribed = true;
     }
 
@@ -74,10 +74,9 @@ public class UI_API : MonoBehaviour
         tempPoints = 0;
     }
 
-    private void HandleNewQuota(int reqPoints)
+    private void HandleNewQuota(int reqPoints, int daysLeft)
     {
-        Debug.Log("quota called");
-        SetQuota(reqPoints, 5);
+        SetQuota(reqPoints, daysLeft);
     }
 
     // ===============================================================================================================================
@@ -91,10 +90,7 @@ public class UI_API : MonoBehaviour
     /// </summary>
     public void AdvanceTime()
     {
-        if (daylightCycleController.AdvanceTime())
-        {
-            quotaController.AdvanceQuota();
-        }
+        daylightCycleController.AdvanceTime();
     }
 
     /// <summary>
