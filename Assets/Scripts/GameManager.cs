@@ -132,7 +132,7 @@ public class GameManager : MonoBehaviour
 
     private System.Collections.IEnumerator EndNightAfterEnemyDeath()
     {
-        yield return null;
+        yield return new WaitForSeconds(1);
 
         if (!nightEndQueued)
             yield break;
