@@ -174,7 +174,7 @@ public class PumpkinEnemy : MonoBehaviour
     {
         if (other.CompareTag("Attack"))
         {
-            GameManager.Instance.OnEnemyDie?.Invoke(67);
+            GameManager.Instance.OnEnemyDie?.Invoke(value);
             Instantiate(deathEffect, gameObject.transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
