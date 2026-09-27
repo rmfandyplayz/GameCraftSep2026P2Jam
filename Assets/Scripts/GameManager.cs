@@ -83,6 +83,11 @@ public class GameManager : MonoBehaviour
         player.OnPlayerDie -= HandlePlayerDeath;
     }
 
+    private void Start()
+    {
+        OnGameStart?.Invoke();
+    }
+
     private void HandlePlayerDeath()
     {
         expectedProfit = 0;
