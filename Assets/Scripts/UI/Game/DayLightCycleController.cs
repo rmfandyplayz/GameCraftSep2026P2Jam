@@ -11,7 +11,7 @@ public class DayLightCycleController : MonoBehaviour
     [SerializeField] TextMeshProUGUI dayText;
 
     int day = 0;
-    bool isDay = false;
+    bool isDay = true;
 
     public void AdvanceTime()
     {
