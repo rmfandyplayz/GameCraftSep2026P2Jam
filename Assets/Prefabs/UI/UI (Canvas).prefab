@@ -7095,7 +7095,7 @@ MonoBehaviour:
   daylightCycleController: {fileID: 9051510797191671183}
   pointsController: {fileID: 1375326816004637324}
   quotaController: {fileID: 5737960950768393265}
-  healthController: {fileID: 0}
+  healthController: {fileID: 90612693035172185}
 --- !u!1 &6746052717393937396
 GameObject:
   m_ObjectHideFlags: 0
