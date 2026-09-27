@@ -23,7 +23,7 @@ public class seed : MonoBehaviour
 
     private void HandleNightBegin()
     {
-        Invoke(nameof(SpawnPlant), Random.Range(0f, 2f));
+        Invoke(nameof(SpawnPlant), 3+Random.Range(0f, 2f));
     }
 
     private void SpawnPlant()

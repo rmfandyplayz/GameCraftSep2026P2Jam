@@ -47,11 +47,6 @@ public class GameManager : MonoBehaviour
         player = FindFirstObjectByType<Player>();
     }
 
-    private void Start()
-    {
-        OnGameStart?.Invoke();
-    }
-
     private void OnEnable()
     {
         UI_API.RequestStart += StartGame;
