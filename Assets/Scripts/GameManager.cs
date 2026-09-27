@@ -9,8 +9,7 @@ public class GameManager : MonoBehaviour
     public Action OnNightBegin;
     public Action OnNightEnd;
     public Action OnSeedPlanted;
-    public Action OnEnemyDie;
-    public Action OnPotentialProfit;
+    public Action<int> OnEnemyDie;
     public Action<int> OnGainMoney;
     public Action<int> OnLoseMoney;
 
@@ -34,11 +33,10 @@ public class GameManager : MonoBehaviour
         OnNightBegin += BeginNight;
         OnNightEnd += EndNight;
         OnDayBegin += () => nightTime = false;
-        OnPotentialProfit += () => expectedProfit += 67;
         OnGainMoney += (int moneyGained) => GainMoney(moneyGained);
         OnLoseMoney += (int moneyLost) => LoseMoney(moneyLost);
         OnSeedPlanted += () => remainingEnemies += 1;
-        OnEnemyDie += EnemyDied;
+        OnEnemyDie += (int value) => EnemyDied(value);
     }
     private void OnDisable()
     {
@@ -46,11 +44,10 @@ public class GameManager : MonoBehaviour
         OnNightBegin -= BeginNight;
         OnNightEnd -= EndNight;
         OnDayBegin -= () => nightTime = false;
-        OnPotentialProfit -= () => expectedProfit += 67;
         OnGainMoney -= (int moneyGained) => GainMoney(moneyGained);
         OnLoseMoney -= (int moneyLost) => LoseMoney(moneyLost);
         OnSeedPlanted -= () => remainingEnemies += 1;
-        OnEnemyDie += EnemyDied;
+        OnEnemyDie -= (int value) => EnemyDied(value);
     }
 
     private void Awake()
@@ -87,10 +84,10 @@ public class GameManager : MonoBehaviour
         nightTime = true;
         remainingDays -= 1;
     }
-    private void EnemyDied()
+    private void EnemyDied(int value)
     {
         remainingEnemies -= 1;
-        OnPotentialProfit?.Invoke();
+        expectedProfit += value;
 
         if (remainingEnemies <= 0)
         {
