@@ -247,9 +247,9 @@ MonoBehaviour:
   regularSprite: {fileID: -3672544170213122649, guid: cc188eedca674bf43b6ee6fd7a6f9710, type: 3}
   speedSeed: {fileID: 93770250832384043, guid: a1ab1fe9626aa4e4daedfd01fb43749e, type: 3}
   speedSprite: {fileID: -929009056844797741, guid: b89bcbf01f4c38e4cb24f056df3d3eee, type: 3}
-  healthSeed: {fileID: 93770250832384043, guid: a1ab1fe9626aa4e4daedfd01fb43749e, type: 3}
+  healthSeed: {fileID: 4066350679818862848, guid: 1e7e90a4c2a60f44fa44934ff87bea1d, type: 3}
   healthSprite: {fileID: -54143592, guid: b89bcbf01f4c38e4cb24f056df3d3eee, type: 3}
-  damageSeed: {fileID: 93770250832384043, guid: a1ab1fe9626aa4e4daedfd01fb43749e, type: 3}
+  damageSeed: {fileID: 3522946514628840797, guid: f72eaa6a4be4ddf4184c090100366c86, type: 3}
   damageSprite: {fileID: 1464129946, guid: b89bcbf01f4c38e4cb24f056df3d3eee, type: 3}
   soilRenderer: {fileID: 0}
   interactPopup: {fileID: 2651689048499511985}

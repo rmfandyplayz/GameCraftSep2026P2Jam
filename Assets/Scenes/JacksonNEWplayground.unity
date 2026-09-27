@@ -10577,7 +10577,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef79c23ec83d7dd438042cccb7e4c60b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
-  quotaStart: 550
+  quotaStart: 600
 --- !u!4 &247549907
 Transform:
   m_ObjectHideFlags: 0
