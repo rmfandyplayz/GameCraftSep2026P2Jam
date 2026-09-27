@@ -13819,7 +13819,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4279409064
-  m_fontColor: {r: 0.6603774, g: 0.60080326, b: 0.07164473, a: 1}
+  m_fontColor: {r: 0.5377358, g: 0.48878154, b: 0.04819329, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -15147,11 +15147,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2670000815952145096, guid: 302c52b5aaafaa34f87efb785d011b3d, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 75.009995
       objectReference: {fileID: 0}
     - target: {fileID: 2670000815952145096, guid: 302c52b5aaafaa34f87efb785d011b3d, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -75.009995
+      value: -94.611496
       objectReference: {fileID: 0}
     - target: {fileID: 2727129296929191913, guid: 302c52b5aaafaa34f87efb785d011b3d, type: 3}
       propertyPath: m_AnchorMax.y
@@ -15190,6 +15190,30 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3853532405828676520, guid: 302c52b5aaafaa34f87efb785d011b3d, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4027682862321516685, guid: 302c52b5aaafaa34f87efb785d011b3d, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4027682862321516685, guid: 302c52b5aaafaa34f87efb785d011b3d, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4027682862321516685, guid: 302c52b5aaafaa34f87efb785d011b3d, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4027682862321516685, guid: 302c52b5aaafaa34f87efb785d011b3d, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4027682862321516685, guid: 302c52b5aaafaa34f87efb785d011b3d, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4027682862321516685, guid: 302c52b5aaafaa34f87efb785d011b3d, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
@@ -15295,7 +15319,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6400921977972929688, guid: 302c52b5aaafaa34f87efb785d011b3d, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -75.009995
+      value: -113.810745
       objectReference: {fileID: 0}
     - target: {fileID: 6683976266560337858, guid: 302c52b5aaafaa34f87efb785d011b3d, type: 3}
       propertyPath: m_AnchorMax.y
@@ -15382,6 +15406,7 @@ GameObject:
   - component: {fileID: 1879224031}
   - component: {fileID: 1879224030}
   - component: {fileID: 1879224029}
+  - component: {fileID: 1879224033}
   m_Layer: 5
   m_Name: Canvas (1)
   m_TagString: Untagged
@@ -15474,6 +15499,21 @@ RectTransform:
   m_AnchoredPosition: {x: 693.25, y: 388.4}
   m_SizeDelta: {x: 1366, y: 768}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1879224033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1879224028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ca97a17eed6c4aad938c5273486139b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DayOneObjectSequence
+  day1daytime: {fileID: 147853807}
+  day1nighttime: {fileID: 1402913503}
+  day2daytime: {fileID: 594380180}
 --- !u!1 &1897640689
 GameObject:
   m_ObjectHideFlags: 0
