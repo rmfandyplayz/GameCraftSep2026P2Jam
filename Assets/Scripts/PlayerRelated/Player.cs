@@ -9,6 +9,13 @@ using UnityEngine.SceneManagement;
 [RequireComponent(typeof(Animator))]
 public class Player : MonoBehaviour
 {
+    [Header("Audio")]
+    [SerializeField] AudioClip openDoorSound;
+    [SerializeField] AudioClip closeDoorSound;
+    [SerializeField] AudioClip takeDamageSound;
+    [SerializeField] AudioClip attackSound;
+
+
     [Header("Movement")]
     [SerializeField] float speed = 5f;
     [SerializeField] float currentSpeed = 5;
@@ -21,8 +28,8 @@ public class Player : MonoBehaviour
     public float attackCooldown = 0.5f;
 
     [Header("Health")]
-    public int maxHealth { get; private set; } = 3;
-    public int hp { get; private set; } = 3;
+    public int maxHealth { get; private set; } = 4;
+    public int hp { get; private set; } = 4;
     public float invincibilityTime = 0.2f;
     public GameObject hurtEffect;
 
@@ -61,6 +68,7 @@ public class Player : MonoBehaviour
     // Soil can only consume the interact input during the day.
     [HideInInspector]
     public bool InteractPressed => !GameManager.Instance.nightTime && interactInput.action.WasPressedThisFrame();
+    AudioSource audioSource;
 
     Rigidbody2D rb;
     SpriteRenderer playerSprite;
@@ -159,6 +167,7 @@ public class Player : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         playerAnimator = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
 
         SpriteRenderer[] childSprites = GetComponentsInChildren<SpriteRenderer>(true);
 
@@ -227,6 +236,7 @@ public class Player : MonoBehaviour
             isAttacking = true;
             nextAttackTime = Time.time + attackCooldown;
             playerAnimator.SetTrigger("Attack");
+            audioSource.PlayOneShot(attackSound);
         }
 
         if (hp == 1){
@@ -322,6 +332,7 @@ public class Player : MonoBehaviour
         int damageTaken = pumpkinEnemy == null ? 1 : pumpkinEnemy.damage;
         hp -= damageTaken;
         OnPlayerHealthDamage?.Invoke(hp);
+        audioSource.PlayOneShot(takeDamageSound);
         StartCoroutine(DamageFlash());
 
         if (hp <= 0)
@@ -376,6 +387,7 @@ public class Player : MonoBehaviour
 
     private IEnumerator PlayNightStartTransition()
     {
+        audioSource.PlayOneShot(openDoorSound);
         movementLocked = true;
 
         Vector3 raisedPosition = playerSpriteDefaultLocalPosition
@@ -404,6 +416,7 @@ public class Player : MonoBehaviour
         playerSprite.transform.localPosition = raisedPosition;
 
         yield return new WaitForSecondsRealtime(nightInvisibleDuration);
+        audioSource.PlayOneShot(closeDoorSound);
 
         // Reset only the visual child while it is invisible. The Rigidbody and
         // Player root never moved, so the player reappears in the same place.
