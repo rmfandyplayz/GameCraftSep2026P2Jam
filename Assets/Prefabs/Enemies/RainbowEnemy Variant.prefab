@@ -368,6 +368,18 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1550756622283994817, guid: f718be173df945b4997331d6d1d634e1, type: 3}
     - target: {fileID: 6019244559755048212, guid: 889373fa34dd988499175b8f68bb1931, type: 3}
+      propertyPath: valuePopupTextColor.b
+      value: 0.21960661
+      objectReference: {fileID: 0}
+    - target: {fileID: 6019244559755048212, guid: 889373fa34dd988499175b8f68bb1931, type: 3}
+      propertyPath: valuePopupTextColor.g
+      value: 0.75884086
+      objectReference: {fileID: 0}
+    - target: {fileID: 6019244559755048212, guid: 889373fa34dd988499175b8f68bb1931, type: 3}
+      propertyPath: valuePopupTextColor.r
+      value: 0.990566
+      objectReference: {fileID: 0}
+    - target: {fileID: 6019244559755048212, guid: 889373fa34dd988499175b8f68bb1931, type: 3}
       propertyPath: jumpDirectionRandomness
       value: 30
       objectReference: {fileID: 0}
