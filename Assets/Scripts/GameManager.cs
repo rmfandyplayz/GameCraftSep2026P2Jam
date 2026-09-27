@@ -101,7 +101,6 @@ public class GameManager : MonoBehaviour
         quotaIncrease = initialQuotaIncrease;
         quotaIncreaseIncrease = initialQuotaIncreaseInc;
         nightTime = false;
-        Debug.Log($"{quota},{remainingDays}");
         OnUpdateQuota?.Invoke(quota, remainingDays);
     }
 
