@@ -41,6 +41,15 @@ public class Player : MonoBehaviour
 
     private Animator playerAnimator;
 
+    private void OnEnable()
+    {
+        GameManager.Instance.OnNightEnd += ()=> HP = 3;
+    }
+    private void OnDisable()
+    {
+        GameManager.Instance.OnNightEnd -= () => HP = 3;
+    }
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
