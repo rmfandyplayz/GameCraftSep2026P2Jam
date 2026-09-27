@@ -153,9 +153,11 @@ public class FiveDayObjectActivator : MonoBehaviour
             {
                 chosenVariant = ChooseRareVariant(availableVariants);
 
-                // With fewer than three spots, remove the chosen type so the
-                // day's rare soils cannot match each other.
-                if (rareSoilCount < guaranteedCoreVariants.Length)
+                // With fewer than three spots, keep all rare types unique.
+                // Rainbow is also removed after it is chosen so at most one
+                // rainbow soil can exist at a time.
+                if (rareSoilCount < guaranteedCoreVariants.Length ||
+                    chosenVariant == Soil.SoilVariant.Rainbow)
                     availableVariants.Remove(chosenVariant);
             }
 

@@ -42,7 +42,18 @@ public class PumpkinEnemy : MonoBehaviour
     [SerializeField] Color damageFlashColor = Color.red;
 
     [Header("Effects")]
-    [SerializeField] int value = 67;
+    [Min(0)] public int value = 67;
+    [Tooltip("The color used by this enemy's +value popup.")]
+    [SerializeField] Color valuePopupTextColor = new Color(1f, 0.85f, 0.2f);
+    [Tooltip("World-space canvas prefab with a TMP text child.")]
+    [SerializeField] GameObject valuePopupPrefab;
+
+    [Header("Value Popup Animation")]
+    [Min(0.01f)] public float valuePopupRiseAndGrowDuration = 0.7f;
+    [Min(0f)] public float valuePopupStationaryDuration = 0.4f;
+    [Min(0.01f)] public float valuePopupFadeOutDuration = 0.3f;
+    [Min(0f)] public float valuePopupRiseDistance = 0.75f;
+    [Min(0.01f)] public float valuePopupStartingScale = 0.45f;
     public GameObject deathEffect;
 
     enum enemyStates
@@ -209,6 +220,7 @@ public class PumpkinEnemy : MonoBehaviour
             if (hp <= 0)
             {
                 GameManager.Instance.OnEnemyDie?.Invoke(value);
+                CreateValuePopup();
                 Instantiate(deathEffect, gameObject.transform.position, Quaternion.identity);
                 Destroy(gameObject);
                 return;
@@ -230,5 +242,26 @@ public class PumpkinEnemy : MonoBehaviour
         yield return new WaitForSeconds(damageFlashDuration);
         pumpkinSprite.color = pumpkinDefaultColor;
         damageFlashRoutine = null;
+    }
+
+    private void CreateValuePopup()
+    {
+        if (valuePopupPrefab == null)
+            return;
+
+        GameObject popupObject = Instantiate(valuePopupPrefab, transform.position, Quaternion.identity);
+        EnemyValuePopup popup = popupObject.GetComponent<EnemyValuePopup>();
+
+        if (popup == null)
+            popup = popupObject.AddComponent<EnemyValuePopup>();
+
+        popup.Play(
+            value,
+            valuePopupTextColor,
+            valuePopupRiseAndGrowDuration,
+            valuePopupStationaryDuration,
+            valuePopupFadeOutDuration,
+            valuePopupRiseDistance,
+            valuePopupStartingScale);
     }
 }

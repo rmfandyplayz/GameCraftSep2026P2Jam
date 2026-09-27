@@ -231,6 +231,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c85a4ff333d579e42961f8ef97eba9e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PumpkinEnemy
+  healthBox: {fileID: 0}
+  enemyHealthPrefab: {fileID: 0}
   pumpkinSprite: {fileID: 7412335747357825164}
   hitboxCollider: {fileID: 1694760193576271912}
   idleDurationMin: 0.5
@@ -278,7 +280,18 @@ MonoBehaviour:
   attackDistance: 4
   attackDuration: 0.15
   attackMoveSpeed: 25
+  damage: 1
+  hp: 1
+  damageFlashDuration: 0.12
+  damageFlashColor: {r: 1, g: 0, b: 0, a: 1}
   value: 50
+  valuePopupTextColor: {r: 1, g: 1, b: 1, a: 1}
+  valuePopupPrefab: {fileID: 8227918853214987797, guid: 0000fdf6ff71e492fab0ac997bdf495c, type: 3}
+  valuePopupRiseAndGrowDuration: 0.5
+  valuePopupStationaryDuration: 0.3
+  valuePopupFadeOutDuration: 0.35
+  valuePopupRiseDistance: 0.75
+  valuePopupStartingScale: 0.45
   deathEffect: {fileID: 4101250449678475071, guid: 34de63608512b45859fbf3c81f3626cc, type: 3}
 --- !u!61 &1694760193576271912
 BoxCollider2D:

@@ -15735,6 +15735,10 @@ PrefabInstance:
       propertyPath: daysPerActivation
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 3428171454787693786, guid: 4a08e2328d7f41b4784dd1f9ab0d3fc6, type: 3}
+      propertyPath: rainbowSoilWeight
+      value: 0.6
+      objectReference: {fileID: 0}
     - target: {fileID: 3825294576373786777, guid: 4a08e2328d7f41b4784dd1f9ab0d3fc6, type: 3}
       propertyPath: m_IsActive
       value: 0
