@@ -64,6 +64,7 @@ public class UI_API : MonoBehaviour
     private void HandleGainMoney(int amount)
     {
         tempPoints += amount;
+        if (GameManager.Instance.remainingEnemies <= 1) return;
         SetTempPoints(tempPoints);
     }
 
