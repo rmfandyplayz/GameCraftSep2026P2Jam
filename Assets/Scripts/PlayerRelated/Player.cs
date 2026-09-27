@@ -89,6 +89,7 @@ public class Player : MonoBehaviour
 
     private Animator playerAnimator;
     bool isAttacking = false;
+    bool canAttack = false;
 
     private void OnEnable()
     {
@@ -130,6 +131,7 @@ public class Player : MonoBehaviour
 
     private void RestoreHealth()
     {
+        canAttack = false;
         hp = maxHealth;
         OnPlayerHealthHeal?.Invoke(hp);
     }
@@ -228,7 +230,7 @@ public class Player : MonoBehaviour
     private void Update()
     {
         if (!isDead &&
-            GameManager.Instance.nightTime &&
+            canAttack &&
             interactInput.action.WasPressedThisFrame())
         {
             if (attack == null || Time.time < nextAttackTime)
@@ -236,7 +238,6 @@ public class Player : MonoBehaviour
             isAttacking = true;
             nextAttackTime = Time.time + attackCooldown;
             playerAnimator.SetTrigger("Attack");
-            audioSource.PlayOneShot(attackSound);
         }
 
         if (hp == 1){
@@ -290,6 +291,7 @@ public class Player : MonoBehaviour
 
     private void TryAttack()
     {
+        audioSource.PlayOneShot(attackSound);
         currentSpeed = speed / 3;
         if (attack == null || attackDirection == null)
             return;
@@ -416,6 +418,7 @@ public class Player : MonoBehaviour
         playerSprite.transform.localPosition = raisedPosition;
 
         yield return new WaitForSecondsRealtime(nightInvisibleDuration);
+        canAttack = true;
         audioSource.PlayOneShot(closeDoorSound);
 
         // Reset only the visual child while it is invisible. The Rigidbody and
@@ -514,7 +517,6 @@ public class Player : MonoBehaviour
     {
         isInvincible = true;
         isDead = true;
-        OnPlayerDie?.Invoke();
         GameObject panel = null;
 
         panel = GameObject.FindGameObjectWithTag("panel");
@@ -540,9 +542,9 @@ public class Player : MonoBehaviour
             playerSprite.color = playerDefaultColor;
 
         panelAnimator.SetTrigger("end");
-
         // Allows the scene transition to finish before loading.
         yield return new WaitForSecondsRealtime(deathSceneDelay);
+        OnPlayerDie?.Invoke();
         panelAnimator.SetTrigger("reset");
         isDead = false;
         isInvincible = false;

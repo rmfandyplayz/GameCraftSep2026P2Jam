@@ -6,8 +6,6 @@ using UnityEngine.UI;
 public class HealthIcon : MonoBehaviour
 {
     [SerializeField] private UIAnimationPlayer animPlayer;
-    [SerializeField] private Image fullSprite;
-    [SerializeField] private Image emptySprite;
 
     /// <summary>
     /// Overlays the full sprite on top of the empty sprite (plays animation)

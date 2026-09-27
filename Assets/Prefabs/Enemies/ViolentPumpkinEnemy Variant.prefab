@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &567782806651899024
 Transform:
   m_ObjectHideFlags: 0
@@ -120,6 +120,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3367869047145048807, guid: 889373fa34dd988499175b8f68bb1931, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 22100000, guid: 19e4a62602ecf42e792d43d44ffc05a1, type: 2}
     - target: {fileID: 6019244559755048212, guid: 889373fa34dd988499175b8f68bb1931, type: 3}
       propertyPath: value
       value: 150
@@ -204,6 +208,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7412335747357825164, guid: 889373fa34dd988499175b8f68bb1931, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -9125533009085948787, guid: 8d04bcc3f5721734a97d894a9ad5daba, type: 3}
     - target: {fileID: 7412335747357825164, guid: 889373fa34dd988499175b8f68bb1931, type: 3}
       propertyPath: m_Color.b
       value: 1

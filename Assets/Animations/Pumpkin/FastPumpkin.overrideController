@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: FastPumpkin
+  m_Controller: {fileID: 9100000, guid: 6cac11dba3d836c41b58256e6edbe51c, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: aef81530361f61545b9eb3dc7970f9ea, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: c3c5576a904b8481f81e2fe9e2c53238, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: ab8cf453d3662fc43904c1e8d5c82cce, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: e83affa9773d848229c4814e69f866e4, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: b12b43cb45b655b449defd56841712de, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 8b5f3e7c477a14edcb81bfb14eb2e86f, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 130108f286d56034b9736295e2abe4a2, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 13ea59644b05145ec9402a29f31adfda, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 4156b442f0ddefb4492b8eee4e68cad4, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 34965b54f710b4f0e9353b1c03f49f81, type: 2}
