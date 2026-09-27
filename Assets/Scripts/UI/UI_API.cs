@@ -15,6 +15,7 @@ public class UI_API : MonoBehaviour
     [InspectorLabel("Daylight Cycle Manager"), SerializeField] DayLightCycleController daylightCycleController;
     [InspectorLabel("Points Manager"), SerializeField] PointsController pointsController;
     [InspectorLabel("Quota Manager"), SerializeField] QuotaController quotaController;
+    [InspectorLabel("Health Manager"), SerializeField] HealthController healthController;
 
     int tempPoints; // money gained/lost since the last CombinePoints
     bool subscribed;
@@ -44,6 +45,8 @@ public class UI_API : MonoBehaviour
         gm.OnNightEnd -= HandleNightEnd;
         gm.OnEnemyDie -= HandleGainMoney;
         gm.OnUpdateQuota -= HandleNewQuota;
+        gm.player.OnPlayerHealthHeal -= HandleOnGainHP;
+        gm.player.OnPlayerHealthDamage -= HandleOnLoseHP;
         subscribed = false;
     }
 
@@ -58,6 +61,8 @@ public class UI_API : MonoBehaviour
         gm.OnNightEnd += HandleNightEnd;
         gm.OnEnemyDie += HandleGainMoney;
         gm.OnUpdateQuota += HandleNewQuota;
+        gm.player.OnPlayerHealthHeal += HandleOnGainHP;
+        gm.player.OnPlayerHealthDamage += HandleOnLoseHP;
         subscribed = true;
     }
 
@@ -78,6 +83,16 @@ public class UI_API : MonoBehaviour
     private void HandleNewQuota(int reqPoints, int daysLeft)
     {
         SetQuota(reqPoints, daysLeft);
+    }
+
+    private void HandleOnGainHP(int newHP)
+    {
+        healthController.Heal(newHP);
+    }
+    
+    private void HandleOnLoseHP(int newHP)
+    {
+        healthController.Hurt(newHP);
     }
 
     // ===============================================================================================================================
@@ -122,7 +137,7 @@ public class UI_API : MonoBehaviour
     {
         quotaController.SetQuota(quota, daysLeft);
     }
-
+    
     public void FailQuota()
     {
         quotaController.FailQuota();
