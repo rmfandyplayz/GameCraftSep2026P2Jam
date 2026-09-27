@@ -8,13 +8,13 @@ public class GameManager : MonoBehaviour
     public Action OnDayEnd;
     public Action OnNightBegin;
     public Action OnNightEnd;
-    public Action OnPlayerDie;
     public Action OnSeedPlanted;
     public Action OnEnemyDie;
     public Action OnPotentialProfit;
     public Action<int> OnGainMoney;
     public Action<int> OnLoseMoney;
 
+    public Player player { get; private set; }
     public int currentMoney { get; private set; } = 0;
     public int expectedProfit { get; private set; } = 0;
     public int quota { get; private set; } = 300;
@@ -55,6 +55,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        player = FindFirstObjectByType<Player>();
         if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
@@ -105,7 +106,7 @@ public class GameManager : MonoBehaviour
         {
             if (currentMoney < quota)
             {
-                OnPlayerDie?.Invoke();
+                player.OnPlayerDie?.Invoke();
             }
             else
             {

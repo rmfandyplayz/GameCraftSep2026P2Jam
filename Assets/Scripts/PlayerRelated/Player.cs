@@ -31,6 +31,7 @@ public class Player : MonoBehaviour
     public string deathSceneName = "deathScene";
     public float deathSceneDelay = 1f;
 
+    public Action OnPlayerDie;
     public Action<int> OnPlayerHealthChange;
     public Action<int> OnPlayerMaxHealthChange;
 
@@ -138,7 +139,7 @@ public class Player : MonoBehaviour
         if (hp <= 0)
         {
             isDead = true;
-            GameManager.Instance.OnPlayerDie?.Invoke();
+            OnPlayerDie?.Invoke();
             StartCoroutine(DeathSequence());
         }
     }

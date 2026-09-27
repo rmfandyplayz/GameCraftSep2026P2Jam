@@ -54,7 +54,7 @@ public class PumpkinEnemy : MonoBehaviour
     {
         if (GameManager.Instance != null)
         {
-            GameManager.Instance.OnPlayerDie += HandlePlayerDie;
+            GameManager.Instance.player.OnPlayerDie += () => Destroy(gameObject); ;
         }
     }
 
@@ -62,13 +62,8 @@ public class PumpkinEnemy : MonoBehaviour
     {
         if (GameManager.Instance != null)
         {
-            GameManager.Instance.OnPlayerDie -= HandlePlayerDie;
+            GameManager.Instance.player.OnPlayerDie -= ()=> Destroy(gameObject); ;
         }
-    }
-
-    private void HandlePlayerDie()
-    {
-        Destroy(gameObject);
     }
 
     void Start()
