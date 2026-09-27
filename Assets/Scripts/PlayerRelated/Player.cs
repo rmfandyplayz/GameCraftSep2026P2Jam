@@ -77,6 +77,7 @@ public class Player : MonoBehaviour
     Coroutine fiveDayPopupRoutine;
 
     private Animator playerAnimator;
+    bool isAttacking = false;
 
     private void OnEnable()
     {
@@ -229,7 +230,7 @@ public class Player : MonoBehaviour
         {
             if (attack == null || Time.time < nextAttackTime)
                 return;
-
+            isAttacking = true;
             nextAttackTime = Time.time + attackCooldown;
             playerAnimator.SetTrigger("Attack");
         }
@@ -241,18 +242,19 @@ public class Player : MonoBehaviour
             return;
 
         Vector2 direction = moveInput.action.ReadValue<Vector2>();
-
-        if (direction.x > 0.01f)
-        {
-            playerAnimator.transform.localScale =
-                new Vector3(1f, 1f, 1f);
-            KeepFiveDayPopupTextUnflipped();
-        }
-        else if (direction.x < -0.01f)
-        {
-            playerAnimator.transform.localScale =
-                new Vector3(-1f, 1f, 1f);
-            KeepFiveDayPopupTextUnflipped();
+        if (!isAttacking) {
+            if (direction.x > 0.01f)
+            {
+                playerAnimator.transform.localScale =
+                    new Vector3(1f, 1f, 1f);
+                KeepFiveDayPopupTextUnflipped();
+            }
+            else if (direction.x < -0.01f)
+            {
+                playerAnimator.transform.localScale =
+                    new Vector3(-1f, 1f, 1f);
+                KeepFiveDayPopupTextUnflipped();
+            }
         }
 
         rb.MovePosition(
@@ -294,6 +296,7 @@ public class Player : MonoBehaviour
 
     private void EndAttack()
     {
+        isAttacking = false;
         currentSpeed = speed;
     }
 
