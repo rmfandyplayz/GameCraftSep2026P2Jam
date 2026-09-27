@@ -230,6 +230,7 @@ public class Player : MonoBehaviour
         // Raise it before changing scenes so current scene listeners receive it.
         if (GameManager.Instance != null)
             GameManager.Instance.OnNightEnd?.Invoke();
+            GameManager.Instance.OnDayBegin?.Invoke();
 
         SceneManager.LoadScene(deathSceneName);
     }
