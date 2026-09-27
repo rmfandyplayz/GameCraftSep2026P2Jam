@@ -11695,7 +11695,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2655970877775723340, guid: 68403cdd86c4c6a4d8399d3bf0dfb32c, type: 3}
       propertyPath: daysPerPopup
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2655970877775723340, guid: 68403cdd86c4c6a4d8399d3bf0dfb32c, type: 3}
       propertyPath: deathSceneName
@@ -11774,6 +11774,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3428171454787693786, guid: 4a08e2328d7f41b4784dd1f9ab0d3fc6, type: 3}
+      propertyPath: daysPerActivation
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 8223320109509279351, guid: 4a08e2328d7f41b4784dd1f9ab0d3fc6, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.92222
