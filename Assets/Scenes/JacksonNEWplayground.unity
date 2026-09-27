@@ -1924,6 +1924,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BellStuff
       objectReference: {fileID: 0}
+    - target: {fileID: 6095180792647115014, guid: 5d6421ba7e1d346e983c5c14ce5ed357, type: 3}
+      propertyPath: requiredSeeds
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8762444493148824481, guid: 5d6421ba7e1d346e983c5c14ce5ed357, type: 3}
       propertyPath: m_LocalPosition.x
       value: -6.19918
