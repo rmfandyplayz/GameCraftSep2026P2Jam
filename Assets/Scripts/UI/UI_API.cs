@@ -151,16 +151,16 @@ public class UI_API : MonoBehaviour
 
     public void StartGame()
     {
-        RequestStart.Invoke();
+        RequestStart?.Invoke();
     }
 
     public void ResumeGame()
     {
-        RequestResume.Invoke();
+        RequestResume?.Invoke();
     }
 
     public void PauseGame()
     {
-        RequestPause.Invoke();
+        RequestPause?.Invoke();
     }
 }
