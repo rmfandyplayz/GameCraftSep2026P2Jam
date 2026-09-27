@@ -16,28 +16,34 @@ public class QuotaController : MonoBehaviour
 
     [Header("animations")]
     [Tooltip("Played on a number's UIAnimationPlayer when it changes. Needs a CountingText.Progress 0 -> 1 step to count.")]
-    [SerializeField] string countAnimName = "CountNumber";
+    [SerializeField] string countUpAnimName = "CountNumberUp";
+    [SerializeField] string countDownAnimName = "CountNumberDown";
 
     bool shown; // false while the texts still show the "???" placeholder
+    int previousDays;
 
     /// <summary>
     /// public API. counts each number that changed to its new value.
     /// </summary>
     public void SetQuota(int quota, int daysLeft)
     {
-        CountTo(quotaCountingTxt, quotaAnim, quota);
-        CountTo(daysCountingTxt, daysAnim, daysLeft);
+
+        CountTo(quotaCountingTxt, quotaAnim, quota, (daysLeft > previousDays ? countUpAnimName : countDownAnimName));
+        CountTo(daysCountingTxt, daysAnim, daysLeft, (daysLeft > previousDays ? countUpAnimName : countDownAnimName));
+
+        previousDays = daysLeft;
+
         daysLabelText.text = daysLeft == 1 ? "day" : "days";
         shown = true;
     }
 
-    void CountTo(CountingText counter, UIAnimationPlayer anim, int value)
+    void CountTo(CountingText counter, UIAnimationPlayer anim, int value, string animationName)
     {
         if (shown && value == counter.To)
             return;
 
-        anim.Stop(countAnimName); // not completed, so a count in progress carries on from where it is
+        anim.Stop(animationName);
         counter.CountTo(value);
-        anim.Play(countAnimName);
+        anim.Play(animationName);
     }
 }
