@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     public Action OnDayEnd;
     public Action OnNightBegin;
     public Action OnNightEnd;
+    public Action OnQuotaFailed;
     public Action OnSeedPlanted;
     public Action<int> OnEnemyDie;
     public Action<int> OnGainMoney;
@@ -103,7 +104,8 @@ public class GameManager : MonoBehaviour
         {
             if (currentMoney < quota)
             {
-                player.OnPlayerDie?.Invoke();
+                OnQuotaFailed?.Invoke();
+                return;
             }
             else
             {
