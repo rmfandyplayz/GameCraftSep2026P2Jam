@@ -10759,8 +10759,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef79c23ec83d7dd438042cccb7e4c60b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
-  quotaStart: 800
-  initialQuotaIncrease: 1.9
+  quotaStart: 750
+  initialQuotaIncrease: 1.7
   initialQuotaIncreaseInc: 0.2
 --- !u!4 &247549907
 Transform:
@@ -15844,6 +15844,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 376.6
       objectReference: {fileID: 0}
+    - target: {fileID: 6095180792647115014, guid: 5d6421ba7e1d346e983c5c14ce5ed357, type: 3}
+      propertyPath: interactInput
+      value: 
+      objectReference: {fileID: 1781555164194001046, guid: 052faaac586de48259a63d0c4782560b, type: 3}
     - target: {fileID: 6893696098835402794, guid: 5d6421ba7e1d346e983c5c14ce5ed357, type: 3}
       propertyPath: m_text
       value: 9
