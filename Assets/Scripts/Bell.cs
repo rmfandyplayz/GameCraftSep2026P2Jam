@@ -21,12 +21,14 @@ public class Bell : MonoBehaviour
     private void OnEnable()
     {
         if (GameManager.Instance != null)
+            GameManager.Instance.OnGameStart += ()=> seedsLeftDisplay.SetActive(true);
             GameManager.Instance.OnDayBegin += HandleDayBegin;
     }
 
     private void OnDisable()
     {
         if (GameManager.Instance != null)
+            GameManager.Instance.OnGameStart -= () => seedsLeftDisplay.SetActive(true);
             GameManager.Instance.OnDayBegin -= HandleDayBegin;
     }
 
