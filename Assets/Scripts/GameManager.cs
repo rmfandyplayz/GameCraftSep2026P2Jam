@@ -52,6 +52,7 @@ public class GameManager : MonoBehaviour
         UI_API.RequestStart += StartGame;
         UI_API.RequestPause += () => Time.timeScale = 0f;
         UI_API.RequestResume += () => Time.timeScale = 1f;
+        UI_API.RequestStart += () => OnGameStart?.Invoke();
 
         OnGameStart += StartGame;
         OnDayBegin += ResetNightTime;
@@ -69,6 +70,7 @@ public class GameManager : MonoBehaviour
         UI_API.RequestStart -= StartGame;
         UI_API.RequestPause -= () => Time.timeScale = 0f;
         UI_API.RequestResume -= () => Time.timeScale = 1f;
+        UI_API.RequestStart -= () => OnGameStart?.Invoke();
 
         OnGameStart -= StartGame;
         OnDayBegin -= ResetNightTime;
