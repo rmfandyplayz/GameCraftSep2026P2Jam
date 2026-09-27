@@ -165,6 +165,18 @@ PrefabInstance:
       value: 0.9
       objectReference: {fileID: 0}
     - target: {fileID: 6019244559755048212, guid: 889373fa34dd988499175b8f68bb1931, type: 3}
+      propertyPath: valuePopupTextColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6019244559755048212, guid: 889373fa34dd988499175b8f68bb1931, type: 3}
+      propertyPath: valuePopupTextColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6019244559755048212, guid: 889373fa34dd988499175b8f68bb1931, type: 3}
+      propertyPath: valuePopupTextColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6019244559755048212, guid: 889373fa34dd988499175b8f68bb1931, type: 3}
       propertyPath: jumpCurve.m_Curve.Array.data[1].time
       value: 0.49583435
       objectReference: {fileID: 0}
