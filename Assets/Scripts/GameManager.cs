@@ -71,7 +71,6 @@ public class GameManager : MonoBehaviour
         quotaIncrease = 1.1f;
         quotaIncreaseIncrease = 0.2f;
         nightTime = false;
-        OnDayBegin?.Invoke();
     }
     private void GainMoney(int amount)
     {
