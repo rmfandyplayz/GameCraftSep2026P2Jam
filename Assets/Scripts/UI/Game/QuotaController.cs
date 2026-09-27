@@ -22,13 +22,20 @@ public class QuotaController : MonoBehaviour
     bool shown; // false while the texts still show the "???" placeholder
     int previousDays;
 
+
+    
+    public void FailQuota()
+    {
+
+    }
+
     /// <summary>
     /// public API. counts each number that changed to its new value.
     /// </summary>
     public void SetQuota(int quota, int daysLeft)
     {
 
-        CountTo(quotaCountingTxt, quotaAnim, quota, (daysLeft > previousDays ? countUpAnimName : countDownAnimName));
+        CountTo(quotaCountingTxt, quotaAnim, quota, countUpAnimName);
         CountTo(daysCountingTxt, daysAnim, daysLeft, (daysLeft > previousDays ? countUpAnimName : countDownAnimName));
 
         previousDays = daysLeft;

@@ -3704,7 +3704,7 @@ GameObject:
   - component: {fileID: 5632774810913918549}
   - component: {fileID: 5435495931993646286}
   m_Layer: 5
-  m_Name: DaysLeftText
+  m_Name: DaysLeftTEXT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3768,7 +3768,7 @@ MonoBehaviour:
   KillOnDisable: 1
   Shared: {fileID: 0}
   Animations:
-  - Name: CountNumber
+  - Name: CountNumberDown
     Notes: counts to the number QuotaController set (CountingText.Progress 0 -> 1).
       restyle freely, but keep a Progress step so it still counts
     Steps:
@@ -3838,6 +3838,138 @@ MonoBehaviour:
       PropertyMember: Progress
       PropertyKind: 0
       NumberFormat: 0
+    - Type: 3
+      Start: 1
+      RectTarget: {fileID: 0}
+      CanvasGroupTarget: {fileID: 0}
+      GraphicTarget: {fileID: 0}
+      MaterialTarget: {fileID: 0}
+      ActiveTarget: {fileID: 0}
+      AudioSourceTarget: {fileID: 0}
+      PropertyTarget: {fileID: 0}
+      TargetPath: 
+      Duration: 0.5
+      Delay: 0
+      EaseType: 15
+      UseCustomCurve: 0
+      Curve:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 0
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        - serializedVersion: 3
+          time: 1
+          value: 1
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      UseFrom: 0
+      FromMode: 0
+      ToMode: 0
+      FromVector: {x: 0, y: 0, z: 0}
+      ToVector: {x: 0, y: 0, z: 0}
+      FromFloat: 0
+      ToFloat: 1
+      FromColor: {r: 0, g: 0, b: 0, a: 0}
+      ToColor: {r: 0.9622642, g: 0.15795653, b: 0.15795653, a: 1}
+      FromText: 
+      ToText: 
+      ShaderProperty: _Progress
+      ActiveValue: 0
+      Clip: {fileID: 0}
+      Volume: 1
+      Pitch: 1
+      PitchVariation: 0
+      Vibrato: 10
+      Elasticity: 1
+      Randomness: 90
+      Snapping: 0
+      UseCustomPath: 0
+      PathShape: 0
+      Waypoints: []
+      PropertyComponent: CountingText
+      PropertyMember: Progress
+      PropertyKind: 0
+      NumberFormat: 0
+    - Type: 3
+      Start: 0
+      RectTarget: {fileID: 0}
+      CanvasGroupTarget: {fileID: 0}
+      GraphicTarget: {fileID: 0}
+      MaterialTarget: {fileID: 0}
+      ActiveTarget: {fileID: 0}
+      AudioSourceTarget: {fileID: 0}
+      PropertyTarget: {fileID: 0}
+      TargetPath: 
+      Duration: 0.5
+      Delay: 0
+      EaseType: 15
+      UseCustomCurve: 0
+      Curve:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 0
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        - serializedVersion: 3
+          time: 1
+          value: 1
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      UseFrom: 0
+      FromMode: 0
+      ToMode: 0
+      FromVector: {x: 0, y: 0, z: 0}
+      ToVector: {x: 0, y: 0, z: 0}
+      FromFloat: 0
+      ToFloat: 1
+      FromColor: {r: 0, g: 0, b: 0, a: 0}
+      ToColor: {r: 1, g: 1, b: 1, a: 1}
+      FromText: 
+      ToText: 
+      ShaderProperty: _Progress
+      ActiveValue: 0
+      Clip: {fileID: 0}
+      Volume: 1
+      Pitch: 1
+      PitchVariation: 0
+      Vibrato: 10
+      Elasticity: 1
+      Randomness: 90
+      Snapping: 0
+      UseCustomPath: 0
+      PathShape: 0
+      Waypoints: []
+      PropertyComponent: CountingText
+      PropertyMember: Progress
+      PropertyKind: 0
+      NumberFormat: 0
     Loops: 1
     LoopType: 0
     PlayAtCustomFPS: 0
@@ -3850,20 +3982,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
   - Name: CountNumberUp
-    Notes: 'smoothly increases the number
-
-
-      1. expand
-
-      2. change number
-      (with previous)
-
-      3. change color (with previous)
-
-      4. shrink (after
-      previous)
-
-      5. change color (with)'
+    Notes: 
     Steps:
     - Type: 12
       Start: 0
@@ -3907,7 +4026,7 @@ MonoBehaviour:
       FromMode: 0
       ToMode: 0
       FromVector: {x: 0, y: 0, z: 0}
-      ToVector: {x: 1.4, y: 1.4, z: 1.4}
+      ToVector: {x: 1.6, y: 1.6, z: 1.6}
       FromFloat: 0
       ToFloat: 0
       FromColor: {r: 0, g: 0, b: 0, a: 0}
@@ -3941,9 +4060,9 @@ MonoBehaviour:
       AudioSourceTarget: {fileID: 0}
       PropertyTarget: {fileID: 0}
       TargetPath: 
-      Duration: 0.3
+      Duration: 0.2
       Delay: 0
-      EaseType: 6
+      EaseType: 1
       UseCustomCurve: 0
       Curve:
         serializedVersion: 2
@@ -4009,7 +4128,7 @@ MonoBehaviour:
       TargetPath: 
       Duration: 0.3
       Delay: 0
-      EaseType: 1
+      EaseType: 12
       UseCustomCurve: 0
       Curve:
         serializedVersion: 2
@@ -4044,6 +4163,204 @@ MonoBehaviour:
       ToFloat: 0
       FromColor: {r: 0, g: 0, b: 0, a: 0}
       ToColor: {r: 0.2245282, g: 1, b: 0.26015958, a: 1}
+      FromText: 
+      ToText: 
+      ShaderProperty: _Progress
+      ActiveValue: 0
+      Clip: {fileID: 0}
+      Volume: 1
+      Pitch: 1
+      PitchVariation: 0
+      Vibrato: 10
+      Elasticity: 1
+      Randomness: 90
+      Snapping: 0
+      UseCustomPath: 0
+      PathShape: 0
+      Waypoints: []
+      PropertyComponent: UnityEngine.RectTransform
+      PropertyMember: up
+      PropertyKind: 3
+      NumberFormat: 0
+    - Type: 3
+      Start: 0
+      RectTarget: {fileID: 5252568519290207940}
+      CanvasGroupTarget: {fileID: 0}
+      GraphicTarget: {fileID: 0}
+      MaterialTarget: {fileID: 0}
+      ActiveTarget: {fileID: 0}
+      AudioSourceTarget: {fileID: 0}
+      PropertyTarget: {fileID: 7507077161279740260}
+      TargetPath: 
+      Duration: 0.2
+      Delay: 0
+      EaseType: 12
+      UseCustomCurve: 0
+      Curve:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 0
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        - serializedVersion: 3
+          time: 1
+          value: 1
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      UseFrom: 0
+      FromMode: 0
+      ToMode: 0
+      FromVector: {x: 0, y: 0, z: 0}
+      ToVector: {x: 1, y: 1, z: 1}
+      FromFloat: 0
+      ToFloat: 0
+      FromColor: {r: 0, g: 0, b: 0, a: 0}
+      ToColor: {r: 1, g: 1, b: 1, a: 1}
+      FromText: 
+      ToText: 
+      ShaderProperty: _Progress
+      ActiveValue: 0
+      Clip: {fileID: 0}
+      Volume: 1
+      Pitch: 1
+      PitchVariation: 0
+      Vibrato: 10
+      Elasticity: 1
+      Randomness: 90
+      Snapping: 0
+      UseCustomPath: 0
+      PathShape: 0
+      Waypoints: []
+      PropertyComponent: UnityEngine.RectTransform
+      PropertyMember: up
+      PropertyKind: 3
+      NumberFormat: 0
+    - Type: 3
+      Start: 0
+      RectTarget: {fileID: 5252568519290207940}
+      CanvasGroupTarget: {fileID: 0}
+      GraphicTarget: {fileID: 0}
+      MaterialTarget: {fileID: 0}
+      ActiveTarget: {fileID: 0}
+      AudioSourceTarget: {fileID: 0}
+      PropertyTarget: {fileID: 7507077161279740260}
+      TargetPath: 
+      Duration: 0.2
+      Delay: 0
+      EaseType: 12
+      UseCustomCurve: 0
+      Curve:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 0
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        - serializedVersion: 3
+          time: 1
+          value: 1
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      UseFrom: 0
+      FromMode: 0
+      ToMode: 0
+      FromVector: {x: 0, y: 0, z: 0}
+      ToVector: {x: 1, y: 1, z: 1}
+      FromFloat: 0
+      ToFloat: 0
+      FromColor: {r: 0, g: 0, b: 0, a: 0}
+      ToColor: {r: 0.22352943, g: 1, b: 0.25882354, a: 1}
+      FromText: 
+      ToText: 
+      ShaderProperty: _Progress
+      ActiveValue: 0
+      Clip: {fileID: 0}
+      Volume: 1
+      Pitch: 1
+      PitchVariation: 0
+      Vibrato: 10
+      Elasticity: 1
+      Randomness: 90
+      Snapping: 0
+      UseCustomPath: 0
+      PathShape: 0
+      Waypoints: []
+      PropertyComponent: UnityEngine.RectTransform
+      PropertyMember: up
+      PropertyKind: 3
+      NumberFormat: 0
+    - Type: 3
+      Start: 0
+      RectTarget: {fileID: 5252568519290207940}
+      CanvasGroupTarget: {fileID: 0}
+      GraphicTarget: {fileID: 0}
+      MaterialTarget: {fileID: 0}
+      ActiveTarget: {fileID: 0}
+      AudioSourceTarget: {fileID: 0}
+      PropertyTarget: {fileID: 7507077161279740260}
+      TargetPath: 
+      Duration: 0.2
+      Delay: 0
+      EaseType: 12
+      UseCustomCurve: 0
+      Curve:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 0
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        - serializedVersion: 3
+          time: 1
+          value: 1
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      UseFrom: 0
+      FromMode: 0
+      ToMode: 0
+      FromVector: {x: 0, y: 0, z: 0}
+      ToVector: {x: 1, y: 1, z: 1}
+      FromFloat: 0
+      ToFloat: 0
+      FromColor: {r: 0, g: 0, b: 0, a: 0}
+      ToColor: {r: 1, g: 1, b: 1, a: 1}
       FromText: 
       ToText: 
       ShaderProperty: _Progress
@@ -4129,72 +4446,6 @@ MonoBehaviour:
       PropertyMember: up
       PropertyKind: 3
       NumberFormat: 0
-    - Type: 3
-      Start: 1
-      RectTarget: {fileID: 5252568519290207940}
-      CanvasGroupTarget: {fileID: 0}
-      GraphicTarget: {fileID: 0}
-      MaterialTarget: {fileID: 0}
-      ActiveTarget: {fileID: 0}
-      AudioSourceTarget: {fileID: 0}
-      PropertyTarget: {fileID: 7507077161279740260}
-      TargetPath: 
-      Duration: 0.2
-      Delay: 0
-      EaseType: 1
-      UseCustomCurve: 0
-      Curve:
-        serializedVersion: 2
-        m_Curve:
-        - serializedVersion: 3
-          time: 0
-          value: 0
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
-          weightedMode: 0
-          inWeight: 0
-          outWeight: 0
-        - serializedVersion: 3
-          time: 1
-          value: 1
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
-          weightedMode: 0
-          inWeight: 0
-          outWeight: 0
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 4
-      UseFrom: 0
-      FromMode: 0
-      ToMode: 0
-      FromVector: {x: 0, y: 0, z: 0}
-      ToVector: {x: 1, y: 1, z: 1}
-      FromFloat: 0
-      ToFloat: 0
-      FromColor: {r: 0, g: 0, b: 0, a: 0}
-      ToColor: {r: 1, g: 1, b: 1, a: 1}
-      FromText: 
-      ToText: 
-      ShaderProperty: _Progress
-      ActiveValue: 0
-      Clip: {fileID: 0}
-      Volume: 1
-      Pitch: 1
-      PitchVariation: 0
-      Vibrato: 10
-      Elasticity: 1
-      Randomness: 90
-      Snapping: 0
-      UseCustomPath: 0
-      PathShape: 0
-      Waypoints: []
-      PropertyComponent: UnityEngine.RectTransform
-      PropertyMember: up
-      PropertyKind: 3
-      NumberFormat: 0
     Loops: 1
     LoopType: 0
     PlayAtCustomFPS: 0
@@ -4236,7 +4487,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColor: {r: 0.99999994, g: 0.99999833, b: 0.99999833, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -4312,7 +4563,7 @@ GameObject:
   - component: {fileID: 6584885743936066064}
   - component: {fileID: 1460458920720033806}
   m_Layer: 5
-  m_Name: QuotaAmountText
+  m_Name: QuotaAmountTEXT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4376,11 +4627,10 @@ MonoBehaviour:
   KillOnDisable: 1
   Shared: {fileID: 0}
   Animations:
-  - Name: CountNumber
-    Notes: counts to the number QuotaController set (CountingText.Progress 0 -> 1).
-      restyle freely, but keep a Progress step so it still counts
+  - Name: CountNumberUp
+    Notes: 
     Steps:
-    - Type: 20
+    - Type: 12
       Start: 0
       RectTarget: {fileID: 0}
       CanvasGroupTarget: {fileID: 0}
@@ -4388,11 +4638,77 @@ MonoBehaviour:
       MaterialTarget: {fileID: 0}
       ActiveTarget: {fileID: 0}
       AudioSourceTarget: {fileID: 0}
+      PropertyTarget: {fileID: 1436439878992577101}
+      TargetPath: 
+      Duration: 0.1
+      Delay: 0
+      EaseType: 18
+      UseCustomCurve: 0
+      Curve:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 0
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        - serializedVersion: 3
+          time: 1
+          value: 1
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      UseFrom: 0
+      FromMode: 0
+      ToMode: 0
+      FromVector: {x: 0, y: 0, z: 0}
+      ToVector: {x: 1.35, y: 1.35, z: 1.35}
+      FromFloat: 0
+      ToFloat: 0
+      FromColor: {r: 0, g: 0, b: 0, a: 0}
+      ToColor: {r: 0, g: 0, b: 0, a: 0}
+      FromText: 
+      ToText: 
+      ShaderProperty: _Progress
+      ActiveValue: 0
+      Clip: {fileID: 0}
+      Volume: 1
+      Pitch: 1
+      PitchVariation: 0
+      Vibrato: 10
+      Elasticity: 1
+      Randomness: 90
+      Snapping: 0
+      UseCustomPath: 0
+      PathShape: 0
+      Waypoints: []
+      PropertyComponent: TMPro.TextMeshProUGUI
+      PropertyMember: text
+      PropertyKind: 6
+      NumberFormat: 0
+    - Type: 20
+      Start: 1
+      RectTarget: {fileID: 5252568519290207940}
+      CanvasGroupTarget: {fileID: 0}
+      GraphicTarget: {fileID: 0}
+      MaterialTarget: {fileID: 0}
+      ActiveTarget: {fileID: 0}
+      AudioSourceTarget: {fileID: 0}
       PropertyTarget: {fileID: 0}
       TargetPath: 
-      Duration: 0.5
+      Duration: 0.2
       Delay: 0
-      EaseType: 6
+      EaseType: 1
       UseCustomCurve: 0
       Curve:
         serializedVersion: 2
@@ -4446,13 +4762,343 @@ MonoBehaviour:
       PropertyMember: Progress
       PropertyKind: 0
       NumberFormat: 0
+    - Type: 3
+      Start: 1
+      RectTarget: {fileID: 5252568519290207940}
+      CanvasGroupTarget: {fileID: 0}
+      GraphicTarget: {fileID: 0}
+      MaterialTarget: {fileID: 0}
+      ActiveTarget: {fileID: 0}
+      AudioSourceTarget: {fileID: 0}
+      PropertyTarget: {fileID: 7507077161279740260}
+      TargetPath: 
+      Duration: 0.3
+      Delay: 0
+      EaseType: 12
+      UseCustomCurve: 0
+      Curve:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 0
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        - serializedVersion: 3
+          time: 1
+          value: 1
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      UseFrom: 0
+      FromMode: 0
+      ToMode: 0
+      FromVector: {x: 0, y: 0, z: 0}
+      ToVector: {x: 1, y: 1, z: 1}
+      FromFloat: 0
+      ToFloat: 0
+      FromColor: {r: 0, g: 0, b: 0, a: 0}
+      ToColor: {r: 0.8792453, g: 0.36994657, b: 0.36994657, a: 1}
+      FromText: 
+      ToText: 
+      ShaderProperty: _Progress
+      ActiveValue: 0
+      Clip: {fileID: 0}
+      Volume: 1
+      Pitch: 1
+      PitchVariation: 0
+      Vibrato: 10
+      Elasticity: 1
+      Randomness: 90
+      Snapping: 0
+      UseCustomPath: 0
+      PathShape: 0
+      Waypoints: []
+      PropertyComponent: UnityEngine.RectTransform
+      PropertyMember: up
+      PropertyKind: 3
+      NumberFormat: 0
+    - Type: 3
+      Start: 0
+      RectTarget: {fileID: 5252568519290207940}
+      CanvasGroupTarget: {fileID: 0}
+      GraphicTarget: {fileID: 0}
+      MaterialTarget: {fileID: 0}
+      ActiveTarget: {fileID: 0}
+      AudioSourceTarget: {fileID: 0}
+      PropertyTarget: {fileID: 7507077161279740260}
+      TargetPath: 
+      Duration: 0.2
+      Delay: 0
+      EaseType: 12
+      UseCustomCurve: 0
+      Curve:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 0
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        - serializedVersion: 3
+          time: 1
+          value: 1
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      UseFrom: 0
+      FromMode: 0
+      ToMode: 0
+      FromVector: {x: 0, y: 0, z: 0}
+      ToVector: {x: 1, y: 1, z: 1}
+      FromFloat: 0
+      ToFloat: 0
+      FromColor: {r: 0, g: 0, b: 0, a: 0}
+      ToColor: {r: 1, g: 1, b: 1, a: 1}
+      FromText: 
+      ToText: 
+      ShaderProperty: _Progress
+      ActiveValue: 0
+      Clip: {fileID: 0}
+      Volume: 1
+      Pitch: 1
+      PitchVariation: 0
+      Vibrato: 10
+      Elasticity: 1
+      Randomness: 90
+      Snapping: 0
+      UseCustomPath: 0
+      PathShape: 0
+      Waypoints: []
+      PropertyComponent: UnityEngine.RectTransform
+      PropertyMember: up
+      PropertyKind: 3
+      NumberFormat: 0
+    - Type: 3
+      Start: 0
+      RectTarget: {fileID: 5252568519290207940}
+      CanvasGroupTarget: {fileID: 0}
+      GraphicTarget: {fileID: 0}
+      MaterialTarget: {fileID: 0}
+      ActiveTarget: {fileID: 0}
+      AudioSourceTarget: {fileID: 0}
+      PropertyTarget: {fileID: 7507077161279740260}
+      TargetPath: 
+      Duration: 0.2
+      Delay: 0
+      EaseType: 12
+      UseCustomCurve: 0
+      Curve:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 0
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        - serializedVersion: 3
+          time: 1
+          value: 1
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      UseFrom: 0
+      FromMode: 0
+      ToMode: 0
+      FromVector: {x: 0, y: 0, z: 0}
+      ToVector: {x: 1, y: 1, z: 1}
+      FromFloat: 0
+      ToFloat: 0
+      FromColor: {r: 0, g: 0, b: 0, a: 0}
+      ToColor: {r: 0.87843144, g: 0.36862746, b: 0.36862746, a: 1}
+      FromText: 
+      ToText: 
+      ShaderProperty: _Progress
+      ActiveValue: 0
+      Clip: {fileID: 0}
+      Volume: 1
+      Pitch: 1
+      PitchVariation: 0
+      Vibrato: 10
+      Elasticity: 1
+      Randomness: 90
+      Snapping: 0
+      UseCustomPath: 0
+      PathShape: 0
+      Waypoints: []
+      PropertyComponent: UnityEngine.RectTransform
+      PropertyMember: up
+      PropertyKind: 3
+      NumberFormat: 0
+    - Type: 3
+      Start: 0
+      RectTarget: {fileID: 5252568519290207940}
+      CanvasGroupTarget: {fileID: 0}
+      GraphicTarget: {fileID: 0}
+      MaterialTarget: {fileID: 0}
+      ActiveTarget: {fileID: 0}
+      AudioSourceTarget: {fileID: 0}
+      PropertyTarget: {fileID: 7507077161279740260}
+      TargetPath: 
+      Duration: 0.2
+      Delay: 0
+      EaseType: 12
+      UseCustomCurve: 0
+      Curve:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 0
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        - serializedVersion: 3
+          time: 1
+          value: 1
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      UseFrom: 0
+      FromMode: 0
+      ToMode: 0
+      FromVector: {x: 0, y: 0, z: 0}
+      ToVector: {x: 1, y: 1, z: 1}
+      FromFloat: 0
+      ToFloat: 0
+      FromColor: {r: 0, g: 0, b: 0, a: 0}
+      ToColor: {r: 1, g: 1, b: 1, a: 1}
+      FromText: 
+      ToText: 
+      ShaderProperty: _Progress
+      ActiveValue: 0
+      Clip: {fileID: 0}
+      Volume: 1
+      Pitch: 1
+      PitchVariation: 0
+      Vibrato: 10
+      Elasticity: 1
+      Randomness: 90
+      Snapping: 0
+      UseCustomPath: 0
+      PathShape: 0
+      Waypoints: []
+      PropertyComponent: UnityEngine.RectTransform
+      PropertyMember: up
+      PropertyKind: 3
+      NumberFormat: 0
+    - Type: 12
+      Start: 0
+      RectTarget: {fileID: 0}
+      CanvasGroupTarget: {fileID: 0}
+      GraphicTarget: {fileID: 0}
+      MaterialTarget: {fileID: 0}
+      ActiveTarget: {fileID: 0}
+      AudioSourceTarget: {fileID: 0}
+      PropertyTarget: {fileID: 7507077161279740260}
+      TargetPath: 
+      Duration: 0.2
+      Delay: 0
+      EaseType: 6
+      UseCustomCurve: 0
+      Curve:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 0
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        - serializedVersion: 3
+          time: 1
+          value: 1
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      UseFrom: 0
+      FromMode: 0
+      ToMode: 0
+      FromVector: {x: 0, y: 0, z: 0}
+      ToVector: {x: 1, y: 1, z: 1}
+      FromFloat: 0
+      ToFloat: 0
+      FromColor: {r: 0, g: 0, b: 0, a: 0}
+      ToColor: {r: 0, g: 0, b: 0, a: 0}
+      FromText: 
+      ToText: 
+      ShaderProperty: _Progress
+      ActiveValue: 0
+      Clip: {fileID: 0}
+      Volume: 1
+      Pitch: 1
+      PitchVariation: 0
+      Vibrato: 10
+      Elasticity: 1
+      Randomness: 90
+      Snapping: 0
+      UseCustomPath: 0
+      PathShape: 0
+      Waypoints: []
+      PropertyComponent: UnityEngine.RectTransform
+      PropertyMember: up
+      PropertyKind: 3
+      NumberFormat: 0
     Loops: 1
     LoopType: 0
     PlayAtCustomFPS: 0
     FPS: 12
     Snapping: 0
     SnapPerStep: 0
-    ApplyFromValuesImmediately: 0
+    ApplyFromValuesImmediately: 1
     InterruptOthers: 0
     OnComplete:
       m_PersistentCalls:
@@ -4477,7 +5123,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: ???
+  m_text: 0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4884c54a02a5dd4439c71601050f1be0, type: 2}
   m_sharedMaterial: {fileID: 5631320081609526272, guid: 4884c54a02a5dd4439c71601050f1be0, type: 2}
