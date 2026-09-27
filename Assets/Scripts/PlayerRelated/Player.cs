@@ -487,6 +487,7 @@ public class Player : MonoBehaviour
 
     private IEnumerator DeathSequence()
     {
+        OnPlayerDie?.Invoke();
         GameObject panel = null;
 
         panel = GameObject.FindGameObjectWithTag("panel");
@@ -497,7 +498,6 @@ public class Player : MonoBehaviour
         yield return new WaitForSecondsRealtime(deathSceneDelay);
         panelAnimator.SetTrigger("reset");
 
-        OnPlayerDie?.Invoke();
         // Ending the night already raises OnDayBegin through GameManager.EndNight.
         // Raise it before changing scenes so current scene listeners receive it.
         //if (GameManager.Instance != null)

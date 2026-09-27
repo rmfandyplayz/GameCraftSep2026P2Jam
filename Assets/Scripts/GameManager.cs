@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
     public int remainingEnemies { get; private set; } = 0;
     public bool nightTime { get; private set; } = false;
 
-    [SerializeField] int quotaStart; // a public for me so i can change this and test, i didn't wanna mess with anything else lol - jackson
+    [SerializeField] int quotaStart=600; // a public for me so i can change this and test, i didn't wanna mess with anything else lol - jackson
 
     private float quotaIncrease = 1.8f; // percent increase of quota
     [SerializeField] private float initialQuotaIncrease = 1.8f;
@@ -81,6 +81,7 @@ public class GameManager : MonoBehaviour
     private void HandlePlayerDeath()
     {
         expectedProfit = 0;
+        nightEndQueued = false;
         OnNightEnd?.Invoke();
     }
      
@@ -92,7 +93,7 @@ public class GameManager : MonoBehaviour
         quotaIncrease = initialQuotaIncrease;
         quotaIncreaseIncrease = initialQuotaIncreaseInc;
         nightTime = false;
-
+        Debug.Log($"{quota},{remainingDays}");
         OnUpdateQuota?.Invoke(quota, remainingDays);
     }
 
@@ -103,44 +104,40 @@ public class GameManager : MonoBehaviour
 
     private void EndNight()
     {
-        OnGainMoney?.Invoke(expectedProfit+lastValue);
+        nightEndQueued = false;
+        OnGainMoney?.Invoke(expectedProfit);
         expectedProfit = 0;
         remainingEnemies = 0;
-
-        if (remainingDays <= 0)
-        {
-            if (currentMoney < quota)
-            {
-                OnQuotaFailed?.Invoke();
-                return;
-            }
-
-            remainingDays = 4;
-            OnLoseMoney?.Invoke(quota);
-
-            quota = Mathf.RoundToInt(quota * quotaIncrease);
-            quotaIncrease += quotaIncreaseIncrease;
-            quotaIncreaseIncrease += 0.2f;
-
-            OnUpdateQuota?.Invoke(quota, remainingDays);
-        }
-
         OnDayBegin?.Invoke();
     }
 
-    int lastValue = 0;
+    private bool nightEndQueued;
+
     private void EnemyDied(int value)
     {
         remainingEnemies -= 1;
+        expectedProfit += value;
+
         if (remainingEnemies <= 0)
         {
-            lastValue = value;
-            OnNightEnd?.Invoke();
+            // Let every OnEnemyDie listener (including the UI) process the last
+            // enemy before ending the night and committing the accumulated profit.
+            if (!nightEndQueued)
+            {
+                nightEndQueued = true;
+                StartCoroutine(EndNightAfterEnemyDeath());
+            }
         }
-        else
-        {
-            expectedProfit += value;
-        }
+    }
+
+    private System.Collections.IEnumerator EndNightAfterEnemyDeath()
+    {
+        yield return null;
+
+        if (!nightEndQueued)
+            yield break;
+
+        OnNightEnd?.Invoke();
     }
 
     private void GainMoney(int amount)
@@ -156,6 +153,23 @@ public class GameManager : MonoBehaviour
     private void ResetNightTime()
     {
         remainingDays -= 1;
+        if (remainingDays <= 0)
+        {
+            if (currentMoney < quota)
+            {
+                OnQuotaFailed?.Invoke();
+                Debug.Log("You lost!");
+            }
+            else
+            {
+                remainingDays = 4;
+                OnLoseMoney?.Invoke(quota);
+
+                quota = Mathf.RoundToInt(quota * quotaIncrease);
+                quotaIncrease += quotaIncreaseIncrease;
+                quotaIncreaseIncrease += 0.2f;
+            }
+        }
         OnUpdateQuota?.Invoke(quota, remainingDays);
         nightTime = false;
     }

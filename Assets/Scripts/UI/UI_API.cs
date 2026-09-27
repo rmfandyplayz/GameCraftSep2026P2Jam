@@ -64,15 +64,15 @@ public class UI_API : MonoBehaviour
     private void HandleGainMoney(int amount)
     {
         tempPoints += amount;
-        if (GameManager.Instance.remainingEnemies <= 1) return;
         SetTempPoints(tempPoints);
     }
 
     private void HandleNightEnd()
     {
+        // Animate the expected amount back to zero as it is committed to the total.
+        SetTempPoints(0);
         tempPoints = 0;
         CombinePoints(GameManager.Instance.currentMoney);
-        //CombinePoints(tempPoints);
     }
 
     private void HandleNewQuota(int reqPoints, int daysLeft)
@@ -91,6 +91,7 @@ public class UI_API : MonoBehaviour
     /// </summary>
     public void AdvanceTime()
     {
+        SetTempPoints(0);
         daylightCycleController.AdvanceTime();
     }
 

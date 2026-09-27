@@ -193,6 +193,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef79c23ec83d7dd438042cccb7e4c60b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
+  quotaStart: 600
+  initialQuotaIncrease: 1.8
+  initialQuotaIncreaseInc: 0.35
 --- !u!4 &191049624
 Transform:
   m_ObjectHideFlags: 0
@@ -11476,6 +11479,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8368946330507062221, guid: 302c52b5aaafaa34f87efb785d011b3d, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8368946330507062221, guid: 302c52b5aaafaa34f87efb785d011b3d, type: 3}
+      propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
