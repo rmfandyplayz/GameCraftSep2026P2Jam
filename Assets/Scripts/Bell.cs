@@ -1,8 +1,10 @@
-using UnityEngine;
 using TMPro;
+using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Bell : MonoBehaviour
 {
+    [SerializeField] InputActionReference interactInput;
     private bool canInteract;
     public GameObject interactUIPopup;
 
@@ -42,7 +44,7 @@ public class Bell : MonoBehaviour
         
 
         hasSeeds = GameObject.FindGameObjectsWithTag("seeds").Length >= requiredSeeds;
-        if (Input.GetKeyDown(KeyCode.Space) && canInteract == true && hasSeeds == true) 
+        if (interactInput.action.WasPressedThisFrame() && canInteract == true && hasSeeds == true) 
             Interact();
 
         if (hasSeeds == true){
