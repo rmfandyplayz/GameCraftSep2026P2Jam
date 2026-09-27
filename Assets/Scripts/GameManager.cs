@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
     public Action OnDayEnd;
     public Action OnNightBegin;
     public Action OnNightEnd;
-    public Action<int> OnNewQuota;
+    public Action<int, int> OnUpdateQuota;
     public Action OnQuotaFailed;
     public Action OnSeedPlanted;
     public Action<int> OnEnemyDie;
@@ -82,13 +82,14 @@ public class GameManager : MonoBehaviour
         quotaIncreaseIncrease = 0.2f;
         nightTime = false;
 
-        OnNewQuota?.Invoke(quota);
+        OnUpdateQuota?.Invoke(quota, remainingDays);
     }
 
     private void BeginNight()
     {
         nightTime = true;
         remainingDays -= 1;
+        OnUpdateQuota?.Invoke(quota, remainingDays);
     }
 
     private void EndNight()
@@ -112,7 +113,7 @@ public class GameManager : MonoBehaviour
             quotaIncrease += quotaIncreaseIncrease;
             quotaIncreaseIncrease += 0.2f;
 
-            OnNewQuota?.Invoke(quota);
+            OnUpdateQuota?.Invoke(quota, remainingDays);
         }
 
         OnDayBegin?.Invoke();
