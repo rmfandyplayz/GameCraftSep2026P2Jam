@@ -13,7 +13,11 @@ public class DayLightCycleController : MonoBehaviour
     int day = 1;
     bool isDay = true;
 
-    public void AdvanceTime()
+    /// <summary>
+    /// returns true if this call will turn it into day
+    /// </summary>
+    /// <returns></returns>
+    public bool AdvanceTime()
     {
         if (isDay == false)
         {
@@ -25,13 +29,20 @@ public class DayLightCycleController : MonoBehaviour
                 dayText.text = $"Day {day}";
                 dayTextAnimPlayer.Play("Appear");
             });
+
+
+            rotatingCircAnimPlayer.Stop("RotateCircle", true);
+            rotatingCircAnimPlayer.PlayAnimation("RotateCircle");
+
+            return true;
         }
         else
         {
             isDay = false;
-        }
+            rotatingCircAnimPlayer.Stop("RotateCircle", true);
+            rotatingCircAnimPlayer.PlayAnimation("RotateCircle");
 
-        rotatingCircAnimPlayer.Stop("RotateCircle", true);
-        rotatingCircAnimPlayer.PlayAnimation("RotateCircle");
+            return false;
+        }
     }
 }

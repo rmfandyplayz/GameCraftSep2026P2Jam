@@ -20,7 +20,7 @@ public class QuotaController : MonoBehaviour
     [SerializeField] string countDownAnimName = "CountNumberDown";
 
     bool shown; // false while the texts still show the "???" placeholder
-    int previousDays;
+    int tempDays; // keep track
 
 
     
@@ -34,13 +34,24 @@ public class QuotaController : MonoBehaviour
     /// </summary>
     public void SetQuota(int quota, int daysLeft)
     {
-
         CountTo(quotaCountingTxt, quotaAnim, quota, countUpAnimName);
-        CountTo(daysCountingTxt, daysAnim, daysLeft, (daysLeft > previousDays ? countUpAnimName : countDownAnimName));
+        CountTo(daysCountingTxt, daysAnim, daysLeft, (daysLeft > tempDays ? countUpAnimName : countDownAnimName));
 
-        previousDays = daysLeft;
+        tempDays = daysLeft;
 
         daysLabelText.text = daysLeft == 1 ? "day" : "days";
+        shown = true;
+    }
+
+    /// <summary>
+    /// decrements quota by 1
+    /// </summary>
+    public void AdvanceQuota()
+    {
+        CountTo(daysCountingTxt, daysAnim, tempDays - 1, countDownAnimName);
+        tempDays--;
+
+        daysLabelText.text = tempDays == 1 ? "day" : "days";
         shown = true;
     }
 

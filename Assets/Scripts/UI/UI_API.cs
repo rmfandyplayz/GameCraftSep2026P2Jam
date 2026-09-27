@@ -16,7 +16,7 @@ public class UI_API : MonoBehaviour
     [InspectorLabel("Points Manager"), SerializeField] PointsController pointsController;
     [InspectorLabel("Quota Manager"), SerializeField] QuotaController quotaController;
 
-    int tempPoints; // running total of money gained/lost since the last CombinePoints
+    int tempPoints; // money gained/lost since the last CombinePoints
     bool subscribed;
 
     // ===============================================================================================================================
@@ -43,6 +43,7 @@ public class UI_API : MonoBehaviour
         gm.OnNightBegin -= AdvanceTime;
         gm.OnNightEnd -= HandleNightEnd;
         gm.OnEnemyDie -= HandleGainMoney;
+        gm.OnNewQuota -= HandleNewQuota;
         subscribed = false;
     }
 
@@ -56,6 +57,7 @@ public class UI_API : MonoBehaviour
         gm.OnNightBegin += AdvanceTime;
         gm.OnNightEnd += HandleNightEnd;
         gm.OnEnemyDie += HandleGainMoney;
+        gm.OnNewQuota += HandleNewQuota;
         subscribed = true;
     }
 
@@ -72,6 +74,12 @@ public class UI_API : MonoBehaviour
         tempPoints = 0;
     }
 
+    private void HandleNewQuota(int reqPoints)
+    {
+        Debug.Log("quota called");
+        SetQuota(reqPoints, 5);
+    }
+
     // ===============================================================================================================================
     //                                             PUBLIC API
     // ===============================================================================================================================
@@ -83,7 +91,10 @@ public class UI_API : MonoBehaviour
     /// </summary>
     public void AdvanceTime()
     {
-        daylightCycleController.AdvanceTime();
+        if (daylightCycleController.AdvanceTime())
+        {
+            quotaController.AdvanceQuota();
+        }
     }
 
     /// <summary>
