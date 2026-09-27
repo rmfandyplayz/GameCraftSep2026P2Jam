@@ -6,6 +6,9 @@ using UnityEngine;
 [RequireComponent(typeof(Animator))]
 public class PumpkinEnemy : MonoBehaviour
 {
+    [Header("Audio")]
+    [SerializeField] AudioClip attackSound;
+
     [Header("References")]
     [SerializeField] Transform healthBox;
     [SerializeField] GameObject enemyHealthPrefab;
@@ -171,6 +174,7 @@ public class PumpkinEnemy : MonoBehaviour
                 {
                     HandleStateTimer(enemyStates.ATTACKING, attackDuration, () =>
                     {
+                        GetComponent<AudioSource>().PlayOneShot(attackSound);
                         pumpkinAnimator.SetTrigger("Attack");
                     });
                 }
