@@ -312,8 +312,7 @@ public class Player : MonoBehaviour
 
         if (hp <= 0)
         {
-            isDead = true;
-            OnPlayerDie?.Invoke();
+            //isDead = true;
             StartCoroutine(DeathSequence());
         }
     }
@@ -488,23 +487,19 @@ public class Player : MonoBehaviour
         GameObject panel = null;
 
         panel = GameObject.FindGameObjectWithTag("panel");
-
-        if (panel != null)
-        {
-            Animator panelAnimator = panel.GetComponent<Animator>();
-
-            if (panelAnimator != null)
-                panelAnimator.SetTrigger("end");
-        }
+        Animator panelAnimator = panel.GetComponent<Animator>();
+        panelAnimator.SetTrigger("end");
 
         // Allows the scene transition to finish before loading.
         yield return new WaitForSecondsRealtime(deathSceneDelay);
+        panelAnimator.SetTrigger("reset");
 
+        OnPlayerDie?.Invoke();
         // Ending the night already raises OnDayBegin through GameManager.EndNight.
         // Raise it before changing scenes so current scene listeners receive it.
-        if (GameManager.Instance != null)
-            GameManager.Instance.OnNightEnd?.Invoke();
+        //if (GameManager.Instance != null)
+        //GameManager.Instance.OnNightEnd?.Invoke();
 
-        SceneManager.LoadScene(deathSceneName);
+        //SceneManager.LoadScene(deathSceneName);
     }
 }

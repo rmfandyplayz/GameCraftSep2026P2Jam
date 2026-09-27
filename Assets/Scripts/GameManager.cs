@@ -60,6 +60,7 @@ public class GameManager : MonoBehaviour
         OnEnemyDie += EnemyDied;
         OnGainMoney += GainMoney;
         OnLoseMoney += LoseMoney;
+        player.OnPlayerDie += HandlePlayerDeath;
     }
 
     private void OnDisable()
@@ -72,9 +73,15 @@ public class GameManager : MonoBehaviour
         OnEnemyDie -= EnemyDied;
         OnGainMoney -= GainMoney;
         OnLoseMoney -= LoseMoney;
+        player.OnPlayerDie -= HandlePlayerDeath;
     }
 
-
+    private void HandlePlayerDeath()
+    {
+        expectedProfit = 0;
+        OnNightEnd?.Invoke();
+    }
+     
     private void StartGame()
     {
         remainingDays = 4;
@@ -90,8 +97,6 @@ public class GameManager : MonoBehaviour
     private void BeginNight()
     {
         nightTime = true;
-        remainingDays -= 1;
-        OnUpdateQuota?.Invoke(quota, remainingDays);
     }
 
     private void EndNight()
@@ -144,6 +149,8 @@ public class GameManager : MonoBehaviour
 
     private void ResetNightTime()
     {
+        remainingDays -= 1;
+        OnUpdateQuota?.Invoke(quota, remainingDays);
         nightTime = false;
     }
 
