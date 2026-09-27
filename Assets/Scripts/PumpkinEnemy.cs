@@ -7,6 +7,8 @@ using UnityEngine;
 public class PumpkinEnemy : MonoBehaviour
 {
     [Header("References")]
+    [SerializeField] Transform healthBox;
+    [SerializeField] GameObject enemyHealthPrefab;
     [SerializeField] SpriteRenderer pumpkinSprite;
     [SerializeField] Collider2D hitboxCollider;
 
@@ -84,6 +86,19 @@ public class PumpkinEnemy : MonoBehaviour
             pumpkinSprite.color = pumpkinDefaultColor;
     }
 
+    private void GenerateHealthBox()
+    {
+        if (healthBox == null) return;
+        foreach (Transform child in healthBox)
+        {
+            Destroy(child.gameObject);
+        }
+        for(int i = 0; i < hp; i++)
+        {
+            Instantiate(enemyHealthPrefab, healthBox);
+        }
+    }
+
     private void HandlePlayerDeath()
     {
         Destroy(gameObject);
@@ -98,7 +113,7 @@ public class PumpkinEnemy : MonoBehaviour
 
         if (pumpkinSprite != null)
             pumpkinDefaultColor = pumpkinSprite.color;
-
+        GenerateHealthBox();
     }
 
     void FixedUpdate()
@@ -190,7 +205,7 @@ public class PumpkinEnemy : MonoBehaviour
         if (other.CompareTag("Attack"))
         {
             hp -= 1;
-
+            GenerateHealthBox();
             if (hp <= 0)
             {
                 GameManager.Instance.OnEnemyDie?.Invoke(value);
