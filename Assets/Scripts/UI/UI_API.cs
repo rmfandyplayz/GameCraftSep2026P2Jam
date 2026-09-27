@@ -69,9 +69,9 @@ public class UI_API : MonoBehaviour
 
     private void HandleNightEnd()
     {
+        tempPoints = 0;
         CombinePoints(GameManager.Instance.currentMoney);
         //CombinePoints(tempPoints);
-        tempPoints = 0;
     }
 
     private void HandleNewQuota(int reqPoints, int daysLeft)

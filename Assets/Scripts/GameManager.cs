@@ -26,10 +26,12 @@ public class GameManager : MonoBehaviour
     public int remainingEnemies { get; private set; } = 0;
     public bool nightTime { get; private set; } = false;
 
-    public int quotaStart; // a public for me so i can change this and test, i didn't wanna mess with anything else lol - jackson
+    [SerializeField] int quotaStart; // a public for me so i can change this and test, i didn't wanna mess with anything else lol - jackson
 
-    private float quotaIncrease = 1.8f;
-    private float quotaIncreaseIncrease = 0.2f;
+    private float quotaIncrease = 1.8f; // percent increase of quota
+    [SerializeField] private float initialQuotaIncrease = 1.8f;
+    private float quotaIncreaseIncrease = 0.35f; // amount the percent increases after quota is met
+    [SerializeField] private float initialQuotaIncreaseInc = 0.35f;
 
     private void Awake()
     {
@@ -87,8 +89,8 @@ public class GameManager : MonoBehaviour
         remainingDays = 4;
         currentMoney = 0;
         quota = quotaStart;
-        quotaIncrease = 1.8f;
-        quotaIncreaseIncrease = 0.35f;
+        quotaIncrease = initialQuotaIncrease;
+        quotaIncreaseIncrease = initialQuotaIncreaseInc;
         nightTime = false;
 
         OnUpdateQuota?.Invoke(quota, remainingDays);
@@ -101,7 +103,7 @@ public class GameManager : MonoBehaviour
 
     private void EndNight()
     {
-        OnGainMoney?.Invoke(expectedProfit);
+        OnGainMoney?.Invoke(expectedProfit+lastValue);
         expectedProfit = 0;
         remainingEnemies = 0;
 
@@ -126,14 +128,18 @@ public class GameManager : MonoBehaviour
         OnDayBegin?.Invoke();
     }
 
+    int lastValue = 0;
     private void EnemyDied(int value)
     {
         remainingEnemies -= 1;
-        expectedProfit += value;
-
         if (remainingEnemies <= 0)
         {
+            lastValue = value;
             OnNightEnd?.Invoke();
+        }
+        else
+        {
+            expectedProfit += value;
         }
     }
 
