@@ -68,6 +68,7 @@ public class GameManager : MonoBehaviour
         remainingDays = 5;
         currentMoney = 0;
         quota = 300;
+        OnNewQuota?.Invoke(quota);
         quotaIncrease = 1.1f;
         quotaIncreaseIncrease = 0.2f;
         nightTime = false;
