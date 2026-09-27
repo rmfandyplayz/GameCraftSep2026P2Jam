@@ -15,7 +15,11 @@ public class MasterCamera : MonoBehaviour
     public float minY = -10f;
     public float maxY = 10f;
 
+    [Header("Screen Shake")]
+    [SerializeField, Min(0f)] float deathShakeMagnitude = 0.15f;
+
     private Camera cameraComponent;
+    Coroutine shakeRoutine;
 
     private void Start()
     {
@@ -67,6 +71,32 @@ public class MasterCamera : MonoBehaviour
         finalPosition.x = Mathf.Clamp(finalPosition.x, cameraMinX, cameraMaxX);
         finalPosition.y = Mathf.Clamp(finalPosition.y, cameraMinY, cameraMaxY);
         transform.position = finalPosition;
+    }
+
+    public void PlayDeathShake(float duration)
+    {
+        if (shakeRoutine != null)
+            StopCoroutine(shakeRoutine);
+
+        shakeRoutine = StartCoroutine(Shake(duration));
+    }
+
+    private System.Collections.IEnumerator Shake(float duration)
+    {
+        Vector3 originalPosition = transform.position;
+        float elapsedTime = 0f;
+
+        while (elapsedTime < duration)
+        {
+            Vector2 offset = Random.insideUnitCircle * deathShakeMagnitude;
+            transform.position = originalPosition + new Vector3(offset.x, offset.y, 0f);
+
+            elapsedTime += Time.unscaledDeltaTime;
+            yield return null;
+        }
+
+        transform.position = originalPosition;
+        shakeRoutine = null;
     }
 
     private void OnDrawGizmos()

@@ -73,6 +73,8 @@ public class Bell : MonoBehaviour
 
     public void Interact(){
         if (GameManager.Instance.nightTime == false){
+            interactUIPopup.SetActive(false);
+            
             GameManager.Instance.OnDayEnd?.Invoke();
             GameManager.Instance.OnNightBegin?.Invoke();        
         }

@@ -39,6 +39,7 @@ public class Player : MonoBehaviour
 
     [Header("Death")]
     public string deathSceneName = "deathScene";
+    [SerializeField, Min(0f)] float deathFreezeFrameDuration = 0.8f;
     public float deathSceneDelay = 1f;
 
     [Header("Five Day Popup")]
@@ -326,7 +327,7 @@ public class Player : MonoBehaviour
 
         if (hp <= 0)
         {
-            //isDead = true;
+            isDead = true;
             StartCoroutine(DeathSequence());
         }
     }
@@ -367,7 +368,8 @@ public class Player : MonoBehaviour
                 elapsedTime += waitTime;
             }
 
-            playerSprite.color = originalColor;
+            if (!isDead)
+                playerSprite.color = originalColor;
         }
 
         isInvincible = false;
@@ -504,6 +506,26 @@ public class Player : MonoBehaviour
 
         panel = GameObject.FindGameObjectWithTag("panel");
         Animator panelAnimator = panel.GetComponent<Animator>();
+
+        float originalTimeScale = Time.timeScale;
+        float originalFixedDeltaTime = Time.fixedDeltaTime;
+
+        if (playerSprite != null)
+            playerSprite.color = Color.red;
+
+        MasterCamera masterCamera = FindFirstObjectByType<MasterCamera>();
+        if (masterCamera != null)
+            masterCamera.PlayDeathShake(deathFreezeFrameDuration);
+
+        Time.timeScale = 0f;
+        Time.fixedDeltaTime = 0f;
+        yield return new WaitForSecondsRealtime(deathFreezeFrameDuration);
+        Time.timeScale = originalTimeScale;
+        Time.fixedDeltaTime = originalFixedDeltaTime;
+
+        if (playerSprite != null)
+            playerSprite.color = playerDefaultColor;
+
         panelAnimator.SetTrigger("end");
 
         // Allows the scene transition to finish before loading.
