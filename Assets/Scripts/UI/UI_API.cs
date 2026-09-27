@@ -116,17 +116,17 @@ public class UI_API : MonoBehaviour
     //                                             PRIVATE API
     // ===============================================================================================================================
 
-    public static void StartGame()
+    public void StartGame()
     {
         RequestStart.Invoke();
     }
 
-    public static void ResumeGame()
+    public void ResumeGame()
     {
         RequestResume.Invoke();
     }
 
-    public static void PauseGame()
+    public void PauseGame()
     {
         RequestPause.Invoke();
     }
