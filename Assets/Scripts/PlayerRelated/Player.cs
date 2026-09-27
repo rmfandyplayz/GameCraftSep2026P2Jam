@@ -53,7 +53,8 @@ public class Player : MonoBehaviour
     [SerializeField, Range(0f, 1f)] float popupStartScale = 0.6f;
 
     public Action OnPlayerDie;
-    public Action<int> OnPlayerHealthChange;
+    public Action<int> OnPlayerHealthHeal;
+    public Action<int> OnPlayerHealthDamage;
     public Action<int> OnPlayerMaxHealthChange;
 
     // Soil can only consume the interact input during the day.
@@ -82,8 +83,6 @@ public class Player : MonoBehaviour
 
     private void OnEnable()
     {
-        OnPlayerHealthChange += HandleHealthChange;
-        OnPlayerMaxHealthChange += HandleMaxHealthChange;
 
         if (GameManager.Instance != null)
         {
@@ -95,9 +94,6 @@ public class Player : MonoBehaviour
 
     private void OnDisable()
     {
-        OnPlayerHealthChange -= HandleHealthChange;
-        OnPlayerMaxHealthChange -= HandleMaxHealthChange;
-
         if (GameManager.Instance != null)
         {
             GameManager.Instance.OnNightEnd -= RestoreHealth;
@@ -118,11 +114,6 @@ public class Player : MonoBehaviour
             shadowSprite.color = shadowDefaultColor;
     }
 
-    private void HandleHealthChange(int newHp)
-    {
-        hp = newHp;
-    }
-
     private void HandleMaxHealthChange(int newMax)
     {
         maxHealth = newMax;
@@ -130,7 +121,8 @@ public class Player : MonoBehaviour
 
     private void RestoreHealth()
     {
-        OnPlayerHealthChange?.Invoke(maxHealth);
+        hp = maxHealth;
+        OnPlayerHealthHeal?.Invoke(hp);
     }
 
     private void HandleDayBegin()
@@ -321,8 +313,8 @@ public class Player : MonoBehaviour
 
         PumpkinEnemy pumpkinEnemy = other.GetComponentInParent<PumpkinEnemy>();
         int damageTaken = pumpkinEnemy == null ? 1 : pumpkinEnemy.damage;
-
-        OnPlayerHealthChange?.Invoke(hp - damageTaken);
+        hp -= damageTaken;
+        OnPlayerHealthDamage?.Invoke(hp);
         StartCoroutine(DamageFlash());
 
         if (hp <= 0)
