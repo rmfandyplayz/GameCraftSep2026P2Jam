@@ -33,7 +33,7 @@ public class DayOneObjectSequence : MonoBehaviour
     private void Start()
     {
         TrySubscribe();
-        SetActive(day1daytime, true);
+        //SetActive(day1daytime, true);
         SetActive(day1nighttime, false);
         SetActive(day2daytime, false);
     }
@@ -55,6 +55,7 @@ public class DayOneObjectSequence : MonoBehaviour
             return;
 
         subscribedGameManager = GameManager.Instance;
+        subscribedGameManager.OnGameStart += () => day1daytime.SetActive(true);
         subscribedGameManager.OnNightBegin += HandleNightBegin;
         subscribedGameManager.OnDayBegin += HandleDayBegin;
     }
@@ -64,6 +65,7 @@ public class DayOneObjectSequence : MonoBehaviour
         if (subscribedGameManager == null)
             return;
 
+        subscribedGameManager.OnGameStart -= () => day1daytime.SetActive(true);
         subscribedGameManager.OnNightBegin -= HandleNightBegin;
         subscribedGameManager.OnDayBegin -= HandleDayBegin;
         subscribedGameManager = null;

@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -35,24 +36,24 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        /*
         if (Instance != null && Instance != this)
         {
-            Destroy(gameObject);
+            //Destroy(gameObject);
             return;
         }
-
+        */
         Instance = this;
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
 
         player = FindFirstObjectByType<Player>();
     }
 
     private void OnEnable()
     {
-        UI_API.RequestStart += StartGame;
-        UI_API.RequestPause += () => Time.timeScale = 0f;
-        UI_API.RequestResume += () => Time.timeScale = 1f;
-        UI_API.RequestStart += () => OnGameStart?.Invoke();
+        UI_API.RequestStart += HandleStartRequest;
+        UI_API.RequestPause += HandlePauseRequest;
+        UI_API.RequestResume += HandleResumeRequest;
 
         OnGameStart += StartGame;
         OnDayBegin += ResetNightTime;
@@ -65,12 +66,15 @@ public class GameManager : MonoBehaviour
         player.OnPlayerDie += HandlePlayerDeath;
     }
 
+    private void HandleStartRequest() => OnGameStart?.Invoke();
+    private void HandlePauseRequest() => Time.timeScale = 0f;
+    private void HandleResumeRequest() => Time.timeScale = 1f;
+
     private void OnDisable()
     {
-        UI_API.RequestStart -= StartGame;
-        UI_API.RequestPause -= () => Time.timeScale = 0f;
-        UI_API.RequestResume -= () => Time.timeScale = 1f;
-        UI_API.RequestStart -= () => OnGameStart?.Invoke();
+        UI_API.RequestStart -= HandleStartRequest;
+        UI_API.RequestPause -= HandlePauseRequest;
+        UI_API.RequestResume -= HandleResumeRequest;
 
         OnGameStart -= StartGame;
         OnDayBegin -= ResetNightTime;
@@ -85,7 +89,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        OnGameStart?.Invoke();
+        //OnGameStart?.Invoke();
     }
 
     private void HandlePlayerDeath()
@@ -167,6 +171,7 @@ public class GameManager : MonoBehaviour
             if (currentMoney < quota)
             {
                 OnQuotaFailed?.Invoke();
+                SceneManager.LoadScene(0);
                 Debug.Log("You lost!");
             }
             else
