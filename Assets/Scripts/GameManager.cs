@@ -17,10 +17,10 @@ public class GameManager : MonoBehaviour
 
     public int currentMoney { get; private set; } = 0;
     public int expectedProfit { get; private set; } = 0;
-    //public int quota { get; private set; } = 300;
-    //private float quotaIncrease = 1.1f;
-    //private float quotaIncreaseIncrease = 0.2f;
-    public int remainingDays { get; private set; } = 3;
+    public int quota { get; private set; } = 300;
+    private float quotaIncrease = 1.1f;
+    private float quotaIncreaseIncrease = 0.2f;
+    public int remainingDays { get; private set; } = 5;
 
     public bool nightTime { get; private set; } = false;
 
@@ -65,11 +65,11 @@ public class GameManager : MonoBehaviour
     }
     private void StartGame()
     {
-        remainingDays = 3;
+        remainingDays = 5;
         currentMoney = 0;
-        //quota = 300;
-        //quotaIncrease = 1.1f;
-        //quotaIncreaseIncrease = 0.2f;
+        quota = 300;
+        quotaIncrease = 1.1f;
+        quotaIncreaseIncrease = 0.2f;
         nightTime = false;
     }
     private void GainMoney(int amount)
@@ -103,20 +103,18 @@ public class GameManager : MonoBehaviour
         remainingEnemies = 0;
         if (remainingDays <= 0)
         {
-            // End Game
-            /*
             if (currentMoney < quota)
             {
                 OnPlayerDie?.Invoke();
             }
             else
             {
+                remainingDays = 5;
                 OnLoseMoney?.Invoke(quota);
                 quota = (int)((float)quota * quotaIncrease);
                 quotaIncrease += quotaIncreaseIncrease;
                 quotaIncreaseIncrease += 0.2f;
             }
-            */
         }
         OnDayBegin?.Invoke();
     }
