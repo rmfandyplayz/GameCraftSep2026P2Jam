@@ -75,7 +75,7 @@ public class Player : MonoBehaviour
     float nextAttackTime;
     bool isInvincible;
     bool isDead;
-    bool movementLocked;
+    bool movementLocked = true;
     int daysSincePopup;
     Color playerDefaultColor = Color.white;
     Color shadowDefaultColor = Color.white;
@@ -96,6 +96,7 @@ public class Player : MonoBehaviour
 
         if (GameManager.Instance != null)
         {
+            GameManager.Instance.OnGameStart += () => movementLocked = false;
             GameManager.Instance.OnNightEnd += RestoreHealth;
             GameManager.Instance.OnDayBegin += HandleDayBegin;
             GameManager.Instance.OnNightBegin += HandleNightBegin;
@@ -106,6 +107,7 @@ public class Player : MonoBehaviour
     {
         if (GameManager.Instance != null)
         {
+            GameManager.Instance.OnGameStart -= () => movementLocked = false;
             GameManager.Instance.OnNightEnd -= RestoreHealth;
             GameManager.Instance.OnDayBegin -= HandleDayBegin;
             GameManager.Instance.OnNightBegin -= HandleNightBegin;
