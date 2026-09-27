@@ -87,11 +87,13 @@ public class UI_API : MonoBehaviour
 
     private void HandleOnGainHP(int newHP)
     {
+        
         healthController.Heal(newHP);
     }
     
     private void HandleOnLoseHP(int newHP)
     {
+        Debug.Log($"hp lose called | new HP: {newHP}");
         healthController.Hurt(newHP);
     }
 
