@@ -274,10 +274,11 @@ MonoBehaviour:
   jumpDurationMax: 1.5
   jumpMoveSpeed: 5.5
   jumpDirectionRandomness: 20
-  windUpDuration: 1
-  attackDistance: 5
+  windUpDuration: 1.6
+  attackDistance: 4
   attackDuration: 0.15
-  attackMoveSpeed: 30
+  attackMoveSpeed: 25
+  value: 50
   deathEffect: {fileID: 4101250449678475071, guid: 34de63608512b45859fbf3c81f3626cc, type: 3}
 --- !u!61 &1694760193576271912
 BoxCollider2D:

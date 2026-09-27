@@ -25,8 +25,16 @@ public class Player : MonoBehaviour
     public float invincibilityTime = 0.2f;
 
     [Header("I Frame Visual Effect")]
+    public Color damageFlashColor = Color.red;
     [Range(0f, 1f)] public float damageFlashAlpha = 0.35f;
     public float flashInterval = 0.04f;
+
+    [Header("Night Start Transition")]
+    [SerializeField] SpriteRenderer shadowSprite;
+    [SerializeField, Min(0f)] float nightFadeOutDuration = 0.35f;
+    [SerializeField, Min(0f)] float nightInvisibleDuration = 1f;
+    [SerializeField, Min(0f)] float nightFadeInDuration = 0.5f;
+    [SerializeField, Min(0f)] float nightRiseDistance = 0.5f;
 
     [Header("Death")]
     public string deathSceneName = "deathScene";
@@ -55,7 +63,12 @@ public class Player : MonoBehaviour
     float nextAttackTime;
     bool isInvincible;
     bool isDead;
+    bool movementLocked;
     int daysSincePopup;
+    Color playerDefaultColor = Color.white;
+    Color shadowDefaultColor = Color.white;
+    Vector3 playerSpriteDefaultLocalPosition;
+    Coroutine nightTransitionRoutine;
     CanvasGroup fiveDayPopupCanvasGroup;
     Vector3 fiveDayPopupFullScale;
     Vector3 fiveDayPopupTextFullScale;
@@ -73,6 +86,7 @@ public class Player : MonoBehaviour
         {
             GameManager.Instance.OnNightEnd += RestoreHealth;
             GameManager.Instance.OnDayBegin += HandleDayBegin;
+            GameManager.Instance.OnNightBegin += HandleNightBegin;
         }
     }
 
@@ -85,7 +99,20 @@ public class Player : MonoBehaviour
         {
             GameManager.Instance.OnNightEnd -= RestoreHealth;
             GameManager.Instance.OnDayBegin -= HandleDayBegin;
+            GameManager.Instance.OnNightBegin -= HandleNightBegin;
         }
+
+        movementLocked = false;
+        nightTransitionRoutine = null;
+
+        if (playerSprite != null)
+        {
+            playerSprite.color = playerDefaultColor;
+            playerSprite.transform.localPosition = playerSpriteDefaultLocalPosition;
+        }
+
+        if (shadowSprite != null)
+            shadowSprite.color = shadowDefaultColor;
     }
 
     private void HandleHealthChange(int newHp)
@@ -121,11 +148,53 @@ public class Player : MonoBehaviour
         fiveDayPopupRoutine = StartCoroutine(ShowFiveDayPopup());
     }
 
+    private void HandleNightBegin()
+    {
+        if (playerSprite == null)
+            return;
+
+        if (nightTransitionRoutine != null)
+            StopCoroutine(nightTransitionRoutine);
+
+        nightTransitionRoutine = StartCoroutine(PlayNightStartTransition());
+    }
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        playerSprite = GetComponentInChildren<SpriteRenderer>();
         playerAnimator = GetComponent<Animator>();
+
+        SpriteRenderer[] childSprites = GetComponentsInChildren<SpriteRenderer>(true);
+
+        foreach (SpriteRenderer childSprite in childSprites)
+        {
+            if (childSprite.gameObject.name.Equals(
+                "PlayerSprite",
+                StringComparison.OrdinalIgnoreCase
+            ))
+            {
+                playerSprite = childSprite;
+            }
+            else if (shadowSprite == null && childSprite.gameObject.name.Equals(
+                "Shadow",
+                StringComparison.OrdinalIgnoreCase
+            ))
+            {
+                shadowSprite = childSprite;
+            }
+        }
+
+        if (playerSprite == null && childSprites.Length > 0)
+            playerSprite = childSprites[0];
+
+        if (playerSprite != null)
+        {
+            playerDefaultColor = playerSprite.color;
+            playerSpriteDefaultLocalPosition = playerSprite.transform.localPosition;
+        }
+
+        if (shadowSprite != null)
+            shadowDefaultColor = shadowSprite.color;
 
         if (fiveDayPopup != null)
         {
@@ -167,7 +236,7 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (isDead)
+        if (isDead || movementLocked)
             return;
 
         Vector2 direction = moveInput.action.ReadValue<Vector2>();
@@ -261,8 +330,8 @@ public class Player : MonoBehaviour
         else
         {
             Color originalColor = playerSprite.color;
-            Color transparentColor = originalColor;
-            transparentColor.a = damageFlashAlpha;
+            Color flashColor = damageFlashColor;
+            flashColor.a = damageFlashAlpha;
 
             float elapsedTime = 0f;
             float pulseTime = Mathf.Max(0.01f, flashInterval);
@@ -271,7 +340,7 @@ public class Player : MonoBehaviour
             while (elapsedTime < invincibilityTime)
             {
                 playerSprite.color = showTransparent
-                    ? transparentColor
+                    ? flashColor
                     : originalColor;
 
                 showTransparent = !showTransparent;
@@ -289,6 +358,74 @@ public class Player : MonoBehaviour
         }
 
         isInvincible = false;
+    }
+
+    private IEnumerator PlayNightStartTransition()
+    {
+        movementLocked = true;
+
+        Vector3 raisedPosition = playerSpriteDefaultLocalPosition
+            + Vector3.up * nightRiseDistance;
+        float elapsedTime = 0f;
+
+        while (elapsedTime < nightFadeOutDuration)
+        {
+            elapsedTime += Time.unscaledDeltaTime;
+            float progress = nightFadeOutDuration <= 0f
+                ? 1f
+                : Mathf.Clamp01(elapsedTime / nightFadeOutDuration);
+            float smoothProgress = Mathf.SmoothStep(0f, 1f, progress);
+
+            SetNightTransitionAlpha(1f - smoothProgress);
+            playerSprite.transform.localPosition = Vector3.Lerp(
+                playerSpriteDefaultLocalPosition,
+                raisedPosition,
+                smoothProgress
+            );
+
+            yield return null;
+        }
+
+        SetNightTransitionAlpha(0f);
+        playerSprite.transform.localPosition = raisedPosition;
+
+        yield return new WaitForSecondsRealtime(nightInvisibleDuration);
+
+        // Reset only the visual child while it is invisible. The Rigidbody and
+        // Player root never moved, so the player reappears in the same place.
+        playerSprite.transform.localPosition = playerSpriteDefaultLocalPosition;
+        elapsedTime = 0f;
+
+        while (elapsedTime < nightFadeInDuration)
+        {
+            elapsedTime += Time.unscaledDeltaTime;
+            float progress = nightFadeInDuration <= 0f
+                ? 1f
+                : Mathf.Clamp01(elapsedTime / nightFadeInDuration);
+
+            SetNightTransitionAlpha(progress);
+
+            yield return null;
+        }
+
+        SetNightTransitionAlpha(1f);
+        playerSprite.transform.localPosition = playerSpriteDefaultLocalPosition;
+        movementLocked = false;
+        nightTransitionRoutine = null;
+    }
+
+    private void SetNightTransitionAlpha(float alpha)
+    {
+        Color playerColor = playerDefaultColor;
+        playerColor.a = playerDefaultColor.a * alpha;
+        playerSprite.color = playerColor;
+
+        if (shadowSprite == null)
+            return;
+
+        Color shadowColor = shadowDefaultColor;
+        shadowColor.a = shadowDefaultColor.a * alpha;
+        shadowSprite.color = shadowColor;
     }
 
     private IEnumerator ShowFiveDayPopup()
