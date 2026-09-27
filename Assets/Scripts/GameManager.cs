@@ -15,71 +15,74 @@ public class GameManager : MonoBehaviour
     public Action<int> OnGainMoney;
     public Action<int> OnLoseMoney;
 
+
+    public static GameManager Instance { get; private set; }
     public Player player { get; private set; }
+
     public int currentMoney { get; private set; } = 0;
     public int expectedProfit { get; private set; } = 0;
     public int quota { get; private set; } = 300;
-    private float quotaIncrease = 1.1f;
-    private float quotaIncreaseIncrease = 0.2f;
     public int remainingDays { get; private set; } = 5;
-
+    public int remainingEnemies { get; private set; } = 0;
     public bool nightTime { get; private set; } = false;
 
-    public int remainingEnemies { get; private set; } = 0;
-
-    public static GameManager Instance { get; private set; }
-
-    private void OnEnable()
-    {
-        OnGameStart += StartGame;
-        OnNightBegin += BeginNight;
-        OnNightEnd += EndNight;
-        OnDayBegin += () => nightTime = false;
-        OnGainMoney += (int moneyGained) => GainMoney(moneyGained);
-        OnLoseMoney += (int moneyLost) => LoseMoney(moneyLost);
-        OnSeedPlanted += () => remainingEnemies += 1;
-        OnEnemyDie += (int value) => EnemyDied(value);
-    }
-    private void OnDisable()
-    {
-        OnGameStart -= StartGame;
-        OnNightBegin -= BeginNight;
-        OnNightEnd -= EndNight;
-        OnDayBegin -= () => nightTime = false;
-        OnGainMoney -= (int moneyGained) => GainMoney(moneyGained);
-        OnLoseMoney -= (int moneyLost) => LoseMoney(moneyLost);
-        OnSeedPlanted -= () => remainingEnemies += 1;
-        OnEnemyDie -= (int value) => EnemyDied(value);
-    }
+    private float quotaIncrease = 1.1f;
+    private float quotaIncreaseIncrease = 0.2f;
 
     private void Awake()
     {
-        player = FindFirstObjectByType<Player>();
         if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
             return;
         }
+
         Instance = this;
         DontDestroyOnLoad(gameObject);
+
+        player = FindFirstObjectByType<Player>();
     }
+
+    private void Start()
+    {
+        OnGameStart?.Invoke();
+    }
+
+    private void OnEnable()
+    {
+        OnGameStart += StartGame;
+        OnDayBegin += ResetNightTime;
+        OnNightBegin += BeginNight;
+        OnNightEnd += EndNight;
+        OnSeedPlanted += IncrementEnemyCount;
+        OnEnemyDie += EnemyDied;
+        OnGainMoney += GainMoney;
+        OnLoseMoney += LoseMoney;
+    }
+
+    private void OnDisable()
+    {
+        OnGameStart -= StartGame;
+        OnDayBegin -= ResetNightTime;
+        OnNightBegin -= BeginNight;
+        OnNightEnd -= EndNight;
+        OnSeedPlanted -= IncrementEnemyCount;
+        OnEnemyDie -= EnemyDied;
+        OnGainMoney -= GainMoney;
+        OnLoseMoney -= LoseMoney;
+    }
+
+
     private void StartGame()
     {
         remainingDays = 5;
         currentMoney = 0;
         quota = 300;
-        OnNewQuota?.Invoke(quota);
         quotaIncrease = 1.1f;
         quotaIncreaseIncrease = 0.2f;
         nightTime = false;
-    }
-    private void GainMoney(int amount)
-    {
-        currentMoney += amount;
-    }
-    private void LoseMoney(int amount)
-    {
-        currentMoney += amount;
+
+        OnNewQuota?.Invoke(quota);
     }
 
     private void BeginNight()
@@ -87,6 +90,34 @@ public class GameManager : MonoBehaviour
         nightTime = true;
         remainingDays -= 1;
     }
+
+    private void EndNight()
+    {
+        OnGainMoney?.Invoke(expectedProfit);
+        expectedProfit = 0;
+        remainingEnemies = 0;
+
+        if (remainingDays <= 0)
+        {
+            if (currentMoney < quota)
+            {
+                OnQuotaFailed?.Invoke();
+                return;
+            }
+
+            remainingDays = 5;
+            OnLoseMoney?.Invoke(quota);
+
+            quota = Mathf.RoundToInt(quota * quotaIncrease);
+            quotaIncrease += quotaIncreaseIncrease;
+            quotaIncreaseIncrease += 0.2f;
+
+            OnNewQuota?.Invoke(quota);
+        }
+
+        OnDayBegin?.Invoke();
+    }
+
     private void EnemyDied(int value)
     {
         remainingEnemies -= 1;
@@ -97,28 +128,24 @@ public class GameManager : MonoBehaviour
             OnNightEnd?.Invoke();
         }
     }
-    private void EndNight()
+
+    private void GainMoney(int amount)
     {
-        OnGainMoney?.Invoke(expectedProfit);
-        expectedProfit = 0;
-        remainingEnemies = 0;
-        if (remainingDays <= 0)
-        {
-            if (currentMoney < quota)
-            {
-                OnQuotaFailed?.Invoke();
-                return;
-            }
-            else
-            {
-                remainingDays = 5;
-                OnLoseMoney?.Invoke(quota);
-                quota = (int)((float)quota * quotaIncrease);
-                quotaIncrease += quotaIncreaseIncrease;
-                quotaIncreaseIncrease += 0.2f;
-                OnNewQuota?.Invoke(quota);
-            }
-        }
-        OnDayBegin?.Invoke();
+        currentMoney += amount;
+    }
+
+    private void LoseMoney(int amount)
+    {
+        currentMoney -= amount;
+    }
+
+    private void ResetNightTime()
+    {
+        nightTime = false;
+    }
+
+    private void IncrementEnemyCount()
+    {
+        remainingEnemies += 1;
     }
 }
