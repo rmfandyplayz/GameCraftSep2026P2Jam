@@ -31,11 +31,13 @@ public class PointsController : MonoBehaviour
         if(newPts > oldPoints) // count up
         {
             incomingPtsCountingTxt.CountTo(newPts);
+            incomingPtsAnim.Stop("CountNumberUp", true);
             incomingPtsAnim.Play("CountNumberUp");
         }
         else if (newPts < oldPoints) // count down
         {
             incomingPtsCountingTxt.CountTo(newPts);
+            incomingPtsAnim.Stop("CountNumberDown", true);
             incomingPtsAnim.Play("CountNumberDown");
         }
     }
