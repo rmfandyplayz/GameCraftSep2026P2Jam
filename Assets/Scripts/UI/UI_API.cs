@@ -14,6 +14,7 @@ public class UI_API : MonoBehaviour
     [Header("references")]
     [InspectorLabel("Daylight Cycle Manager"), SerializeField] DayLightCycleController daylightCycleController;
     [InspectorLabel("Points Manager"), SerializeField] PointsController pointsController;
+    [InspectorLabel("Quota Manager"), SerializeField] QuotaController quotaController;
 
     int tempPoints; // running total of money gained/lost since the last CombinePoints
     bool subscribed;
@@ -41,7 +42,7 @@ public class UI_API : MonoBehaviour
         gm.OnDayBegin -= AdvanceTime;
         gm.OnNightBegin -= AdvanceTime;
         gm.OnNightEnd -= HandleNightEnd;
-        //gm.OnPotentialProfit -= HandleGainMoney;
+        gm.OnEnemyDie -= HandleGainMoney;
         //gm.OnLoseMoney -= HandleLoseMoney;
         subscribed = false;
     }
@@ -55,7 +56,7 @@ public class UI_API : MonoBehaviour
         gm.OnDayBegin += AdvanceTime;
         gm.OnNightBegin += AdvanceTime;
         gm.OnNightEnd += HandleNightEnd;
-        //gm.OnPotentialProfit += HandleGainMoney;
+        gm.OnEnemyDie += HandleGainMoney;
         //gm.OnLoseMoney += HandleLoseMoney;
         subscribed = true;
     }
@@ -110,6 +111,14 @@ public class UI_API : MonoBehaviour
     public void CombinePoints(int newTotal)
     {
         pointsController.CombinePoints(newTotal);
+    }
+
+    /// <summary>
+    /// Sets the quota line ("Req: quota in daysLeft days"). Only the numbers that changed animate.
+    /// </summary>
+    public void SetQuota(int quota, int daysLeft)
+    {
+        quotaController.SetQuota(quota, daysLeft);
     }
 
     // ===============================================================================================================================
