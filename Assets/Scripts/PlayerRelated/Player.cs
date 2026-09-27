@@ -517,7 +517,6 @@ public class Player : MonoBehaviour
     {
         isInvincible = true;
         isDead = true;
-        OnPlayerDie?.Invoke();
         GameObject panel = null;
 
         panel = GameObject.FindGameObjectWithTag("panel");
@@ -543,9 +542,9 @@ public class Player : MonoBehaviour
             playerSprite.color = playerDefaultColor;
 
         panelAnimator.SetTrigger("end");
-
         // Allows the scene transition to finish before loading.
         yield return new WaitForSecondsRealtime(deathSceneDelay);
+        OnPlayerDie?.Invoke();
         panelAnimator.SetTrigger("reset");
         isDead = false;
         isInvincible = false;
