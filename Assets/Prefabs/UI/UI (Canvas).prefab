@@ -7706,8 +7706,8 @@ MonoBehaviour:
   incomingPtsText: {fileID: 2574846139704278337}
   totalPtsCountingTxt: {fileID: 3253887227582514113}
   incomingPtsCountingTxt: {fileID: 2295906176082931370}
-  incomingPtsAnim: {fileID: 5746176441901289034}
-  totalPtsAnim: {fileID: 6211898690263607150}
+  incomingPtsAnim: {fileID: 6211898690263607150}
+  totalPtsAnim: {fileID: 5746176441901289034}
 --- !u!114 &4789086817912295050
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8928,8 +8928,8 @@ MonoBehaviour:
       ToMode: 0
       FromVector: {x: 0, y: 0, z: 0}
       ToVector: {x: 0, y: 0, z: 0}
-      FromFloat: 0
-      ToFloat: 1
+      FromFloat: 1
+      ToFloat: 0
       FromColor: {r: 0, g: 0, b: 0, a: 0}
       ToColor: {r: 0, g: 0, b: 0, a: 0}
       FromText: 

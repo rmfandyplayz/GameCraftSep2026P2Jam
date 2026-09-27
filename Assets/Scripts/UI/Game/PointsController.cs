@@ -40,6 +40,8 @@ public class PointsController : MonoBehaviour
             incomingPtsAnim.Stop("CountNumberDown", true);
             incomingPtsAnim.Play("CountNumberDown");
         }
+
+        oldPoints = newPts;
     }
 
     /// <summary>
@@ -48,6 +50,7 @@ public class PointsController : MonoBehaviour
     public void CombinePoints(int newTotal)
     {
         incomingPtsCountingTxt.CountTo(0);
+        incomingPtsAnim.Stop("CombineAnim", true);
         incomingPtsAnim.Play("CombineAnim", () =>
         {
             incomingPtsText.text = string.Empty;
@@ -55,6 +58,7 @@ public class PointsController : MonoBehaviour
         });
 
         totalPtsCountingTxt.CountTo(newTotal);
+        totalPtsAnim.Stop("CountNumberUp", true);
         totalPtsAnim.Play("CountNumberUp");
 
 

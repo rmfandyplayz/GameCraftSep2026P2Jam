@@ -20,7 +20,7 @@ public class UI_API : MonoBehaviour
     bool subscribed;
 
     // ===============================================================================================================================
-    //                                             GAMEMANAGER HOOKS
+    //                                                  GAMEMANAGER HOOKS
     // ===============================================================================================================================
 
     private void OnEnable()
@@ -43,7 +43,6 @@ public class UI_API : MonoBehaviour
         gm.OnNightBegin -= AdvanceTime;
         gm.OnNightEnd -= HandleNightEnd;
         gm.OnEnemyDie -= HandleGainMoney;
-        //gm.OnLoseMoney -= HandleLoseMoney;
         subscribed = false;
     }
 
@@ -57,7 +56,6 @@ public class UI_API : MonoBehaviour
         gm.OnNightBegin += AdvanceTime;
         gm.OnNightEnd += HandleNightEnd;
         gm.OnEnemyDie += HandleGainMoney;
-        //gm.OnLoseMoney += HandleLoseMoney;
         subscribed = true;
     }
 
@@ -67,15 +65,10 @@ public class UI_API : MonoBehaviour
         SetTempPoints(tempPoints);
     }
 
-    private void HandleLoseMoney(int amount)
-    {
-        tempPoints -= amount;
-        SetTempPoints(tempPoints);
-    }
-
     private void HandleNightEnd()
     {
         CombinePoints(GameManager.Instance.currentMoney);
+        //CombinePoints(tempPoints);
         tempPoints = 0;
     }
 
@@ -119,6 +112,11 @@ public class UI_API : MonoBehaviour
     public void SetQuota(int quota, int daysLeft)
     {
         quotaController.SetQuota(quota, daysLeft);
+    }
+
+    public void FailQuota()
+    {
+        quotaController.FailQuota();
     }
 
     // ===============================================================================================================================
