@@ -42,7 +42,7 @@ public class Bell : MonoBehaviour
         
 
         hasSeeds = GameObject.FindGameObjectsWithTag("seeds").Length >= requiredSeeds;
-        if (Input.GetKeyDown(KeyCode.E) && canInteract == true && hasSeeds == true) 
+        if (Input.GetKeyDown(KeyCode.Space) && canInteract == true && hasSeeds == true) 
             Interact();
 
         if (hasSeeds == true){
