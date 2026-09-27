@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
 {
     [Header("Movement")]
     [SerializeField] float speed = 5f;
+    [SerializeField] float currentSpeed = 5;
     [SerializeField] InputActionReference moveInput;
     [SerializeField] InputActionReference interactInput;
 
@@ -255,7 +256,7 @@ public class Player : MonoBehaviour
         }
 
         rb.MovePosition(
-            rb.position + direction.normalized * speed * Time.deltaTime
+            rb.position + direction.normalized * currentSpeed * Time.deltaTime
         );
     }
 
@@ -277,6 +278,7 @@ public class Player : MonoBehaviour
 
     private void TryAttack()
     {
+        currentSpeed = speed / 3;
         if (attack == null || attackDirection == null)
             return;
 
@@ -287,6 +289,12 @@ public class Player : MonoBehaviour
 
         if (attackBehaviour != null)
             attackBehaviour.Initialize(transform);
+        Invoke("EndAttack",0.5f);
+    }
+
+    private void EndAttack()
+    {
+        currentSpeed = speed;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -487,6 +495,7 @@ public class Player : MonoBehaviour
 
     private IEnumerator DeathSequence()
     {
+        isDead = true;
         OnPlayerDie?.Invoke();
         GameObject panel = null;
 
@@ -497,7 +506,7 @@ public class Player : MonoBehaviour
         // Allows the scene transition to finish before loading.
         yield return new WaitForSecondsRealtime(deathSceneDelay);
         panelAnimator.SetTrigger("reset");
-
+        isDead = false;
         // Ending the night already raises OnDayBegin through GameManager.EndNight.
         // Raise it before changing scenes so current scene listeners receive it.
         //if (GameManager.Instance != null)
