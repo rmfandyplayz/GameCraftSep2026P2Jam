@@ -51,7 +51,7 @@ public class Player : MonoBehaviour
     {
         OnPlayerHealthChange += (int newHp) => hp = newHp;
         OnPlayerMaxHealthChange += (int newMax) => maxHealth = newMax;
-        GameManager.Instance.OnNightEnd += () => hp = maxHealth;
+        GameManager.Instance.OnNightEnd += () => OnPlayerHealthChange?.Invoke(maxHealth);
     }
     private void OnDisable()
     {
