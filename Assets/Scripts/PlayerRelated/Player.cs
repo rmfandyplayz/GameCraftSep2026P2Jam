@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -18,7 +19,8 @@ public class Player : MonoBehaviour
     public float attackCooldown = 0.5f;
 
     [Header("Health")]
-    public int HP = 3;
+    public int maxHealth { get; private set; } = 3;
+    public int hp { get; private set; } = 3;
     public float invincibilityTime = 0.2f;
 
     [Header("I Frame Visual Effect")]
@@ -28,6 +30,9 @@ public class Player : MonoBehaviour
     [Header("Death")]
     public string deathSceneName = "deathScene";
     public float deathSceneDelay = 1f;
+
+    public Action<int> OnPlayerHealthChange;
+    public Action<int> OnPlayerMaxHealthChange;
 
     // Soil can only consume the interact input during the day.
     [HideInInspector]
@@ -43,11 +48,15 @@ public class Player : MonoBehaviour
 
     private void OnEnable()
     {
-        GameManager.Instance.OnNightEnd += ()=> HP = 3;
+        OnPlayerHealthChange += (int newHp) => hp = newHp;
+        OnPlayerMaxHealthChange += (int newMax) => maxHealth = newMax;
+        GameManager.Instance.OnNightEnd += () => hp = maxHealth;
     }
     private void OnDisable()
     {
-        GameManager.Instance.OnNightEnd -= () => HP = 3;
+        OnPlayerHealthChange -= (int newHp) => hp = newHp;
+        OnPlayerMaxHealthChange -= (int newMax) => maxHealth = newMax;
+        GameManager.Instance.OnNightEnd -= () => OnPlayerHealthChange?.Invoke(maxHealth);
     }
 
     private void Start()
@@ -123,10 +132,10 @@ public class Player : MonoBehaviour
         if (isDead || isInvincible || !other.CompareTag("Enemy"))
             return;
 
-        HP -= 1;
+        OnPlayerHealthChange?.Invoke(hp - 1);
         StartCoroutine(DamageFlash());
 
-        if (HP <= 0)
+        if (hp <= 0)
         {
             isDead = true;
             GameManager.Instance.OnPlayerDie?.Invoke();
