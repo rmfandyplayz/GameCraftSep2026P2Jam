@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -31,6 +32,16 @@ public class Player : MonoBehaviour
     public string deathSceneName = "deathScene";
     public float deathSceneDelay = 1f;
 
+    [Header("Five Day Popup")]
+    [Tooltip("An initially inactive UI object with the TMP text as a child.")]
+    [SerializeField] GameObject fiveDayPopup;
+    [SerializeField] TMP_Text fiveDayPopupText;
+    [SerializeField, Min(1)] int daysPerPopup = 5;
+    [SerializeField, Min(0f)] float popupFadeInDuration = 0.25f;
+    [SerializeField, Min(0f)] float popupVisibleDuration = 3f;
+    [SerializeField, Min(0f)] float popupFadeOutDuration = 0.25f;
+    [SerializeField, Range(0f, 1f)] float popupStartScale = 0.6f;
+
     public Action OnPlayerDie;
     public Action<int> OnPlayerHealthChange;
     public Action<int> OnPlayerMaxHealthChange;
@@ -44,6 +55,12 @@ public class Player : MonoBehaviour
     float nextAttackTime;
     bool isInvincible;
     bool isDead;
+    int daysSincePopup;
+    CanvasGroup fiveDayPopupCanvasGroup;
+    Vector3 fiveDayPopupFullScale;
+    Vector3 fiveDayPopupTextFullScale;
+    Vector3 fiveDayPopupTextWorldOffset;
+    Coroutine fiveDayPopupRoutine;
 
     private Animator playerAnimator;
 
@@ -53,7 +70,10 @@ public class Player : MonoBehaviour
         OnPlayerMaxHealthChange += HandleMaxHealthChange;
 
         if (GameManager.Instance != null)
+        {
             GameManager.Instance.OnNightEnd += RestoreHealth;
+            GameManager.Instance.OnDayBegin += HandleDayBegin;
+        }
     }
 
     private void OnDisable()
@@ -62,7 +82,10 @@ public class Player : MonoBehaviour
         OnPlayerMaxHealthChange -= HandleMaxHealthChange;
 
         if (GameManager.Instance != null)
+        {
             GameManager.Instance.OnNightEnd -= RestoreHealth;
+            GameManager.Instance.OnDayBegin -= HandleDayBegin;
+        }
     }
 
     private void HandleHealthChange(int newHp)
@@ -80,11 +103,52 @@ public class Player : MonoBehaviour
         OnPlayerHealthChange?.Invoke(maxHealth);
     }
 
+    private void HandleDayBegin()
+    {
+        daysSincePopup += 1;
+
+        if (daysSincePopup < daysPerPopup)
+            return;
+
+        daysSincePopup = 0;
+
+        if (fiveDayPopup == null)
+            return;
+
+        if (fiveDayPopupRoutine != null)
+            StopCoroutine(fiveDayPopupRoutine);
+
+        fiveDayPopupRoutine = StartCoroutine(ShowFiveDayPopup());
+    }
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         playerSprite = GetComponentInChildren<SpriteRenderer>();
         playerAnimator = GetComponent<Animator>();
+
+        if (fiveDayPopup != null)
+        {
+            fiveDayPopupCanvasGroup = fiveDayPopup.GetComponent<CanvasGroup>();
+
+            if (fiveDayPopupCanvasGroup == null)
+                fiveDayPopupCanvasGroup = fiveDayPopup.AddComponent<CanvasGroup>();
+
+            fiveDayPopupFullScale = fiveDayPopup.transform.localScale;
+
+            if (fiveDayPopupText == null)
+                fiveDayPopupText = fiveDayPopup.GetComponentInChildren<TMP_Text>(true);
+
+            if (fiveDayPopupText != null)
+            {
+                fiveDayPopupTextFullScale = fiveDayPopupText.transform.localScale;
+                fiveDayPopupTextWorldOffset =
+                    fiveDayPopupText.transform.position - transform.position;
+                KeepFiveDayPopupTextUnflipped();
+            }
+
+            fiveDayPopup.SetActive(false);
+        }
     }
 
     private void Update()
@@ -112,16 +176,34 @@ public class Player : MonoBehaviour
         {
             playerAnimator.transform.localScale =
                 new Vector3(1f, 1f, 1f);
+            KeepFiveDayPopupTextUnflipped();
         }
         else if (direction.x < -0.01f)
         {
             playerAnimator.transform.localScale =
                 new Vector3(-1f, 1f, 1f);
+            KeepFiveDayPopupTextUnflipped();
         }
 
         rb.MovePosition(
             rb.position + direction.normalized * speed * Time.deltaTime
         );
+    }
+
+    private void KeepFiveDayPopupTextUnflipped()
+    {
+        if (fiveDayPopupText == null)
+            return;
+
+        Transform textTransform = fiveDayPopupText.transform;
+        float parentScaleX = textTransform.parent == null
+            ? 1f
+            : textTransform.parent.lossyScale.x;
+
+        Vector3 textScale = fiveDayPopupTextFullScale;
+        textScale.x = Mathf.Abs(textScale.x) * (parentScaleX < 0f ? -1f : 1f);
+        textTransform.localScale = textScale;
+        textTransform.position = transform.position + fiveDayPopupTextWorldOffset;
     }
 
     private void TryAttack()
@@ -209,6 +291,61 @@ public class Player : MonoBehaviour
         isInvincible = false;
     }
 
+    private IEnumerator ShowFiveDayPopup()
+    {
+        Transform popupTransform = fiveDayPopup.transform;
+        Vector3 smallScale = fiveDayPopupFullScale * popupStartScale;
+
+        fiveDayPopup.SetActive(true);
+        fiveDayPopupCanvasGroup.alpha = 0f;
+        popupTransform.localScale = smallScale;
+        KeepFiveDayPopupTextUnflipped();
+
+        float elapsedTime = 0f;
+
+        while (elapsedTime < popupFadeInDuration)
+        {
+            elapsedTime += Time.unscaledDeltaTime;
+            float progress = popupFadeInDuration <= 0f
+                ? 1f
+                : Mathf.Clamp01(elapsedTime / popupFadeInDuration);
+            float smoothProgress = Mathf.SmoothStep(0f, 1f, progress);
+
+            fiveDayPopupCanvasGroup.alpha = smoothProgress;
+            popupTransform.localScale = Vector3.Lerp(
+                smallScale,
+                fiveDayPopupFullScale,
+                smoothProgress
+            );
+            KeepFiveDayPopupTextUnflipped();
+
+            yield return null;
+        }
+
+        fiveDayPopupCanvasGroup.alpha = 1f;
+        popupTransform.localScale = fiveDayPopupFullScale;
+        KeepFiveDayPopupTextUnflipped();
+
+        yield return new WaitForSecondsRealtime(popupVisibleDuration);
+
+        elapsedTime = 0f;
+
+        while (elapsedTime < popupFadeOutDuration)
+        {
+            elapsedTime += Time.unscaledDeltaTime;
+            float progress = popupFadeOutDuration <= 0f
+                ? 1f
+                : Mathf.Clamp01(elapsedTime / popupFadeOutDuration);
+
+            fiveDayPopupCanvasGroup.alpha = 1f - progress;
+            yield return null;
+        }
+
+        fiveDayPopupCanvasGroup.alpha = 0f;
+        fiveDayPopup.SetActive(false);
+        fiveDayPopupRoutine = null;
+    }
+
     private IEnumerator DeathSequence()
     {
         GameObject panel = null;
@@ -230,7 +367,6 @@ public class Player : MonoBehaviour
         // Raise it before changing scenes so current scene listeners receive it.
         if (GameManager.Instance != null)
             GameManager.Instance.OnNightEnd?.Invoke();
-            GameManager.Instance.OnDayBegin?.Invoke();
 
         SceneManager.LoadScene(deathSceneName);
     }

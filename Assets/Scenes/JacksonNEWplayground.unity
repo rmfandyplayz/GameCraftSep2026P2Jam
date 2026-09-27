@@ -11694,6 +11694,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2655970877775723340, guid: 68403cdd86c4c6a4d8399d3bf0dfb32c, type: 3}
+      propertyPath: daysPerPopup
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2655970877775723340, guid: 68403cdd86c4c6a4d8399d3bf0dfb32c, type: 3}
       propertyPath: deathSceneName
       value: JacksonNEWPlayground
       objectReference: {fileID: 0}

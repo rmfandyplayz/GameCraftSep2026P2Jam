@@ -153,6 +153,12 @@ MonoBehaviour:
   flashInterval: 0.1
   deathSceneName: JacksonPlayground
   deathSceneDelay: 1
+  fiveDayPopup: {fileID: 4971488132701156692}
+  daysPerPopup: 5
+  popupFadeInDuration: 0.25
+  popupVisibleDuration: 3
+  popupFadeOutDuration: 0.25
+  popupStartScale: 0.6
 --- !u!61 &4284527102123533266
 BoxCollider2D:
   m_ObjectHideFlags: 0
