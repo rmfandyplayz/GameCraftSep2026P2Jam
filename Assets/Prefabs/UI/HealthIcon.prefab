@@ -201,7 +201,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26551b11de6e3934eb8dbefe87ec4d3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::rmf_claude.DOTweenUI.UIAnimationPlayer
-  UseUnscaledTime: 1
+  UseUnscaledTime: 0
   KillOnDisable: 1
   Shared: {fileID: 0}
   Animations:
