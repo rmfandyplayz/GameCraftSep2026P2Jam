@@ -24,6 +24,7 @@ public class Player : MonoBehaviour
     public int maxHealth { get; private set; } = 3;
     public int hp { get; private set; } = 3;
     public float invincibilityTime = 0.2f;
+    public GameObject hurtEffect;
 
     [Header("I Frame Visual Effect")]
     public Color damageFlashColor = Color.red;
@@ -234,6 +235,12 @@ public class Player : MonoBehaviour
             isAttacking = true;
             nextAttackTime = Time.time + attackCooldown;
             playerAnimator.SetTrigger("Attack");
+        }
+
+        if (hp == 1){
+            hurtEffect.SetActive(true);
+        } else {
+            hurtEffect.SetActive(false);
         }
     }
 

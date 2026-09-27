@@ -33,7 +33,15 @@ public class FiveDayObjectActivator : MonoBehaviour
         TrySubscribe();
 
         // The first playable day has already begun before this component's Start.
-        RefreshDailySoils();
+        // Day 1 always starts with regular soil.
+        RefreshDailySoils(allowRareSoils: false);
+    }
+
+    private void Update()
+    {
+        // If this scene object starts before the persistent GameManager is ready,
+        // keep trying until it can receive every later day-start event.
+        TrySubscribe();
     }
 
     private void OnDisable()
@@ -68,7 +76,9 @@ public class FiveDayObjectActivator : MonoBehaviour
             ActivateNextObject();
         }
 
-        RefreshDailySoils();
+        // OnDayBegin is raised after the first playable day, so rare soil is
+        // available from Day 2 onward.
+        RefreshDailySoils(allowRareSoils: true);
     }
 
     private void ActivateNextObject()
@@ -91,7 +101,7 @@ public class FiveDayObjectActivator : MonoBehaviour
         activationScheduleComplete = true;
     }
 
-    private void RefreshDailySoils()
+    private void RefreshDailySoils(bool allowRareSoils)
     {
         Soil[] allSoils = FindObjectsByType<Soil>(
             FindObjectsInactive.Include,
@@ -108,9 +118,9 @@ public class FiveDayObjectActivator : MonoBehaviour
         }
 
         int availableColumnCount = startingColumnCount + unlockedColumnCount;
-        int rareSoilCount = Mathf.Min(
-            availableColumnCount * rareSoilsPerColumn,
-            activeSoils.Count);
+        int rareSoilCount = allowRareSoils
+            ? Mathf.Min(availableColumnCount * rareSoilsPerColumn, activeSoils.Count)
+            : 0;
 
         Soil.SoilVariant[] guaranteedCoreVariants =
         {
