@@ -1748,6 +1748,72 @@ MonoBehaviour:
       PropertyMember: text
       PropertyKind: 6
       NumberFormat: 0
+    - Type: 16
+      Start: 1
+      RectTarget: {fileID: 5252568519290207940}
+      CanvasGroupTarget: {fileID: 0}
+      GraphicTarget: {fileID: 0}
+      MaterialTarget: {fileID: 0}
+      ActiveTarget: {fileID: 0}
+      AudioSourceTarget: {fileID: 0}
+      PropertyTarget: {fileID: 7507077161279740260}
+      TargetPath: 
+      Duration: 0.2
+      Delay: 0
+      EaseType: 1
+      UseCustomCurve: 0
+      Curve:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 0
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        - serializedVersion: 3
+          time: 1
+          value: 1
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      UseFrom: 0
+      FromMode: 0
+      ToMode: 0
+      FromVector: {x: 0, y: 0, z: 0}
+      ToVector: {x: 1, y: 1, z: 1}
+      FromFloat: 0
+      ToFloat: 0
+      FromColor: {r: 0, g: 0, b: 0, a: 0}
+      ToColor: {r: 1, g: 1, b: 1, a: 1}
+      FromText: 
+      ToText: 
+      ShaderProperty: _Progress
+      ActiveValue: 0
+      Clip: {fileID: 8300000, guid: 1977a4356d30241469c085612b8cf31e, type: 3}
+      Volume: 1
+      Pitch: 1
+      PitchVariation: 0
+      Vibrato: 10
+      Elasticity: 1
+      Randomness: 90
+      Snapping: 0
+      UseCustomPath: 0
+      PathShape: 0
+      Waypoints: []
+      PropertyComponent: UnityEngine.RectTransform
+      PropertyMember: up
+      PropertyKind: 3
+      NumberFormat: 0
     - Type: 20
       Start: 1
       RectTarget: {fileID: 5252568519290207940}
@@ -2546,10 +2612,10 @@ RectTransform:
   - {fileID: 2219746896619548751}
   m_Father: {fileID: 3891114765763716082}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1920, y: 1080}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1735645210601534723
 GameObject:
@@ -2678,7 +2744,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5360228956879818661
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4391,7 +4457,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &3891114765763716082
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8912,7 +8978,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 127, y: 0.2000122}
+  m_AnchoredPosition: {x: 127, y: 0.20007324}
   m_SizeDelta: {x: 611.0735, y: 356.17}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2014394655206049047
@@ -9240,6 +9306,72 @@ MonoBehaviour:
 
       2. fade and zoom in pause menu'
     Steps:
+    - Type: 16
+      Start: 0
+      RectTarget: {fileID: 6553582507757150997}
+      CanvasGroupTarget: {fileID: 5380039480998758567}
+      GraphicTarget: {fileID: 0}
+      MaterialTarget: {fileID: 0}
+      ActiveTarget: {fileID: 0}
+      AudioSourceTarget: {fileID: 0}
+      PropertyTarget: {fileID: 0}
+      TargetPath: 
+      Duration: 0.3
+      Delay: 0
+      EaseType: 12
+      UseCustomCurve: 0
+      Curve:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 0
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        - serializedVersion: 3
+          time: 1
+          value: 1
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      UseFrom: 1
+      FromMode: 0
+      ToMode: 0
+      FromVector: {x: 1.4, y: 1.4, z: 1.4}
+      ToVector: {x: 1, y: 1, z: 1}
+      FromFloat: 0
+      ToFloat: 1
+      FromColor: {r: 0, g: 0, b: 0, a: 0}
+      ToColor: {r: 0, g: 0, b: 0, a: 0}
+      FromText: 
+      ToText: 
+      ShaderProperty: _Progress
+      ActiveValue: 0
+      Clip: {fileID: 8300000, guid: 551b85be84ecb4139b3351da9f99e914, type: 3}
+      Volume: 1
+      Pitch: 1
+      PitchVariation: 0
+      Vibrato: 10
+      Elasticity: 1
+      Randomness: 90
+      Snapping: 0
+      UseCustomPath: 0
+      PathShape: 0
+      Waypoints: []
+      PropertyComponent: 
+      PropertyMember: 
+      PropertyKind: 0
+      NumberFormat: 0
     - Type: 13
       Start: 1
       RectTarget: {fileID: 6553582507757150997}
