@@ -253,9 +253,13 @@ MonoBehaviour:
     SnapPerStep: 0
     ApplyFromValuesImmediately: 1
     InterruptOthers: 0
+    CompleteInterrupted: 0
+    CompleteSilently: 0
     OnComplete:
       m_PersistentCalls:
         m_Calls: []
+    Id: 
+  SharedOnComplete: []
 --- !u!1 &455832459876224981
 GameObject:
   m_ObjectHideFlags: 0
@@ -1151,9 +1155,12 @@ MonoBehaviour:
     SnapPerStep: 0
     ApplyFromValuesImmediately: 0
     InterruptOthers: 0
+    CompleteInterrupted: 0
+    CompleteSilently: 0
     OnComplete:
       m_PersistentCalls:
         m_Calls: []
+    Id: 
   - Name: Restore
     Notes: 
     Steps:
@@ -1231,9 +1238,12 @@ MonoBehaviour:
     SnapPerStep: 0
     ApplyFromValuesImmediately: 0
     InterruptOthers: 0
+    CompleteInterrupted: 0
+    CompleteSilently: 0
     OnComplete:
       m_PersistentCalls:
         m_Calls: []
+    Id: 
   - Name: OnMouseDown
     Notes: 
     Steps:
@@ -1311,9 +1321,13 @@ MonoBehaviour:
     SnapPerStep: 0
     ApplyFromValuesImmediately: 0
     InterruptOthers: 0
+    CompleteInterrupted: 0
+    CompleteSilently: 0
     OnComplete:
       m_PersistentCalls:
         m_Calls: []
+    Id: 
+  SharedOnComplete: []
 --- !u!1 &1414108690366087954
 GameObject:
   m_ObjectHideFlags: 0
@@ -1346,10 +1360,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 6400921977972929688}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 30, y: -81.20925}
-  m_SizeDelta: {x: 76.4, y: 49.01}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
 --- !u!222 &7069752516753558006
 CanvasRenderer:
@@ -1483,10 +1497,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 6400921977972929688}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 116.4, y: -81.20925}
-  m_SizeDelta: {x: 77.84, y: 49.01}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
 --- !u!222 &6392775918279544042
 CanvasRenderer:
@@ -1622,10 +1636,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 2670000815952145096}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 30, y: -77.88195}
-  m_SizeDelta: {x: 160.01, y: 40.01}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &3253887227582514113
 MonoBehaviour:
@@ -2086,9 +2100,12 @@ MonoBehaviour:
     SnapPerStep: 0
     ApplyFromValuesImmediately: 1
     InterruptOthers: 0
+    CompleteInterrupted: 0
+    CompleteSilently: 0
     OnComplete:
       m_PersistentCalls:
         m_Calls: []
+    Id: 
   - Name: CountNumberDown
     Notes: 'smoothly decreases the number
 
@@ -2306,9 +2323,13 @@ MonoBehaviour:
     SnapPerStep: 0
     ApplyFromValuesImmediately: 1
     InterruptOthers: 1
+    CompleteInterrupted: 0
+    CompleteSilently: 0
     OnComplete:
       m_PersistentCalls:
         m_Calls: []
+    Id: 
+  SharedOnComplete: []
 --- !u!114 &3918931667551402926
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2744,7 +2765,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &5360228956879818661
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2991,6 +3012,8 @@ MonoBehaviour:
     SnapPerStep: 0
     ApplyFromValuesImmediately: 1
     InterruptOthers: 1
+    CompleteInterrupted: 0
+    CompleteSilently: 0
     OnComplete:
       m_PersistentCalls:
         m_Calls:
@@ -3006,6 +3029,7 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 1
           m_CallState: 2
+    Id: 
   - Name: ElementsOut
     Notes: 
     Steps:
@@ -3215,6 +3239,8 @@ MonoBehaviour:
     SnapPerStep: 0
     ApplyFromValuesImmediately: 1
     InterruptOthers: 1
+    CompleteInterrupted: 0
+    CompleteSilently: 0
     OnComplete:
       m_PersistentCalls:
         m_Calls:
@@ -3230,6 +3256,8 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 1
           m_CallState: 2
+    Id: 
+  SharedOnComplete: []
 --- !u!1 &1949513977855988424
 GameObject:
   m_ObjectHideFlags: 0
@@ -3411,7 +3439,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 480.02002, y: -113.810745}
-  m_SizeDelta: {x: 432.88998, y: 113.4085}
+  m_SizeDelta: {x: 0, y: 113.4085}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &5737960950768393265
 MonoBehaviour:
@@ -4130,6 +4158,8 @@ MonoBehaviour:
     SnapPerStep: 0
     ApplyFromValuesImmediately: 0
     InterruptOthers: 0
+    CompleteInterrupted: 0
+    CompleteSilently: 0
     OnComplete:
       m_PersistentCalls:
         m_Calls:
@@ -4157,6 +4187,8 @@ MonoBehaviour:
             m_StringArgument: ElementsIn
             m_BoolArgument: 0
           m_CallState: 2
+    Id: 
+  SharedOnComplete: []
 --- !u!1 &2851721156220359008
 GameObject:
   m_ObjectHideFlags: 0
@@ -4457,7 +4489,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3891114765763716082
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4828,7 +4860,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
   m_AnchoredPosition: {x: -416.859, y: 57.106476}
-  m_SizeDelta: {x: 912.91003, y: 114.213}
+  m_SizeDelta: {x: 0, y: 114.213}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &738155203331139543
 MonoBehaviour:
@@ -5474,9 +5506,12 @@ MonoBehaviour:
     SnapPerStep: 0
     ApplyFromValuesImmediately: 0
     InterruptOthers: 0
+    CompleteInterrupted: 0
+    CompleteSilently: 0
     OnComplete:
       m_PersistentCalls:
         m_Calls: []
+    Id: 
   - Name: Appear
     Notes: expand first, and then go back to normal size while fading in
     Steps:
@@ -5686,9 +5721,13 @@ MonoBehaviour:
     SnapPerStep: 0
     ApplyFromValuesImmediately: 0
     InterruptOthers: 0
+    CompleteInterrupted: 0
+    CompleteSilently: 0
     OnComplete:
       m_PersistentCalls:
         m_Calls: []
+    Id: 
+  SharedOnComplete: []
 --- !u!114 &7284320529510555062
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5815,10 +5854,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 6400921977972929688}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 279.02, y: -81.20925}
-  m_SizeDelta: {x: 21.62, y: 49.01}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &6573267723763176138
 MonoBehaviour:
@@ -6069,9 +6108,12 @@ MonoBehaviour:
     SnapPerStep: 0
     ApplyFromValuesImmediately: 0
     InterruptOthers: 0
+    CompleteInterrupted: 0
+    CompleteSilently: 0
     OnComplete:
       m_PersistentCalls:
         m_Calls: []
+    Id: 
   - Name: CountNumberUp
     Notes: 
     Steps:
@@ -6545,9 +6587,13 @@ MonoBehaviour:
     SnapPerStep: 0
     ApplyFromValuesImmediately: 1
     InterruptOthers: 0
+    CompleteInterrupted: 0
+    CompleteSilently: 0
     OnComplete:
       m_PersistentCalls:
         m_Calls: []
+    Id: 
+  SharedOnComplete: []
 --- !u!114 &5435495931993646286
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6886,10 +6932,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 6400921977972929688}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 204.23999, y: -81.20925}
-  m_SizeDelta: {x: 21.62, y: 49.01}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &2630986704011945082
 MonoBehaviour:
@@ -7403,9 +7449,13 @@ MonoBehaviour:
     SnapPerStep: 0
     ApplyFromValuesImmediately: 1
     InterruptOthers: 0
+    CompleteInterrupted: 0
+    CompleteSilently: 0
     OnComplete:
       m_PersistentCalls:
         m_Calls: []
+    Id: 
+  SharedOnComplete: []
 --- !u!114 &1460458920720033806
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7858,9 +7908,12 @@ MonoBehaviour:
     SnapPerStep: 0
     ApplyFromValuesImmediately: 0
     InterruptOthers: 0
+    CompleteInterrupted: 0
+    CompleteSilently: 0
     OnComplete:
       m_PersistentCalls:
         m_Calls: []
+    Id: 
   - Name: Restore
     Notes: 
     Steps:
@@ -7938,9 +7991,12 @@ MonoBehaviour:
     SnapPerStep: 0
     ApplyFromValuesImmediately: 0
     InterruptOthers: 0
+    CompleteInterrupted: 0
+    CompleteSilently: 0
     OnComplete:
       m_PersistentCalls:
         m_Calls: []
+    Id: 
   - Name: OnMouseDown
     Notes: 
     Steps:
@@ -8018,9 +8074,13 @@ MonoBehaviour:
     SnapPerStep: 0
     ApplyFromValuesImmediately: 0
     InterruptOthers: 0
+    CompleteInterrupted: 0
+    CompleteSilently: 0
     OnComplete:
       m_PersistentCalls:
         m_Calls: []
+    Id: 
+  SharedOnComplete: []
 --- !u!1 &4703905901236874850
 GameObject:
   m_ObjectHideFlags: 0
@@ -8190,10 +8250,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 6400921977972929688}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 235.85999, y: -81.20925}
-  m_SizeDelta: {x: 33.16, y: 49.01}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
 --- !u!222 &4121427949564083010
 CanvasRenderer:
@@ -9710,6 +9770,8 @@ MonoBehaviour:
     SnapPerStep: 0
     ApplyFromValuesImmediately: 1
     InterruptOthers: 1
+    CompleteInterrupted: 0
+    CompleteSilently: 0
     OnComplete:
       m_PersistentCalls:
         m_Calls:
@@ -9725,6 +9787,7 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 1
           m_CallState: 2
+    Id: 
   - Name: ClosePause
     Notes: does the opposite of open pause
     Steps:
@@ -10066,6 +10129,8 @@ MonoBehaviour:
     SnapPerStep: 0
     ApplyFromValuesImmediately: 1
     InterruptOthers: 1
+    CompleteInterrupted: 0
+    CompleteSilently: 0
     OnComplete:
       m_PersistentCalls:
         m_Calls:
@@ -10081,6 +10146,8 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 1
           m_CallState: 2
+    Id: 
+  SharedOnComplete: []
 --- !u!1 &6421754616971061358
 GameObject:
   m_ObjectHideFlags: 0
@@ -10696,9 +10763,12 @@ MonoBehaviour:
     SnapPerStep: 0
     ApplyFromValuesImmediately: 0
     InterruptOthers: 0
+    CompleteInterrupted: 0
+    CompleteSilently: 0
     OnComplete:
       m_PersistentCalls:
         m_Calls: []
+    Id: 
   - Name: Restore
     Notes: 
     Steps:
@@ -10776,9 +10846,12 @@ MonoBehaviour:
     SnapPerStep: 0
     ApplyFromValuesImmediately: 0
     InterruptOthers: 0
+    CompleteInterrupted: 0
+    CompleteSilently: 0
     OnComplete:
       m_PersistentCalls:
         m_Calls: []
+    Id: 
   - Name: OnMouseDown
     Notes: 
     Steps:
@@ -10856,9 +10929,13 @@ MonoBehaviour:
     SnapPerStep: 0
     ApplyFromValuesImmediately: 0
     InterruptOthers: 0
+    CompleteInterrupted: 0
+    CompleteSilently: 0
     OnComplete:
       m_PersistentCalls:
         m_Calls: []
+    Id: 
+  SharedOnComplete: []
 --- !u!1 &6596651970217515056
 GameObject:
   m_ObjectHideFlags: 0
@@ -12158,7 +12235,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: -112.483444}
-  m_SizeDelta: {x: 460.02002, y: 110.7539}
+  m_SizeDelta: {x: 0, y: 110.7539}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1375326816004637324
 MonoBehaviour:
@@ -13087,10 +13164,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 2670000815952145096}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 240.01, y: -77.88195}
-  m_SizeDelta: {x: 160.01, y: 40.01}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &2295906176082931370
 MonoBehaviour:
@@ -13485,9 +13562,12 @@ MonoBehaviour:
     SnapPerStep: 0
     ApplyFromValuesImmediately: 1
     InterruptOthers: 1
+    CompleteInterrupted: 0
+    CompleteSilently: 0
     OnComplete:
       m_PersistentCalls:
         m_Calls: []
+    Id: 
   - Name: CountNumberDown
     Notes: 'smoothly decreases the number
 
@@ -13705,9 +13785,12 @@ MonoBehaviour:
     SnapPerStep: 0
     ApplyFromValuesImmediately: 1
     InterruptOthers: 1
+    CompleteInterrupted: 0
+    CompleteSilently: 0
     OnComplete:
       m_PersistentCalls:
         m_Calls: []
+    Id: 
   - Name: CombineAnim
     Notes: '- decrease points to 0
 
@@ -13919,9 +14002,13 @@ MonoBehaviour:
     SnapPerStep: 0
     ApplyFromValuesImmediately: 1
     InterruptOthers: 1
+    CompleteInterrupted: 0
+    CompleteSilently: 0
     OnComplete:
       m_PersistentCalls:
         m_Calls: []
+    Id: 
+  SharedOnComplete: []
 --- !u!114 &2574846139704278337
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14409,6 +14496,8 @@ MonoBehaviour:
     SnapPerStep: 0
     ApplyFromValuesImmediately: 1
     InterruptOthers: 1
+    CompleteInterrupted: 0
+    CompleteSilently: 0
     OnComplete:
       m_PersistentCalls:
         m_Calls:
@@ -14424,6 +14513,7 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 1
           m_CallState: 2
+    Id: 
   - Name: CloseSettings
     Notes: 
     Steps:
@@ -14699,6 +14789,8 @@ MonoBehaviour:
     SnapPerStep: 0
     ApplyFromValuesImmediately: 1
     InterruptOthers: 1
+    CompleteInterrupted: 0
+    CompleteSilently: 0
     OnComplete:
       m_PersistentCalls:
         m_Calls:
@@ -14726,6 +14818,7 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+    Id: 
   - Name: OpenCredits
     Notes: 
     Steps:
@@ -15067,6 +15160,8 @@ MonoBehaviour:
     SnapPerStep: 0
     ApplyFromValuesImmediately: 1
     InterruptOthers: 1
+    CompleteInterrupted: 0
+    CompleteSilently: 0
     OnComplete:
       m_PersistentCalls:
         m_Calls:
@@ -15082,6 +15177,7 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 1
           m_CallState: 2
+    Id: 
   - Name: CloseCredits
     Notes: 
     Steps:
@@ -15357,6 +15453,8 @@ MonoBehaviour:
     SnapPerStep: 0
     ApplyFromValuesImmediately: 1
     InterruptOthers: 1
+    CompleteInterrupted: 0
+    CompleteSilently: 0
     OnComplete:
       m_PersistentCalls:
         m_Calls:
@@ -15384,6 +15482,8 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+    Id: 
+  SharedOnComplete: []
 --- !u!1 &8714356889349260672
 GameObject:
   m_ObjectHideFlags: 0
@@ -16291,10 +16391,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 6400921977972929688}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 310.63998, y: -81.20925}
-  m_SizeDelta: {x: 92.25, y: 49.01}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
 --- !u!222 &4403665388714080288
 CanvasRenderer:
@@ -16422,7 +16522,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7938856252899242796, guid: b5331d2a04aee4b9b95856f58cb9230a, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7938856252899242796, guid: b5331d2a04aee4b9b95856f58cb9230a, type: 3}
       propertyPath: m_AnchorMin.x
@@ -16430,7 +16530,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7938856252899242796, guid: b5331d2a04aee4b9b95856f58cb9230a, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7938856252899242796, guid: b5331d2a04aee4b9b95856f58cb9230a, type: 3}
       propertyPath: m_SizeDelta.x
@@ -16470,11 +16570,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7938856252899242796, guid: b5331d2a04aee4b9b95856f58cb9230a, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 290
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7938856252899242796, guid: b5331d2a04aee4b9b95856f58cb9230a, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -50
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7938856252899242796, guid: b5331d2a04aee4b9b95856f58cb9230a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -16524,7 +16624,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7938856252899242796, guid: b5331d2a04aee4b9b95856f58cb9230a, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7938856252899242796, guid: b5331d2a04aee4b9b95856f58cb9230a, type: 3}
       propertyPath: m_AnchorMin.x
@@ -16532,7 +16632,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7938856252899242796, guid: b5331d2a04aee4b9b95856f58cb9230a, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7938856252899242796, guid: b5331d2a04aee4b9b95856f58cb9230a, type: 3}
       propertyPath: m_SizeDelta.x
@@ -16572,11 +16672,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7938856252899242796, guid: b5331d2a04aee4b9b95856f58cb9230a, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 410
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7938856252899242796, guid: b5331d2a04aee4b9b95856f58cb9230a, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -50
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7938856252899242796, guid: b5331d2a04aee4b9b95856f58cb9230a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -16626,7 +16726,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7938856252899242796, guid: b5331d2a04aee4b9b95856f58cb9230a, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7938856252899242796, guid: b5331d2a04aee4b9b95856f58cb9230a, type: 3}
       propertyPath: m_AnchorMin.x
@@ -16634,7 +16734,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7938856252899242796, guid: b5331d2a04aee4b9b95856f58cb9230a, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7938856252899242796, guid: b5331d2a04aee4b9b95856f58cb9230a, type: 3}
       propertyPath: m_SizeDelta.x
@@ -16674,11 +16774,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7938856252899242796, guid: b5331d2a04aee4b9b95856f58cb9230a, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 170
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7938856252899242796, guid: b5331d2a04aee4b9b95856f58cb9230a, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -50
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7938856252899242796, guid: b5331d2a04aee4b9b95856f58cb9230a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -16728,7 +16828,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7938856252899242796, guid: b5331d2a04aee4b9b95856f58cb9230a, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7938856252899242796, guid: b5331d2a04aee4b9b95856f58cb9230a, type: 3}
       propertyPath: m_AnchorMin.x
@@ -16736,7 +16836,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7938856252899242796, guid: b5331d2a04aee4b9b95856f58cb9230a, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7938856252899242796, guid: b5331d2a04aee4b9b95856f58cb9230a, type: 3}
       propertyPath: m_SizeDelta.x
@@ -16776,11 +16876,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7938856252899242796, guid: b5331d2a04aee4b9b95856f58cb9230a, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 50
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7938856252899242796, guid: b5331d2a04aee4b9b95856f58cb9230a, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -50
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7938856252899242796, guid: b5331d2a04aee4b9b95856f58cb9230a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
