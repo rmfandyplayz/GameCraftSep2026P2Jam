@@ -1,5 +1,14 @@
 {
   "dependencies": {
+    "com.rmfandyplayz.dotween-ui-animation": {
+      "version": "https://github.com/rmfandyplayz/UnityUIAnimationTools.git?path=/DOTweenAnimationPlayer#v1.0.0",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {
+        "com.unity.ugui": "1.0.0"
+      },
+      "hash": "ccf42bbcdc91c04840e6f4a58d4a96c7ade99768"
+    },
     "com.unity.2d.animation": {
       "version": "13.0.6",
       "depth": 1,
