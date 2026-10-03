@@ -126,7 +126,7 @@ PrefabInstance:
       objectReference: {fileID: 22100000, guid: 19e4a62602ecf42e792d43d44ffc05a1, type: 2}
     - target: {fileID: 6019244559755048212, guid: 889373fa34dd988499175b8f68bb1931, type: 3}
       propertyPath: value
-      value: 150
+      value: 125
       objectReference: {fileID: 0}
     - target: {fileID: 6019244559755048212, guid: 889373fa34dd988499175b8f68bb1931, type: 3}
       propertyPath: damage
@@ -158,11 +158,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6019244559755048212, guid: 889373fa34dd988499175b8f68bb1931, type: 3}
       propertyPath: windUpDuration
-      value: 1.6
+      value: 1.55
       objectReference: {fileID: 0}
     - target: {fileID: 6019244559755048212, guid: 889373fa34dd988499175b8f68bb1931, type: 3}
       propertyPath: attackMoveSpeed
       value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 6019244559755048212, guid: 889373fa34dd988499175b8f68bb1931, type: 3}
+      propertyPath: idleDurationMax
+      value: 1.8
       objectReference: {fileID: 0}
     - target: {fileID: 6019244559755048212, guid: 889373fa34dd988499175b8f68bb1931, type: 3}
       propertyPath: jumpDurationMax

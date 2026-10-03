@@ -54,7 +54,7 @@ PrefabInstance:
       objectReference: {fileID: 22100000, guid: 969c06225da9b4cfb8d8c5fb84d14b4b, type: 2}
     - target: {fileID: 6019244559755048212, guid: 889373fa34dd988499175b8f68bb1931, type: 3}
       propertyPath: value
-      value: 150
+      value: 225
       objectReference: {fileID: 0}
     - target: {fileID: 6019244559755048212, guid: 889373fa34dd988499175b8f68bb1931, type: 3}
       propertyPath: jumpSound
@@ -82,6 +82,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6019244559755048212, guid: 889373fa34dd988499175b8f68bb1931, type: 3}
       propertyPath: idleDurationMax
+      value: 1.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6019244559755048212, guid: 889373fa34dd988499175b8f68bb1931, type: 3}
+      propertyPath: idleDurationMin
       value: 1.2
       objectReference: {fileID: 0}
     - target: {fileID: 6019244559755048212, guid: 889373fa34dd988499175b8f68bb1931, type: 3}

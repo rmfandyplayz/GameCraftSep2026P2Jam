@@ -176,8 +176,9 @@ public class GameManager : MonoBehaviour
     {
         remainingDays -= 1;
         if (remainingDays <= 0)
-            StartCoroutine(EnforceQuotaAfterDelay());
-        OnUpdateQuota?.Invoke(quota, remainingDays);
+            StartCoroutine(EnforceQuotaAfterDelay()); // UI keeps showing "in 1 day" until it's collected
+        else
+            OnUpdateQuota?.Invoke(quota, remainingDays);
         nightTime = false;
     }
 

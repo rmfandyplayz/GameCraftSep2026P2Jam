@@ -325,7 +325,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6019244559755048212, guid: 889373fa34dd988499175b8f68bb1931, type: 3}
       propertyPath: value
-      value: 300
+      value: 350
       objectReference: {fileID: 0}
     - target: {fileID: 6019244559755048212, guid: 889373fa34dd988499175b8f68bb1931, type: 3}
       propertyPath: damage
@@ -362,6 +362,14 @@ PrefabInstance:
     - target: {fileID: 6019244559755048212, guid: 889373fa34dd988499175b8f68bb1931, type: 3}
       propertyPath: attackMoveSpeed
       value: 32
+      objectReference: {fileID: 0}
+    - target: {fileID: 6019244559755048212, guid: 889373fa34dd988499175b8f68bb1931, type: 3}
+      propertyPath: idleDurationMax
+      value: 1.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6019244559755048212, guid: 889373fa34dd988499175b8f68bb1931, type: 3}
+      propertyPath: idleDurationMin
+      value: 1.4
       objectReference: {fileID: 0}
     - target: {fileID: 6019244559755048212, guid: 889373fa34dd988499175b8f68bb1931, type: 3}
       propertyPath: jumpDurationMax

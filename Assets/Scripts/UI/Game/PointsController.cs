@@ -57,10 +57,13 @@ public class PointsController : MonoBehaviour
             incomingPtsCountingTxt.SetImmediate(0);
         });
 
-        totalPtsCountingTxt.CountTo(newTotal);
-        totalPtsAnim.Stop("CountNumberUp", true);
-        totalPtsAnim.Play("CountNumberUp");
-
+        // nothing was earned (e.g. the player died), so don't count up or play the money sound
+        if (newTotal != totalPtsCountingTxt.To)
+        {
+            totalPtsCountingTxt.CountTo(newTotal);
+            totalPtsAnim.Stop("CountNumberUp", true);
+            totalPtsAnim.Play("CountNumberUp");
+        }
 
         oldPoints = 0;
     }
