@@ -10,6 +10,7 @@ public class UI_API : MonoBehaviour
     public static event Action RequestStart; // request the game to start
     public static event Action RequestPause; // request the game to pause
     public static event Action RequestResume;
+    public static event Action RequestReturnToMenu; // request leaving the current run for the main menu
 
     [Header("references")]
     [InspectorLabel("Daylight Cycle Manager"), SerializeField] DayLightCycleController daylightCycleController;
@@ -44,6 +45,7 @@ public class UI_API : MonoBehaviour
         gm.OnNightBegin -= AdvanceTime;
         gm.OnNightEnd -= HandleNightEnd;
         gm.OnEnemyDie -= HandleGainMoney;
+        gm.OnLoseMoney -= HandleLoseMoney;
         gm.OnUpdateQuota -= HandleNewQuota;
         gm.player.OnPlayerHealthHeal -= HandleOnGainHP;
         gm.player.OnPlayerHealthDamage -= HandleOnLoseHP;
@@ -60,6 +62,7 @@ public class UI_API : MonoBehaviour
         gm.OnNightBegin += AdvanceTime;
         gm.OnNightEnd += HandleNightEnd;
         gm.OnEnemyDie += HandleGainMoney;
+        gm.OnLoseMoney += HandleLoseMoney;
         gm.OnUpdateQuota += HandleNewQuota;
         gm.player.OnPlayerHealthHeal += HandleOnGainHP;
         gm.player.OnPlayerHealthDamage += HandleOnLoseHP;
@@ -78,6 +81,12 @@ public class UI_API : MonoBehaviour
         SetTempPoints(0);
         tempPoints = 0;
         CombinePoints(GameManager.Instance.currentMoney);
+    }
+
+    private void HandleLoseMoney(int amount)
+    {
+        // GameManager has already subtracted it (it subscribes first), so show the new total.
+        pointsController.SetTotalPoints(GameManager.Instance.currentMoney);
     }
 
     private void HandleNewQuota(int reqPoints, int daysLeft)
@@ -162,5 +171,10 @@ public class UI_API : MonoBehaviour
     public void PauseGame()
     {
         RequestPause?.Invoke();
+    }
+
+    public void ReturnToMenu()
+    {
+        RequestReturnToMenu?.Invoke();
     }
 }

@@ -229,7 +229,8 @@ public class PumpkinEnemy : MonoBehaviour
             {
                 GameManager.Instance.OnEnemyDie?.Invoke(value);
                 CreateValuePopup();
-                Instantiate(deathEffect, gameObject.transform.position, Quaternion.identity);
+                // the effect (particles + sub-emitter + sound) is done well within 5s
+                Destroy(Instantiate(deathEffect, gameObject.transform.position, Quaternion.identity), 5f);
                 Destroy(gameObject);
                 return;
             }

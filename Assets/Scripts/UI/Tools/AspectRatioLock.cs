@@ -2,9 +2,11 @@ using UnityEngine;
 
 // AI GENERATED: authored by claude (anthropic) opus 5.5
 // locks the game to 16:9 with letterbox/pillarbox bars. zero setup: it spawns itself before the first scene loads.
-// - every camera rendering to the screen gets its viewport squeezed to 16:9 (Screen Space - Camera canvases follow along)
+// - orthographic cameras keep a full-screen viewport but get a projection that puts exactly their 16:9 view
+//   (orthographicSize tall, aspect forced to 16:9) inside the centered 16:9 area. cam.rect isn't used because
+//   URP drops the viewport offset when post-processing is on (the image slid down by one bar height)
 // - black bars on a top-most overlay canvas cover the leftover space
-// - Screen Space - Overlay canvases ignore camera viewports, so keep overlay UI under an
+// - overlay UI isn't affected by any of this, so keep it under an
 //   AspectRatioFitter (Fit In Parent, 1.7778) like Canvas/MainContent in the UI scene
 [DefaultExecutionOrder(10000)] // run after other scripts so newly enabled cameras get fixed the same frame
 public class AspectRatioLock : MonoBehaviour
@@ -105,11 +107,42 @@ public class AspectRatioLock : MonoBehaviour
         if (count > cameraBuffer.Length) cameraBuffer = new Camera[count * 2];
         count = Camera.GetAllCameras(cameraBuffer);
 
+        bool full = rect.width >= 1f && rect.height >= 1f;
         for (int i = 0; i < count; i++)
         {
             Camera cam = cameraBuffer[i];
             // skip render-texture cameras (minimaps etc.), they don't draw to the screen
-            if (cam.targetTexture == null && cam.rect != rect) cam.rect = rect;
+            if (cam.targetTexture != null) continue;
+
+            if (!cam.orthographic)
+            {
+                if (cam.rect != rect) cam.rect = rect; // perspective fallback; has the URP post-processing offset bug
+            }
+            else if (full)
+            {
+                cam.ResetAspect();
+                cam.ResetProjectionMatrix();
+            }
+            else
+            {
+                // aspect is forced so scripts reading orthographicSize * aspect (MasterCamera bounds) see the visible 16:9 area
+                cam.aspect = TargetAspect;
+                cam.projectionMatrix = LetterboxedOrtho(cam, rect);
+            }
         }
+    }
+
+    // ortho projection over the whole screen where the normalized `band` shows exactly the camera's 16:9 view
+    static Matrix4x4 LetterboxedOrtho(Camera cam, Rect band)
+    {
+        float halfH = cam.orthographicSize;
+        float halfW = halfH * TargetAspect;
+        float unitsPerX = 2f * halfW / band.width;  // world units per normalized screen width
+        float unitsPerY = 2f * halfH / band.height;
+        float left = -halfW - band.xMin * unitsPerX;
+        float right = halfW + (1f - band.xMax) * unitsPerX;
+        float bottom = -halfH - band.yMin * unitsPerY;
+        float top = halfH + (1f - band.yMax) * unitsPerY;
+        return Matrix4x4.Ortho(left, right, bottom, top, cam.nearClipPlane, cam.farClipPlane);
     }
 }

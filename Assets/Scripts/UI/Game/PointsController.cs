@@ -64,4 +64,15 @@ public class PointsController : MonoBehaviour
 
         oldPoints = 0;
     }
+
+    /// <summary>
+    /// public API. counts the total points to a new value without touching the temp points (e.g. paying the quota)
+    /// </summary>
+    public void SetTotalPoints(int newTotal)
+    {
+        string anim = newTotal < totalPtsCountingTxt.To ? "CountNumberDown" : "CountNumberUp";
+        totalPtsCountingTxt.CountTo(newTotal);
+        totalPtsAnim.Stop(anim, true);
+        totalPtsAnim.Play(anim);
+    }
 }
