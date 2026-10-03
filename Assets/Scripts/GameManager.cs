@@ -27,12 +27,10 @@ public class GameManager : MonoBehaviour
     public int remainingEnemies { get; private set; } = 0;
     public bool nightTime { get; private set; } = false;
 
-    [SerializeField] int quotaStart=600; // a public for me so i can change this and test, i didn't wanna mess with anything else lol - jackson
+    [SerializeField, Tooltip("Quota required for each four-day cycle, in order. The final value repeats if all entries are used.")]
+    private int[] quotaPerCycle = { 600, 1080, 2322, 6269 };
 
-    private float quotaIncrease = 1.8f; // percent increase of quota
-    [SerializeField] private float initialQuotaIncrease = 1.8f;
-    private float quotaIncreaseIncrease = 0.35f; // amount the percent increases after quota is met
-    [SerializeField] private float initialQuotaIncreaseInc = 0.35f;
+    private int currentQuotaIndex;
 
     private void Awake()
     {
@@ -103,9 +101,8 @@ public class GameManager : MonoBehaviour
     {
         remainingDays = 4;
         currentMoney = 0;
-        quota = quotaStart;
-        quotaIncrease = initialQuotaIncrease;
-        quotaIncreaseIncrease = initialQuotaIncreaseInc;
+        currentQuotaIndex = 0;
+        quota = GetQuotaForCycle(currentQuotaIndex);
         nightTime = false;
         OnUpdateQuota?.Invoke(quota, remainingDays);
     }
@@ -179,13 +176,24 @@ public class GameManager : MonoBehaviour
                 remainingDays = 4;
                 OnLoseMoney?.Invoke(quota);
 
-                quota = Mathf.RoundToInt(quota * quotaIncrease);
-                quotaIncrease += quotaIncreaseIncrease;
-                quotaIncreaseIncrease += 0.2f;
+                currentQuotaIndex += 1;
+                quota = GetQuotaForCycle(currentQuotaIndex);
             }
         }
         OnUpdateQuota?.Invoke(quota, remainingDays);
         nightTime = false;
+    }
+
+    private int GetQuotaForCycle(int cycleIndex)
+    {
+        if (quotaPerCycle == null || quotaPerCycle.Length == 0)
+        {
+            Debug.LogWarning("No quota values are configured. Falling back to 600.", this);
+            return 600;
+        }
+
+        int quotaIndex = Mathf.Min(cycleIndex, quotaPerCycle.Length - 1);
+        return Mathf.Max(0, quotaPerCycle[quotaIndex]);
     }
 
     private void IncrementEnemyCount()
