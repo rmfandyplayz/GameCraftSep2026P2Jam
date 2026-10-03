@@ -16,7 +16,7 @@ There is no CLI build/test pipeline; work happens in the Unity Editor. No test a
 "<UnityEditorPath>/Unity.exe" -batchmode -nographics -projectPath . -runTests -testPlatform EditMode -testResults results.xml
 ```
 
-Only `Assets/Scenes/SampleScene.unity` is in Build Settings.
+Only `Assets/Scenes/GamePatched.unity` (title menu + game, Jackson's) is in Build Settings; `Game.unity` is the older copy. Quotas per 4-day cycle come from `GameManager.quotaPerCycle`, set on that scene's instance.
 
 ## Architecture
 

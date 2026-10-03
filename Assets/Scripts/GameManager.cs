@@ -30,6 +30,9 @@ public class GameManager : MonoBehaviour
     [SerializeField, Tooltip("Quota required for each four-day cycle, in order. The final value repeats if all entries are used.")]
     private int[] quotaPerCycle = { 600, 1080, 2322, 6269 };
 
+    [Tooltip("Seconds after a new day starts before the quota is collected - lets the night's profit finish adding to the total in the UI first.")]
+    [SerializeField] private float quotaEnforceDelay = 1.5f;
+
     private int currentQuotaIndex;
 
     private void Awake()
@@ -52,6 +55,7 @@ public class GameManager : MonoBehaviour
         UI_API.RequestStart += HandleStartRequest;
         UI_API.RequestPause += HandlePauseRequest;
         UI_API.RequestResume += HandleResumeRequest;
+        UI_API.RequestReturnToMenu += HandleReturnToMenuRequest;
 
         OnGameStart += StartGame;
         OnDayBegin += ResetNightTime;
@@ -68,11 +72,19 @@ public class GameManager : MonoBehaviour
     private void HandlePauseRequest() => Time.timeScale = 0f;
     private void HandleResumeRequest() => Time.timeScale = 1f;
 
+    // The main menu lives in the game scene, so reloading it is a full reset back to the title screen.
+    private void HandleReturnToMenuRequest()
+    {
+        Time.timeScale = 1f; // requested from the pause menu, and timeScale survives scene loads
+        SceneManager.LoadScene(0);
+    }
+
     private void OnDisable()
     {
         UI_API.RequestStart -= HandleStartRequest;
         UI_API.RequestPause -= HandlePauseRequest;
         UI_API.RequestResume -= HandleResumeRequest;
+        UI_API.RequestReturnToMenu -= HandleReturnToMenuRequest;
 
         OnGameStart -= StartGame;
         OnDayBegin -= ResetNightTime;
@@ -164,24 +176,31 @@ public class GameManager : MonoBehaviour
     {
         remainingDays -= 1;
         if (remainingDays <= 0)
-        {
-            if (currentMoney < quota)
-            {
-                OnQuotaFailed?.Invoke();
-                SceneManager.LoadScene(0);
-                Debug.Log("You lost!");
-            }
-            else
-            {
-                remainingDays = 4;
-                OnLoseMoney?.Invoke(quota);
-
-                currentQuotaIndex += 1;
-                quota = GetQuotaForCycle(currentQuotaIndex);
-            }
-        }
+            StartCoroutine(EnforceQuotaAfterDelay());
         OnUpdateQuota?.Invoke(quota, remainingDays);
         nightTime = false;
+    }
+
+    // Waits for the UI to finish adding the night's profit to the total before collecting the quota,
+    // so the two point animations play one after the other instead of on top of each other.
+    private System.Collections.IEnumerator EnforceQuotaAfterDelay()
+    {
+        yield return new WaitForSeconds(quotaEnforceDelay);
+
+        if (currentMoney < quota)
+        {
+            OnQuotaFailed?.Invoke();
+            SceneManager.LoadScene(0);
+            Debug.Log("You lost!");
+            yield break;
+        }
+
+        remainingDays = 4;
+        OnLoseMoney?.Invoke(quota);
+
+        currentQuotaIndex += 1;
+        quota = GetQuotaForCycle(currentQuotaIndex);
+        OnUpdateQuota?.Invoke(quota, remainingDays);
     }
 
     private int GetQuotaForCycle(int cycleIndex)
