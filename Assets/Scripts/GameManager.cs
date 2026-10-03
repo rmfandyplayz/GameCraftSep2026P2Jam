@@ -33,6 +33,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private float initialQuotaIncrease = 1.8f;
     private float quotaIncreaseIncrease = 0.35f; // amount the percent increases after quota is met
     [SerializeField] private float initialQuotaIncreaseInc = 0.35f;
+    [Tooltip("Seconds after a new day starts before the quota is collected - lets the night's profit finish adding to the total in the UI first.")]
+    [SerializeField] private float quotaEnforceDelay = 1.5f;
 
     private void Awake()
     {
@@ -176,25 +178,32 @@ public class GameManager : MonoBehaviour
     {
         remainingDays -= 1;
         if (remainingDays <= 0)
-        {
-            if (currentMoney < quota)
-            {
-                OnQuotaFailed?.Invoke();
-                SceneManager.LoadScene(0);
-                Debug.Log("You lost!");
-            }
-            else
-            {
-                remainingDays = 4;
-                OnLoseMoney?.Invoke(quota);
-
-                quota = Mathf.RoundToInt(quota * quotaIncrease);
-                quotaIncrease += quotaIncreaseIncrease;
-                quotaIncreaseIncrease += 0.2f;
-            }
-        }
+            StartCoroutine(EnforceQuotaAfterDelay());
         OnUpdateQuota?.Invoke(quota, remainingDays);
         nightTime = false;
+    }
+
+    // Waits for the UI to finish adding the night's profit to the total before collecting the quota,
+    // so the two point animations play one after the other instead of on top of each other.
+    private System.Collections.IEnumerator EnforceQuotaAfterDelay()
+    {
+        yield return new WaitForSeconds(quotaEnforceDelay);
+
+        if (currentMoney < quota)
+        {
+            OnQuotaFailed?.Invoke();
+            SceneManager.LoadScene(0);
+            Debug.Log("You lost!");
+            yield break;
+        }
+
+        remainingDays = 4;
+        OnLoseMoney?.Invoke(quota);
+
+        quota = Mathf.RoundToInt(quota * quotaIncrease);
+        quotaIncrease += quotaIncreaseIncrease;
+        quotaIncreaseIncrease += 0.2f;
+        OnUpdateQuota?.Invoke(quota, remainingDays);
     }
 
     private void IncrementEnemyCount()

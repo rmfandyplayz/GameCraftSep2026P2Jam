@@ -45,6 +45,7 @@ public class UI_API : MonoBehaviour
         gm.OnNightBegin -= AdvanceTime;
         gm.OnNightEnd -= HandleNightEnd;
         gm.OnEnemyDie -= HandleGainMoney;
+        gm.OnLoseMoney -= HandleLoseMoney;
         gm.OnUpdateQuota -= HandleNewQuota;
         gm.player.OnPlayerHealthHeal -= HandleOnGainHP;
         gm.player.OnPlayerHealthDamage -= HandleOnLoseHP;
@@ -61,6 +62,7 @@ public class UI_API : MonoBehaviour
         gm.OnNightBegin += AdvanceTime;
         gm.OnNightEnd += HandleNightEnd;
         gm.OnEnemyDie += HandleGainMoney;
+        gm.OnLoseMoney += HandleLoseMoney;
         gm.OnUpdateQuota += HandleNewQuota;
         gm.player.OnPlayerHealthHeal += HandleOnGainHP;
         gm.player.OnPlayerHealthDamage += HandleOnLoseHP;
@@ -79,6 +81,12 @@ public class UI_API : MonoBehaviour
         SetTempPoints(0);
         tempPoints = 0;
         CombinePoints(GameManager.Instance.currentMoney);
+    }
+
+    private void HandleLoseMoney(int amount)
+    {
+        // GameManager has already subtracted it (it subscribes first), so show the new total.
+        pointsController.SetTotalPoints(GameManager.Instance.currentMoney);
     }
 
     private void HandleNewQuota(int reqPoints, int daysLeft)
