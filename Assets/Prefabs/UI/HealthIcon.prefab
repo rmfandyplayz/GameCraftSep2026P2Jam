@@ -212,72 +212,6 @@ MonoBehaviour:
     Steps:
     - Type: 2
       Start: 0
-      RectTarget: {fileID: 7176911146966600350}
-      CanvasGroupTarget: {fileID: 0}
-      GraphicTarget: {fileID: 6412279706896131920}
-      MaterialTarget: {fileID: 0}
-      ActiveTarget: {fileID: 0}
-      AudioSourceTarget: {fileID: 0}
-      PropertyTarget: {fileID: 0}
-      TargetPath: 
-      Duration: 0.4
-      Delay: 0
-      EaseType: 6
-      UseCustomCurve: 0
-      Curve:
-        serializedVersion: 2
-        m_Curve:
-        - serializedVersion: 3
-          time: 0
-          value: 0
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
-          weightedMode: 0
-          inWeight: 0
-          outWeight: 0
-        - serializedVersion: 3
-          time: 1
-          value: 1
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
-          weightedMode: 0
-          inWeight: 0
-          outWeight: 0
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 4
-      UseFrom: 0
-      FromMode: 0
-      ToMode: 0
-      FromVector: {x: 0, y: 0, z: 0}
-      ToVector: {x: 0, y: 0, z: 0}
-      FromFloat: 0
-      ToFloat: 0
-      FromColor: {r: 0, g: 0, b: 0, a: 0}
-      ToColor: {r: 0, g: 0, b: 0, a: 0}
-      FromText: 
-      ToText: 
-      ShaderProperty: _Progress
-      ActiveValue: 0
-      Clip: {fileID: 0}
-      Volume: 1
-      Pitch: 1
-      PitchVariation: 0
-      Vibrato: 10
-      Elasticity: 1
-      Randomness: 90
-      Snapping: 0
-      UseCustomPath: 0
-      PathShape: 0
-      Waypoints: []
-      PropertyComponent: 
-      PropertyMember: 
-      PropertyKind: 0
-      NumberFormat: 0
-    - Type: 2
-      Start: 1
       RectTarget: {fileID: 2861943246750916217}
       CanvasGroupTarget: {fileID: 0}
       GraphicTarget: {fileID: 4561178645434783497}
@@ -287,7 +221,7 @@ MonoBehaviour:
       PropertyTarget: {fileID: 0}
       TargetPath: FullIcon
       Duration: 0.4
-      Delay: 0.2
+      Delay: 0
       EaseType: 1
       UseCustomCurve: 0
       Curve:
@@ -321,6 +255,72 @@ MonoBehaviour:
       ToVector: {x: 0, y: 0, z: 0}
       FromFloat: 0
       ToFloat: 1
+      FromColor: {r: 0, g: 0, b: 0, a: 0}
+      ToColor: {r: 0, g: 0, b: 0, a: 0}
+      FromText: 
+      ToText: 
+      ShaderProperty: _Progress
+      ActiveValue: 0
+      Clip: {fileID: 0}
+      Volume: 1
+      Pitch: 1
+      PitchVariation: 0
+      Vibrato: 10
+      Elasticity: 1
+      Randomness: 90
+      Snapping: 0
+      UseCustomPath: 0
+      PathShape: 0
+      Waypoints: []
+      PropertyComponent: 
+      PropertyMember: 
+      PropertyKind: 0
+      NumberFormat: 0
+    - Type: 2
+      Start: 1
+      RectTarget: {fileID: 7176911146966600350}
+      CanvasGroupTarget: {fileID: 0}
+      GraphicTarget: {fileID: 6412279706896131920}
+      MaterialTarget: {fileID: 0}
+      ActiveTarget: {fileID: 0}
+      AudioSourceTarget: {fileID: 0}
+      PropertyTarget: {fileID: 0}
+      TargetPath: 
+      Duration: 0.4
+      Delay: 0.2
+      EaseType: 6
+      UseCustomCurve: 0
+      Curve:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 0
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        - serializedVersion: 3
+          time: 1
+          value: 1
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      UseFrom: 0
+      FromMode: 0
+      ToMode: 0
+      FromVector: {x: 0, y: 0, z: 0}
+      ToVector: {x: 0, y: 0, z: 0}
+      FromFloat: 0
+      ToFloat: 0
       FromColor: {r: 0, g: 0, b: 0, a: 0}
       ToColor: {r: 0, g: 0, b: 0, a: 0}
       FromText: 
@@ -435,7 +435,7 @@ MonoBehaviour:
       AudioSourceTarget: {fileID: 0}
       PropertyTarget: {fileID: 0}
       TargetPath: 
-      Duration: 0.5
+      Duration: 0.3
       Delay: 0
       EaseType: 9
       UseCustomCurve: 0
@@ -501,8 +501,8 @@ MonoBehaviour:
       AudioSourceTarget: {fileID: 0}
       PropertyTarget: {fileID: 0}
       TargetPath: FullIcon
-      Duration: 0.5
-      Delay: 0
+      Duration: 0.3
+      Delay: 0.15
       EaseType: 6
       UseCustomCurve: 0
       Curve:
