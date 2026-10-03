@@ -220,7 +220,7 @@ MonoBehaviour:
       AudioSourceTarget: {fileID: 0}
       PropertyTarget: {fileID: 0}
       TargetPath: 
-      Duration: 0.2
+      Duration: 0.4
       Delay: 0
       EaseType: 6
       UseCustomCurve: 0
@@ -277,7 +277,7 @@ MonoBehaviour:
       PropertyKind: 0
       NumberFormat: 0
     - Type: 2
-      Start: 0
+      Start: 1
       RectTarget: {fileID: 2861943246750916217}
       CanvasGroupTarget: {fileID: 0}
       GraphicTarget: {fileID: 4561178645434783497}
@@ -286,9 +286,9 @@ MonoBehaviour:
       AudioSourceTarget: {fileID: 0}
       PropertyTarget: {fileID: 0}
       TargetPath: FullIcon
-      Duration: 0.2
-      Delay: 0
-      EaseType: 6
+      Duration: 0.4
+      Delay: 0.2
+      EaseType: 1
       UseCustomCurve: 0
       Curve:
         serializedVersion: 2
@@ -352,9 +352,9 @@ MonoBehaviour:
       AudioSourceTarget: {fileID: 0}
       PropertyTarget: {fileID: 0}
       TargetPath: 
-      Duration: 0.2
-      Delay: 0
-      EaseType: 15
+      Duration: 0.4
+      Delay: 0.2
+      EaseType: 6
       UseCustomCurve: 0
       Curve:
         serializedVersion: 2
@@ -383,7 +383,7 @@ MonoBehaviour:
       UseFrom: 1
       FromMode: 0
       ToMode: 0
-      FromVector: {x: 1.4, y: 1.4, z: 1.4}
+      FromVector: {x: 1.8, y: 1.8, z: 1.8}
       ToVector: {x: 1, y: 1, z: 1}
       FromFloat: 0
       ToFloat: 0
@@ -416,9 +416,12 @@ MonoBehaviour:
     SnapPerStep: 0
     ApplyFromValuesImmediately: 0
     InterruptOthers: 0
+    CompleteInterrupted: 0
+    CompleteSilently: 0
     OnComplete:
       m_PersistentCalls:
         m_Calls: []
+    Id: 
   - Name: Hurt
     Notes: 'fade out full health '
     Steps:
@@ -432,9 +435,9 @@ MonoBehaviour:
       AudioSourceTarget: {fileID: 0}
       PropertyTarget: {fileID: 0}
       TargetPath: 
-      Duration: 0.2
+      Duration: 0.5
       Delay: 0
-      EaseType: 15
+      EaseType: 9
       UseCustomCurve: 0
       Curve:
         serializedVersion: 2
@@ -464,7 +467,7 @@ MonoBehaviour:
       FromMode: 0
       ToMode: 0
       FromVector: {x: 1, y: 1, z: 1}
-      ToVector: {x: 1.4, y: 1.4, z: 1.4}
+      ToVector: {x: 1.9, y: 1.9, z: 1.9}
       FromFloat: 0
       ToFloat: 0
       FromColor: {r: 0, g: 0, b: 0, a: 0}
@@ -498,7 +501,7 @@ MonoBehaviour:
       AudioSourceTarget: {fileID: 0}
       PropertyTarget: {fileID: 0}
       TargetPath: FullIcon
-      Duration: 0.2
+      Duration: 0.5
       Delay: 0
       EaseType: 6
       UseCustomCurve: 0
@@ -555,7 +558,7 @@ MonoBehaviour:
       PropertyKind: 0
       NumberFormat: 0
     - Type: 2
-      Start: 0
+      Start: 1
       RectTarget: {fileID: 7176911146966600350}
       CanvasGroupTarget: {fileID: 0}
       GraphicTarget: {fileID: 6412279706896131920}
@@ -565,8 +568,8 @@ MonoBehaviour:
       PropertyTarget: {fileID: 0}
       TargetPath: 
       Duration: 0.2
-      Delay: 0
-      EaseType: 6
+      Delay: 0.1
+      EaseType: 21
       UseCustomCurve: 0
       Curve:
         serializedVersion: 2
@@ -628,9 +631,13 @@ MonoBehaviour:
     SnapPerStep: 0
     ApplyFromValuesImmediately: 0
     InterruptOthers: 0
+    CompleteInterrupted: 0
+    CompleteSilently: 0
     OnComplete:
       m_PersistentCalls:
         m_Calls: []
+    Id: 
+  SharedOnComplete: []
 --- !u!114 &1624397318472113885
 MonoBehaviour:
   m_ObjectHideFlags: 0

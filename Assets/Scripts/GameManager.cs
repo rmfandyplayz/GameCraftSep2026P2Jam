@@ -54,6 +54,7 @@ public class GameManager : MonoBehaviour
         UI_API.RequestStart += HandleStartRequest;
         UI_API.RequestPause += HandlePauseRequest;
         UI_API.RequestResume += HandleResumeRequest;
+        UI_API.RequestReturnToMenu += HandleReturnToMenuRequest;
 
         OnGameStart += StartGame;
         OnDayBegin += ResetNightTime;
@@ -70,11 +71,19 @@ public class GameManager : MonoBehaviour
     private void HandlePauseRequest() => Time.timeScale = 0f;
     private void HandleResumeRequest() => Time.timeScale = 1f;
 
+    // The main menu lives in the game scene, so reloading it is a full reset back to the title screen.
+    private void HandleReturnToMenuRequest()
+    {
+        Time.timeScale = 1f; // requested from the pause menu, and timeScale survives scene loads
+        SceneManager.LoadScene(0);
+    }
+
     private void OnDisable()
     {
         UI_API.RequestStart -= HandleStartRequest;
         UI_API.RequestPause -= HandlePauseRequest;
         UI_API.RequestResume -= HandleResumeRequest;
+        UI_API.RequestReturnToMenu -= HandleReturnToMenuRequest;
 
         OnGameStart -= StartGame;
         OnDayBegin -= ResetNightTime;

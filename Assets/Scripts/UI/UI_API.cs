@@ -10,6 +10,7 @@ public class UI_API : MonoBehaviour
     public static event Action RequestStart; // request the game to start
     public static event Action RequestPause; // request the game to pause
     public static event Action RequestResume;
+    public static event Action RequestReturnToMenu; // request leaving the current run for the main menu
 
     [Header("references")]
     [InspectorLabel("Daylight Cycle Manager"), SerializeField] DayLightCycleController daylightCycleController;
@@ -162,5 +163,10 @@ public class UI_API : MonoBehaviour
     public void PauseGame()
     {
         RequestPause?.Invoke();
+    }
+
+    public void ReturnToMenu()
+    {
+        RequestReturnToMenu?.Invoke();
     }
 }
